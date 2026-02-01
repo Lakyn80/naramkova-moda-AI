@@ -18,6 +18,11 @@ os.environ.setdefault(
     f"sqlite:///{Path(tempfile.gettempdir()) / 'nmm_test_env.db'}",
 )
 
+os.environ.setdefault(
+    "NMM_UPLOAD_DIR",
+    str(Path(tempfile.gettempdir()) / 'nmm_test_uploads'),
+)
+
 from app.main import create_app
 import app.main as app_main
 import app.core.paths as core_paths
