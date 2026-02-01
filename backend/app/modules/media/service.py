@@ -1,14 +1,11 @@
 from __future__ import annotations
 
 import os
-from pathlib import Path
-
 from sqlalchemy.orm import Session
 
+from app.core.paths import UPLOAD_DIR
+
 from app.db.models import ProductMedia
-
-
-_UPLOADS_DIR = Path(__file__).resolve().parents[4] / "static" / "uploads"
 
 
 def delete_media(db: Session, media_id: int) -> dict[str, str] | None:
@@ -18,7 +15,7 @@ def delete_media(db: Session, media_id: int) -> dict[str, str] | None:
 
     filename = media.filename
     if filename:
-        file_path = _UPLOADS_DIR / filename
+        file_path = UPLOAD_DIR / filename
         try:
             if file_path.exists():
                 os.remove(file_path)

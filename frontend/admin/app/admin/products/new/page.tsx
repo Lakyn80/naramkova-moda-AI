@@ -11,7 +11,6 @@ import {
   generateDescription,
   ingestRag,
   searchRag,
-  STATIC_BASE,
 } from "../../../../lib/api";
 
 type VariantForm = ProductVariant & {
@@ -940,7 +939,7 @@ export default function AdminProductNewPage() {
                   </div>
                 )}
                 <p className="mt-3 text-xs text-gray-500">
-                  Upload: {STATIC_BASE ? `${STATIC_BASE}/static/uploads/` : "/static/uploads/"}
+                  Upload: /static/uploads/
                 </p>
               </div>
 

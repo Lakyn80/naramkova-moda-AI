@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const backendUrl = process.env.NMM_BACKEND_URL || "http://localhost:8080";
+const backendUrl = process.env.NMM_BACKEND_URL || "http://backend:8080";
 
 const nextConfig = {
   async rewrites() {

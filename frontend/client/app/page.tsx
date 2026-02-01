@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { Product } from "../lib/types";
-import { fetchProducts, STATIC_BASE } from "../lib/api";
+import { fetchProducts } from "../lib/api";
+import { resolveMediaUrl } from "../lib/media";
 
 
 function formatPrice(value?: number | null): string {
@@ -65,7 +66,7 @@ export default function HomePage() {
         {!loading && !error && (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {rows.map((product) => {
-              const imageUrl = product.image_url ? `${STATIC_BASE}${product.image_url}` : "";
+              const imageUrl = resolveMediaUrl(product.image_url);
               return (
                 <Link
                   key={product.id}

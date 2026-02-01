@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from typing import Any, Optional
+from typing import Any
 
-from fastapi import APIRouter, Body, Depends, HTTPException, Request
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
 
 from app.db.session import get_db
@@ -64,16 +64,18 @@ async def add_product(request: Request, db: Session = Depends(get_db)) -> Produc
 async def update_product_endpoint(
     product_id: int,
     request: Request,
-    payload: Optional[ProductUpdateIn] = Body(default=None),
     db: Session = Depends(get_db),
 ) -> ProductOut:
     """Legacy: PUT /api/products/<int:product_id> (JSON or multipart)."""
-    payload_dict: dict[str, Any] = payload.dict(exclude_unset=True) if payload else {}
+    payload_dict: dict[str, Any] = {}
     form_data: dict[str, Any] | None = None
     files: dict[str, list[Any]] | None = None
 
     content_type = (request.headers.get("content-type") or "").lower()
-    if "multipart/form-data" in content_type:
+    if "application/json" in content_type:
+        raw = await request.json()
+        payload_dict = ProductUpdateIn(**raw).dict(exclude_unset=True)
+    elif "multipart/form-data" in content_type:
         form = await request.form()
         form_data = {}
         files = {}

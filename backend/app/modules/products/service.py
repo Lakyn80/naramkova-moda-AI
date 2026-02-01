@@ -3,20 +3,18 @@ from __future__ import annotations
 import json
 import os
 import uuid
-from pathlib import Path
 from typing import Any, Iterable
 
 from fastapi import UploadFile
 from sqlalchemy.orm import Session, selectinload
 
+from app.core.paths import UPLOAD_DIR
 from app.db.models import Product, ProductMedia, ProductVariant, ProductVariantMedia
-
-_UPLOADS_DIR = Path(__file__).resolve().parents[4] / "static" / "uploads"
 
 
 def _ensure_uploads_dir() -> Path:
-    _UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
-    return _UPLOADS_DIR
+    UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+    return UPLOAD_DIR
 
 
 def _safe_uuid_name(filename: str | None) -> str:
@@ -31,7 +29,7 @@ def _safe_uuid_name(filename: str | None) -> str:
 def _save_upload_file(upload: UploadFile) -> str:
     _ensure_uploads_dir()
     filename = _safe_uuid_name(upload.filename)
-    target = _UPLOADS_DIR / filename
+    target = UPLOAD_DIR / filename
     with target.open("wb") as f:
         for chunk in iter(lambda: upload.file.read(1024 * 1024), b""):
             f.write(chunk)
@@ -415,7 +413,7 @@ def _remove_files(filenames: Iterable[str]) -> None:
         if not fname:
             continue
         try:
-            path = _UPLOADS_DIR / fname
+            path = UPLOAD_DIR / fname
             if path.exists():
                 path.unlink()
         except Exception:

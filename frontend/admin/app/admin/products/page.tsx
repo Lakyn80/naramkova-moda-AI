@@ -5,7 +5,8 @@ import Link from "next/link";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import type { Category, Product } from "../../../lib/types";
-import { deleteProduct, fetchCategories, fetchProducts, STATIC_BASE } from "../../../lib/api";
+import { deleteProduct, fetchCategories, fetchProducts } from "../../../lib/api";
+import { resolveMediaUrl } from "../../../lib/media";
 const PAGE_SIZE = 20;
 
 type StockFilter = "all" | "in_stock" | "out_stock";
@@ -287,7 +288,7 @@ function ProductsContent() {
               </thead>
               <tbody className="divide-y divide-gray-200">
                 {pageItems.map((product) => {
-                  const imageUrl = product.image_url ? `${STATIC_BASE}${product.image_url}` : "";
+                  const imageUrl = resolveMediaUrl(product.image_url);
                   const mediaCount = product.media?.length ?? 0;
                   const badge = getStockBadge(product.stock);
                   return (

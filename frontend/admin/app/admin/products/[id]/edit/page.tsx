@@ -10,8 +10,8 @@ import {
   fetchCategories,
   fetchProduct,
   updateProduct,
-  STATIC_BASE,
 } from "../../../../../lib/api";
+import { resolveMediaUrl } from "../../../../../lib/media";
 
 type VariantForm = ProductVariant & {
   imageFile?: File | null;
@@ -388,7 +388,7 @@ export default function AdminProductEditPage() {
               <div className="mt-3 flex items-center gap-4">
                 <div className="h-20 w-20 overflow-hidden rounded-lg shadow">
                   <img
-                    src={`${STATIC_BASE}${product.image_url}`}
+                    src={resolveMediaUrl(product.image_url) || undefined}
                     alt="preview"
                     className="h-full w-full object-cover"
                   />
@@ -424,9 +424,9 @@ export default function AdminProductEditPage() {
                 <div key={media.id} className="flex flex-col items-center gap-2">
                   <div className="h-20 w-20 overflow-hidden rounded-lg bg-gray-100 shadow">
                     {media.media_type?.startsWith("video") ? (
-                      <video src={`${STATIC_BASE}${media.url}`} className="h-full w-full object-cover" muted />
+                      <video src={resolveMediaUrl(media.url) || undefined} className="h-full w-full object-cover" muted />
                     ) : (
-                      <img src={`${STATIC_BASE}${media.url}`} alt="media" className="h-full w-full object-cover" />
+                      <img src={resolveMediaUrl(media.url) || undefined} alt="media" className="h-full w-full object-cover" />
                     )}
                   </div>
                   {media.id && (
@@ -533,7 +533,7 @@ export default function AdminProductEditPage() {
                     {variant.existingImage && (
                       <div className="mb-2 flex items-center gap-3">
                         <div className="h-16 w-16 overflow-hidden rounded shadow">
-                          <img src={`${STATIC_BASE}/static/uploads/${variant.existingImage}`} alt="variant" className="h-full w-full object-cover" />
+                          <img src={resolveMediaUrl(variant.existingImage) || undefined} alt="variant" className="h-full w-full object-cover" />
                         </div>
                         <button
                           type="button"
@@ -557,7 +557,7 @@ export default function AdminProductEditPage() {
                       {(variant.existingExtra || []).map((filename) => (
                         <div key={filename} className="flex flex-col items-center">
                           <div className="h-14 w-14 overflow-hidden rounded bg-gray-100">
-                            <img src={`${STATIC_BASE}/static/uploads/${filename}`} alt="extra" className="h-full w-full object-cover" />
+                            <img src={resolveMediaUrl(filename) || undefined} alt="extra" className="h-full w-full object-cover" />
                           </div>
                           <button
                             type="button"

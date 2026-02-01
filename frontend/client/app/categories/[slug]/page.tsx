@@ -92,7 +92,7 @@ export default function CategoryDetailPage() {
 
         <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => {
-            const imageUrl = product.image_url ? `${STATIC_BASE}${product.image_url}` : "";
+            const imageUrl = resolveMediaUrl(product.image_url);
             return (
               <Link
                 key={product.id}

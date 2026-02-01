@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Optional
+from typing import Any, Optional, Union
 
 from pydantic import BaseModel, Field
 
@@ -23,7 +23,7 @@ class ProductVariantMediaOut(BaseModel):
 class ProductVariantOut(BaseModel):
     id: Optional[int] = None
     variant_name: Optional[str] = None
-    wrist_size: Optional[str] = None
+    wrist_size: Union[str, int, float, None] = None
     description: Optional[str] = None
     price_czk: Optional[float] = None
     stock: Optional[int] = None
@@ -41,7 +41,7 @@ class ProductOut(BaseModel):
     category_id: Optional[int] = None
     category_name: Optional[str] = None
     category_slug: Optional[str] = None
-    wrist_size: Optional[str] = None
+    wrist_size: Union[str, int, float, None] = None
     image_url: Optional[str] = None
     media: list[str] = Field(default_factory=list)
     media_items: list[ProductMediaOut] = Field(default_factory=list)
@@ -52,7 +52,7 @@ class ProductOut(BaseModel):
 
 class ProductVariantIn(BaseModel):
     variant_name: Optional[str] = None
-    wrist_size: Optional[str] = None
+    wrist_size: Union[str, int, float, None] = None
     description: Optional[str] = None
     price_czk: Optional[float] = None
     stock: Optional[int] = None
@@ -66,7 +66,7 @@ class ProductCreateIn(BaseModel):
     price_czk: Optional[float] = None
     stock: Optional[int] = None
     category_id: Optional[int] = None
-    wrist_size: Optional[str] = None
+    wrist_size: Union[str, int, float, None] = None
     wrist_sizes: Optional[str] = None
     variants: Optional[list[ProductVariantIn]] = None
 
@@ -78,6 +78,6 @@ class ProductUpdateIn(BaseModel):
     price_czk: Optional[float] = None
     stock: Optional[int] = None
     category_id: Optional[int] = None
-    wrist_size: Optional[str] = None
+    wrist_size: Union[str, int, float, None] = None
     wrist_sizes: Optional[str] = None
     variants: Optional[list[ProductVariantIn]] = None

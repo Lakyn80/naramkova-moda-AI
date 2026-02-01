@@ -1,7 +1,9 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 
 from app.core.config import get_settings
 from app.core.logging import configure_logging
+from app.core.paths import UPLOAD_DIR
 
 from app.modules.auth.router import router as auth_router
 from app.modules.admin.router import router as admin_router
@@ -27,6 +29,10 @@ def create_app() -> FastAPI:
         title=settings.app_name,
         debug=settings.debug,
     )
+
+    UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+
+    app.mount("/static", StaticFiles(directory="static"), name="static")
 
     # Core modules
     app.include_router(auth_router)

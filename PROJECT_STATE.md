@@ -428,3 +428,94 @@ Step 8B — Admin UI CRUD parity
 ## NEXT STEP
 
 Step 8C — Admin dashboard (orders, payments, sold)
+
+---
+
+## STATUS UPDATE
+
+Step 8A.4 — Legacy wrist_size compatibility fix  
+✅ DONE
+
+---
+
+## ROOT CAUSE
+
+Legacy database stores wrist_size as numeric values
+while FastAPI response schema expected string.
+
+---
+
+## FIX
+
+response schema updated to accept numeric types
+
+no DB changes
+
+no migrations
+
+full backward compatibility preserved
+
+---
+
+## SAFETY STATUS
+
+read-only DB
+
+no schema changes
+
+no data mutation
+
+categories unaffected
+
+products endpoint restored
+
+---
+
+STATUS UPDATE
+
+Step 8A.5 — Product upload stabilization
+✅ DONE
+
+FIXES
+
+added python-multipart for multipart/form-data
+
+mounted /static for uploads serving
+
+SAFETY STATUS
+
+no DB changes
+
+no migrations
+
+no schema updates
+
+categories unaffected
+
+legacy compatibility preserved
+
+STATUS UPDATE
+Step 8B — Legacy media path compatibility
+✅ DONE
+
+FIX
+legacy DB stores filename-only media paths
+
+frontend now resolves paths to /static/uploads automatically
+
+SAFETY
+no DB changes
+
+no migrations
+
+no backend changes
+
+legacy production media fully compatible
+
+## Step 7 — Unified uploads & static serving
+
+- single upload directory: backend/static/uploads
+- static mount path: /static
+- supported formats: jpg, png, webp
+- legacy images failed because uploads were saved outside /static
+- all uploads now stored under /static/uploads to prevent future 404s

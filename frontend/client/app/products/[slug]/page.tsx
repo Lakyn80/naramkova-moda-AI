@@ -97,7 +97,7 @@ export default function ProductDetailPage() {
     );
   }
 
-  const imageUrl = product.image_url ? `${STATIC_BASE}${product.image_url}` : "";
+  const imageUrl = resolveMediaUrl(product.image_url);
 
   return (
     <main className="min-h-screen bg-gray-50 text-gray-900">
