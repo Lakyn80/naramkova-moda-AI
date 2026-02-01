@@ -1,3 +1,28 @@
+export interface ProductMediaItem {
+  id?: number | null;
+  filename?: string | null;
+  media_type?: string | null;
+  url?: string | null;
+}
+
+export interface ProductVariantMedia {
+  id?: number | null;
+  image?: string | null;
+  image_url?: string | null;
+}
+
+export interface ProductVariant {
+  id?: number | null;
+  variant_name?: string | null;
+  wrist_size?: string | null;
+  description?: string | null;
+  price_czk?: number | null;
+  stock?: number | null;
+  image?: string | null;
+  image_url?: string | null;
+  media?: ProductVariantMedia[];
+}
+
 export interface Product {
   id: number;
   name: string;
@@ -10,9 +35,10 @@ export interface Product {
   wrist_size?: string | null;
   image_url?: string | null;
   media?: string[];
+  media_items?: ProductMediaItem[];
   categories?: string[];
   category_group?: string | null;
-  variants?: unknown[];
+  variants?: ProductVariant[];
   created_at?: string | null;
 }
 
@@ -39,3 +65,4 @@ export interface DeepseekResult {
   description?: string;
   text?: string;
 }
+

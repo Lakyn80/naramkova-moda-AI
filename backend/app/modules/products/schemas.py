@@ -5,6 +5,15 @@ from typing import Any, Optional
 from pydantic import BaseModel, Field
 
 
+
+
+class ProductMediaOut(BaseModel):
+    id: Optional[int] = None
+    filename: Optional[str] = None
+    media_type: Optional[str] = None
+    url: Optional[str] = None
+
+
 class ProductVariantMediaOut(BaseModel):
     id: Optional[int] = None
     image: Optional[str] = None
@@ -35,6 +44,7 @@ class ProductOut(BaseModel):
     wrist_size: Optional[str] = None
     image_url: Optional[str] = None
     media: list[str] = Field(default_factory=list)
+    media_items: list[ProductMediaOut] = Field(default_factory=list)
     categories: list[str] = Field(default_factory=list)
     category_group: Optional[str] = None
     variants: list[ProductVariantOut] = Field(default_factory=list)

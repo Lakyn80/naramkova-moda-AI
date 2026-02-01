@@ -8,12 +8,19 @@ from sqlalchemy.orm import Session
 
 from app.db.session import get_db
 from .schemas import CategoryCreateIn, CategoryOut, CategoryUpdateIn, CategoryWithProductsOut
-from .service import get_category_by_id, get_category_by_slug, list_categories
+from .service import (
+    create_category,
+    delete_category,
+    get_category_by_id,
+    get_category_by_slug,
+    list_categories,
+    update_category,
+)
 
 router = APIRouter(prefix="/api/categories", tags=["categories"])
 
 
-@router.get("/", response_model=list[CategoryOut])
+@router.get("", response_model=list[CategoryOut])
 async def list_categories_endpoint(
     group: Optional[str] = Query(default=None),
     category: Optional[str] = Query(default=None),
@@ -46,26 +53,47 @@ async def get_category_by_slug_endpoint(
     return data
 
 
-@router.post("/", response_model=CategoryOut, status_code=201)
-async def create_category(payload: Optional[CategoryCreateIn] = Body(default=None)) -> CategoryOut:
+@router.post("", response_model=CategoryOut, status_code=201)
+async def create_category_endpoint(
+    payload: Optional[CategoryCreateIn] = Body(default=None),
+    db: Session = Depends(get_db),
+) -> CategoryOut:
     """Legacy: POST /api/categories/."""
-    _ = payload
-    raise HTTPException(status_code=501, detail="Not implemented")
+    payload_dict = payload.dict(exclude_unset=True) if payload else {}
+    try:
+        return create_category(db, payload_dict)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
 
 
 @router.put("/{category_id}", response_model=CategoryOut)
-async def update_category(
+async def update_category_endpoint(
     category_id: int,
     payload: Optional[CategoryUpdateIn] = Body(default=None),
+    db: Session = Depends(get_db),
 ) -> CategoryOut:
     """Legacy: PUT /api/categories/<int:category_id>."""
-    _ = category_id
-    _ = payload
-    raise HTTPException(status_code=501, detail="Not implemented")
+    payload_dict = payload.dict(exclude_unset=True) if payload else {}
+    try:
+        data = update_category(db, category_id, payload_dict)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    if not data:
+        raise HTTPException(status_code=404, detail="Not found")
+    return data
 
 
 @router.delete("/{category_id}")
-async def delete_category(category_id: int) -> dict[str, Any]:
+async def delete_category_endpoint(
+    category_id: int,
+    force: bool = Query(default=False),
+    db: Session = Depends(get_db),
+) -> dict[str, Any]:
     """Legacy: DELETE /api/categories/<int:category_id>."""
-    _ = category_id
-    raise HTTPException(status_code=501, detail="Not implemented")
+    ok, message = delete_category(db, category_id, force=force)
+    if not ok:
+        raise HTTPException(status_code=404, detail="Not found")
+    if message:
+        raise HTTPException(status_code=400, detail=message)
+    return {"ok": True}
+

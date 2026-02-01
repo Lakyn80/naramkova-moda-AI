@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Admin panel – coming soon"
+  title: "Admin"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

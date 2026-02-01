@@ -18,6 +18,9 @@ services:
       dockerfile: ../../docker/frontend.client.Dockerfile
     depends_on:
       - backend
+    environment:
+      NEXT_PUBLIC_API_BASE: /api
+      NMM_BACKEND_URL: http://backend:8080
     ports:
       - "3002:3002"
 
@@ -27,6 +30,9 @@ services:
       dockerfile: ../../docker/frontend.admin.Dockerfile
     depends_on:
       - backend
+    environment:
+      NEXT_PUBLIC_API_BASE: /api
+      NMM_BACKEND_URL: http://backend:8080
     ports:
       - "3012:3001"
 

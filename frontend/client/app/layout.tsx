@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Náramková Moda – coming soon"
+  title: "Náramková Moda"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -1,8 +1,9 @@
+
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import type { Category } from "../../../../lib/types";
+import type { Category, ProductVariant } from "../../../../lib/types";
 import {
   analyzeImage,
   createProduct,
@@ -10,9 +11,17 @@ import {
   generateDescription,
   ingestRag,
   searchRag,
+  STATIC_BASE,
 } from "../../../../lib/api";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "";
+type VariantForm = ProductVariant & {
+  imageFile?: File | null;
+  extraFiles?: File[];
+};
+
+function fileFromNothing() {
+  return new Blob([]);
+}
 
 export default function AdminProductNewPage() {
   const router = useRouter();
@@ -34,10 +43,17 @@ export default function AdminProductNewPage() {
     name: "",
     description: "",
     price_czk: "",
-    stock: "",
+    stock: "1",
     category_id: "",
+    wrist_size: "",
     image: null as File | null,
   });
+
+  const [mediaFiles, setMediaFiles] = useState<File[]>([]);
+  const [variants, setVariants] = useState<VariantForm[]>([]);
+
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [mediaPreviews, setMediaPreviews] = useState<Array<{ url: string; type: string }>>([]);
 
   useEffect(() => {
     let active = true;
@@ -49,7 +65,7 @@ export default function AdminProductNewPage() {
       })
       .catch((err: Error) => {
         if (!active) return;
-        setError(err.message || "Failed to load categories");
+        setError(err.message || "Nepodařilo se načíst kategorie");
       })
       .finally(() => {
         if (!active) return;
@@ -61,7 +77,43 @@ export default function AdminProductNewPage() {
     };
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  useEffect(() => {
+    if (!form.image) {
+      setImagePreview(null);
+      return;
+    }
+    const url = URL.createObjectURL(form.image);
+    setImagePreview(url);
+    return () => URL.revokeObjectURL(url);
+  }, [form.image]);
+
+  useEffect(() => {
+    if (!mediaFiles.length) {
+      setMediaPreviews([]);
+      return;
+    }
+    const next = mediaFiles.map((file) => ({
+      url: URL.createObjectURL(file),
+      type: file.type,
+    }));
+    setMediaPreviews(next);
+    return () => {
+      next.forEach((item) => URL.revokeObjectURL(item.url));
+    };
+  }, [mediaFiles]);
+
+  const categoryOptions = useMemo(
+    () =>
+      categories.map((cat) => ({
+        id: cat.id,
+        label: `${cat.group || "—"} — ${cat.name}`,
+      })),
+    [categories]
+  );
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
@@ -69,6 +121,36 @@ export default function AdminProductNewPage() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
     setForm((prev) => ({ ...prev, image: file }));
+  };
+
+  const handleMediaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMediaFiles(Array.from(e.target.files || []));
+  };
+
+  const handleAddVariant = () => {
+    setVariants((prev) => [
+      ...prev,
+      {
+        variant_name: "",
+        wrist_size: "",
+        description: "",
+        price_czk: null,
+        stock: 0,
+        image: null,
+        image_url: null,
+        media: [],
+        imageFile: null,
+        extraFiles: [],
+      },
+    ]);
+  };
+
+  const handleRemoveVariant = (index: number) => {
+    setVariants((prev) => prev.filter((_, idx) => idx !== index));
+  };
+
+  const updateVariant = (index: number, patch: Partial<VariantForm>) => {
+    setVariants((prev) => prev.map((variant, idx) => (idx === index ? { ...variant, ...patch } : variant)));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -84,15 +166,40 @@ export default function AdminProductNewPage() {
       data.append("price_czk", form.price_czk);
       data.append("stock", form.stock);
       data.append("category_id", form.category_id);
+      data.append("wrist_size", form.wrist_size);
+
       if (form.image) {
         data.append("image", form.image);
       }
+
+      mediaFiles.forEach((file) => data.append("media", file));
+
+      variants.forEach((variant, index) => {
+        data.append("variant_name[]", variant.variant_name || "");
+        data.append("variant_wrist_size[]", variant.wrist_size || "");
+        data.append("variant_stock[]", String(variant.stock ?? 0));
+        data.append(
+          "variant_price[]",
+          variant.price_czk !== undefined && variant.price_czk !== null ? String(variant.price_czk) : ""
+        );
+        data.append("variant_description[]", variant.description || "");
+
+        if (variant.imageFile) {
+          data.append("variant_image[]", variant.imageFile);
+        } else {
+          data.append("variant_image[]", fileFromNothing(), "");
+        }
+
+        (variant.extraFiles || []).forEach((file) => {
+          data.append(`variant_image_multi_${index}[]`, file);
+        });
+      });
 
       await createProduct(data);
       setSuccess("Produkt byl vytvořen.");
       router.push("/admin/products?created=1");
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Failed to create product";
+      const message = err instanceof Error ? err.message : "Nepodařilo se vytvořit produkt";
       setError(message);
     } finally {
       setSubmitting(false);
@@ -307,6 +414,17 @@ export default function AdminProductNewPage() {
         stock: nextStock,
         category_id: categoryId ? String(categoryId) : prev.category_id,
       }));
+
+      const categoryName =
+        categories.find((cat) => String(cat.id) === String(categoryId))?.name || categoryGuess || "";
+
+      void ingestRag({
+        category: categoryName,
+        attributes: { labels, colors, objects },
+        description: nextDescription,
+      }).catch((err) => {
+        console.error("RAG ingest failed:", err);
+      });
     } catch (err) {
       const message = err instanceof Error ? err.message : "AI generování selhalo.";
       setAiError(message);
@@ -350,7 +468,7 @@ export default function AdminProductNewPage() {
     }
     return value
       .split("\n")
-      .map((line) => line.replace(/^[-•*\\s]+/, "").trim())
+      .map((line) => line.replace(/^[-•*\s]+/, "").trim())
       .filter(Boolean);
   };
 
@@ -443,7 +561,7 @@ export default function AdminProductNewPage() {
     setAiToneLoading(true);
     try {
       const prompt = [
-        "Improve marketing tone of the Czech product description.",
+        "Vylepšit marketingový tón of the Czech product description.",
         "More emotional and benefit-oriented, no emojis.",
         "Return plain text only.",
         form.description,
@@ -535,10 +653,10 @@ export default function AdminProductNewPage() {
 
   return (
     <main className="min-h-screen bg-gray-50 text-gray-900">
-      <div className="mx-auto max-w-3xl px-6 py-10">
+      <div className="mx-auto max-w-5xl px-6 py-10">
         <div className="mb-6">
-          <h1 className="text-2xl font-semibold">Nový produkt</h1>
-          <p className="text-sm text-gray-500">Vytvoření produktu v administraci.</p>
+          <h1 className="text-2xl font-semibold">Přidat produkt</h1>
+          <p className="text-sm text-gray-500">Nový produkt v administraci.</p>
         </div>
 
         {loading && (
@@ -566,164 +684,313 @@ export default function AdminProductNewPage() {
         )}
 
         {!loading && (
-          <form onSubmit={handleSubmit} className="space-y-4 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-            <div>
-              <label className="mb-1 block text-sm font-medium">Název</label>
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
-              />
-            </div>
-
-            <div>
-              <label className="mb-1 block text-sm font-medium">Popis</label>
-              <textarea
-                name="description"
-                value={form.description}
-                onChange={handleChange}
-                rows={4}
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
-              />
-              <div className="mt-2 flex flex-wrap gap-2">
-                <button
-                  type="button"
-                  onClick={handleGenerateDescription}
-                  disabled={aiLoading}
-                  className="inline-flex items-center gap-2 rounded-md border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-100 disabled:opacity-60"
-                >
-                  {aiLoading ? "Generuji..." : "Generate description from image (AI)"}
-                </button>
-                <button
-                  type="button"
-                  onClick={handleCreateWithAi}
-                  disabled={aiFullLoading}
-                  className="inline-flex items-center gap-2 rounded-md border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-100 disabled:opacity-60"
-                >
-                  {aiFullLoading ? "Generuji..." : "Create product with AI"}
-                </button>
-                <button
-                  type="button"
-                  onClick={handleRewriteDescription}
-                  disabled={aiRewriteLoading}
-                  className="inline-flex items-center gap-2 rounded-md border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-100 disabled:opacity-60"
-                >
-                  {aiRewriteLoading ? "Generuji..." : "Rewrite description (AI)"}
-                </button>
-                <button
-                  type="button"
-                  onClick={handleShortenDescription}
-                  disabled={aiShortenLoading}
-                  className="inline-flex items-center gap-2 rounded-md border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-100 disabled:opacity-60"
-                >
-                  {aiShortenLoading ? "Generuji..." : "Shorten description"}
-                </button>
-                <button
-                  type="button"
-                  onClick={handleImproveTone}
-                  disabled={aiToneLoading}
-                  className="inline-flex items-center gap-2 rounded-md border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-100 disabled:opacity-60"
-                >
-                  {aiToneLoading ? "Generuji..." : "Improve marketing tone"}
-                </button>
-                <button
-                  type="button"
-                  onClick={handleGenerateBullets}
-                  disabled={aiBulletsLoading}
-                  className="inline-flex items-center gap-2 rounded-md border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-100 disabled:opacity-60"
-                >
-                  {aiBulletsLoading ? "Generuji..." : "Generate bullet highlights"}
-                </button>
-              </div>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
+          <form onSubmit={handleSubmit} className="grid gap-6 lg:grid-cols-[2fr_1fr]">
+            <div className="space-y-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
               <div>
-                <label className="mb-1 block text-sm font-medium">Cena (CZK)</label>
+                <label className="mb-1 block text-sm font-medium">Název produktu</label>
                 <input
-                  type="number"
-                  name="price_czk"
-                  value={form.price_czk}
+                  type="text"
+                  name="name"
+                  value={form.name}
                   onChange={handleChange}
-                  step="0.01"
                   required
                   className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
                 />
-                <div className="mt-2">
+              </div>
+
+              <div>
+                <label className="mb-1 block text-sm font-medium">Popis</label>
+                <textarea
+                  name="description"
+                  value={form.description}
+                  onChange={handleChange}
+                  rows={6}
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
+                />
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={handleGenerateDescription}
+                    disabled={aiLoading}
+                    className="inline-flex items-center gap-2 rounded-md border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-100 disabled:opacity-60"
+                  >
+                    {aiLoading ? "Generuji..." : "Vygenerovat popis z obrázku (AI)"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleCreateWithAi}
+                    disabled={aiFullLoading}
+                    className="inline-flex items-center gap-2 rounded-md border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-100 disabled:opacity-60"
+                  >
+                    {aiFullLoading ? "Generuji..." : "Vytvořit produkt pomocí AI"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleRewriteDescription}
+                    disabled={aiRewriteLoading}
+                    className="inline-flex items-center gap-2 rounded-md border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-100 disabled:opacity-60"
+                  >
+                    {aiRewriteLoading ? "Generuji..." : "Přepsat popis (AI)"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleShortenDescription}
+                    disabled={aiShortenLoading}
+                    className="inline-flex items-center gap-2 rounded-md border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-100 disabled:opacity-60"
+                  >
+                    {aiShortenLoading ? "Generuji..." : "Zkrátit popis"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleImproveTone}
+                    disabled={aiToneLoading}
+                    className="inline-flex items-center gap-2 rounded-md border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-100 disabled:opacity-60"
+                  >
+                    {aiToneLoading ? "Generuji..." : "Vylepšit marketingový tón"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleGenerateBullets}
+                    disabled={aiBulletsLoading}
+                    className="inline-flex items-center gap-2 rounded-md border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-100 disabled:opacity-60"
+                  >
+                    {aiBulletsLoading ? "Generuji..." : "Vygenerovat body výhod"}
+                  </button>
+                </div>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label className="mb-1 block text-sm font-medium">Cena (Kč)</label>
+                  <input
+                    type="number"
+                    name="price_czk"
+                    value={form.price_czk}
+                    onChange={handleChange}
+                    step="0.01"
+                    required
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
+                  />
                   <button
                     type="button"
                     onClick={handleSuggestPrice}
                     disabled={aiPriceLoading}
-                    className="inline-flex items-center gap-2 rounded-md border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-100 disabled:opacity-60"
+                    className="mt-2 inline-flex items-center gap-2 rounded-md border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-100 disabled:opacity-60"
                   >
-                    {aiPriceLoading ? "Generuji..." : "Suggest better price"}
+                    {aiPriceLoading ? "Generuji..." : "Navrhnout lepší cenu"}
                   </button>
                 </div>
+                <div>
+                  <label className="mb-1 block text-sm font-medium">Počet kusů (stock)</label>
+                  <input
+                    type="number"
+                    name="stock"
+                    value={form.stock}
+                    onChange={handleChange}
+                    required
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
+                  />
+                </div>
               </div>
+
               <div>
-                <label className="mb-1 block text-sm font-medium">Sklad</label>
+                <label className="mb-1 block text-sm font-medium">Obvod / velikost produktu</label>
                 <input
-                  type="number"
-                  name="stock"
-                  value={form.stock}
+                  type="text"
+                  name="wrist_size"
+                  value={form.wrist_size}
+                  onChange={handleChange}
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
+                  placeholder="Např. 16 cm nebo 15-17 cm"
+                />
+              </div>
+
+              <div>
+                <label className="mb-1 block text-sm font-medium">Kategorie</label>
+                <select
+                  name="category_id"
+                  value={form.category_id}
                   onChange={handleChange}
                   required
                   className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
-                />
+                >
+                  <option value="">-- Vyber kategorii --</option>
+                  {categoryOptions.map((option) => (
+                    <option key={option.id} value={String(option.id)}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="mb-1 block text-sm font-medium">Varianty</label>
+                <div className="space-y-3">
+                  {variants.map((variant, index) => (
+                    <div key={index} className="rounded-lg border border-gray-200 p-4">
+                      <div className="grid gap-3 md:grid-cols-3">
+                        <div>
+                          <label className="mb-1 block text-xs font-semibold uppercase text-gray-500">Název varianty</label>
+                          <input
+                            type="text"
+                            value={variant.variant_name || ""}
+                            onChange={(e) => updateVariant(index, { variant_name: e.target.value })}
+                            className="w-full rounded-md border border-gray-300 px-2 py-1 text-sm"
+                          />
+                        </div>
+                        <div>
+                          <label className="mb-1 block text-xs font-semibold uppercase text-gray-500">Obvod / velikost</label>
+                          <input
+                            type="text"
+                            value={variant.wrist_size || ""}
+                            onChange={(e) => updateVariant(index, { wrist_size: e.target.value })}
+                            className="w-full rounded-md border border-gray-300 px-2 py-1 text-sm"
+                          />
+                        </div>
+                        <div>
+                          <label className="mb-1 block text-xs font-semibold uppercase text-gray-500">Cena varianty</label>
+                          <input
+                            type="number"
+                            step="0.01"
+                            value={variant.price_czk ?? ""}
+                            onChange={(e) =>
+                              updateVariant(index, { price_czk: e.target.value ? Number(e.target.value) : null })
+                            }
+                            className="w-full rounded-md border border-gray-300 px-2 py-1 text-sm"
+                          />
+                        </div>
+                        <div>
+                          <label className="mb-1 block text-xs font-semibold uppercase text-gray-500">Sklad varianty</label>
+                          <input
+                            type="number"
+                            value={variant.stock ?? 0}
+                            onChange={(e) => updateVariant(index, { stock: Number(e.target.value) })}
+                            className="w-full rounded-md border border-gray-300 px-2 py-1 text-sm"
+                          />
+                        </div>
+                        <div className="md:col-span-2">
+                          <label className="mb-1 block text-xs font-semibold uppercase text-gray-500">Popis varianty</label>
+                          <textarea
+                            value={variant.description || ""}
+                            onChange={(e) => updateVariant(index, { description: e.target.value })}
+                            rows={2}
+                            className="w-full rounded-md border border-gray-300 px-2 py-1 text-sm"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="mt-3">
+                        <label className="mb-1 block text-xs font-semibold uppercase text-gray-500">Obrázek varianty</label>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => updateVariant(index, { imageFile: e.target.files?.[0] || null })}
+                        />
+                      </div>
+
+                      <div className="mt-3">
+                        <label className="mb-1 block text-xs font-semibold uppercase text-gray-500">Další fotky varianty</label>
+                        <input
+                          type="file"
+                          multiple
+                          accept="image/*"
+                          onChange={(e) => updateVariant(index, { extraFiles: Array.from(e.target.files || []) })}
+                        />
+                      </div>
+
+                      <div className="mt-3 text-right">
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveVariant(index)}
+                          className="rounded-md border border-red-200 px-3 py-1 text-xs text-red-700"
+                        >
+                          Odstranit variantu
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+
+                  <button
+                    type="button"
+                    onClick={handleAddVariant}
+                    className="rounded-md border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700"
+                  >
+                    + Přidat variantu
+                  </button>
+                </div>
               </div>
             </div>
 
-            <div>
-              <label className="mb-1 block text-sm font-medium">Kategorie</label>
-              <select
-                name="category_id"
-                value={form.category_id}
-                onChange={handleChange}
-                required
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
-              >
-                <option value="">Vyberte kategorii</option>
-                {categories.map((cat) => (
-                  <option key={cat.id} value={String(cat.id)}>
-                    {cat.name}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <div className="space-y-4">
+              <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+                <label className="mb-2 block text-sm font-medium">Úvodní obrázek</label>
+                <input
+                  type="file"
+                  name="image"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  className="w-full text-sm"
+                />
+                {imagePreview && (
+                  <div className="mt-4">
+                    <div className="h-28 w-28 overflow-hidden rounded-lg border border-gray-200 shadow">
+                      <img src={imagePreview} alt="preview" className="h-full w-full object-cover" />
+                    </div>
+                    <p className="mt-2 text-xs text-gray-500">Náhled hlavního obrázku.</p>
+                  </div>
+                )}
+                <p className="mt-3 text-xs text-gray-500">
+                  Upload: {STATIC_BASE ? `${STATIC_BASE}/static/uploads/` : "/static/uploads/"}
+                </p>
+              </div>
 
-            <div>
-              <label className="mb-1 block text-sm font-medium">Obrázek</label>
-              <input
-                type="file"
-                name="image"
-                accept="image/*"
-                onChange={handleFileChange}
-                required
-                className="w-full text-sm"
-              />
-              <p className="mt-1 text-xs text-gray-500">
-                Upload: {API_BASE ? `${API_BASE}/static/uploads/` : "/static/uploads/"}
-              </p>
-            </div>
+              <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+                <label className="mb-2 block text-sm font-medium">Další obrázky nebo videa</label>
+                <input
+                  type="file"
+                  name="media"
+                  accept="image/*,video/*"
+                  multiple
+                  onChange={handleMediaChange}
+                  className="w-full text-sm"
+                />
+                {mediaPreviews.length > 0 && (
+                  <div className="mt-4 grid grid-cols-3 gap-2">
+                    {mediaPreviews.map((item, idx) => (
+                      <div key={idx} className="h-20 w-20 overflow-hidden rounded-lg bg-gray-100">
+                        {item.type.startsWith("video") ? (
+                          <video src={item.url} className="h-full w-full object-cover" muted />
+                        ) : (
+                          <img src={item.url} alt="media" className="h-full w-full object-cover" />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
 
-            <div className="flex items-center gap-3">
-              <button
-                type="submit"
-                disabled={submitting}
-                className="rounded-md bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800 disabled:opacity-60"
-              >
-                {submitting ? "Ukládám..." : "Vytvořit produkt"}
-              </button>
-              <button
-                type="button"
-                onClick={() => router.push("/admin/products")}
-                className="rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              >
-                Zpět
-              </button>
+              <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+                <h3 className="text-sm font-semibold text-gray-700">Akce</h3>
+                <p className="mt-1 text-xs text-gray-500">
+                  Zkontrolujte data, poté potvrďte vytvoření produktu.
+                </p>
+                <div className="mt-4 flex flex-col gap-2">
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="rounded-md bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800 disabled:opacity-60"
+                  >
+                    {submitting ? "Ukládám..." : "Uložit"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => router.push("/admin/products")}
+                    className="rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Zpět
+                  </button>
+                </div>
+              </div>
             </div>
           </form>
         )}
