@@ -1,0 +1,211 @@
+"use client";
+
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useCart } from "../context/CartContext";
+import { ShoppingBag, ShoppingCart } from "lucide-react";
+
+export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  const pathname = usePathname();
+  const router = useRouter();
+  const isLanding = pathname === "/";
+
+  const { cartItems } = useCart();
+  const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  const handleHomeClick = () => {
+    setMenuOpen(false);
+    if (!isLanding) {
+      router.push("/");
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const navTextClass = isLanding
+    ? "text-white/95 drop-shadow-md hover:text-white"
+    : scrolled
+      ? "text-pink-900 hover:text-pink-600"
+      : "text-pink-900 hover:text-pink-600";
+
+  const navBgClass = isLanding
+    ? "bg-white/5 backdrop-blur-md"
+    : "bg-white/10 backdrop-blur-md";
+
+  return (
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 px-4 sm:px-8 py-2 ${navBgClass} transition-all duration-300 ${
+        isLanding ? "border-b border-white/20" : "border-b border-pink-900/10"
+      }`}
+    >
+      <div className="flex justify-between items-center max-w-7xl mx-auto w-full">
+        <div
+          className="flex items-center gap-2 cursor-pointer transition shrink-0"
+          onClick={handleHomeClick}
+        >
+          <img
+            src="/logo.jpg"
+            alt=""
+            width={48}
+            height={48}
+            className="flex-shrink-0 object-contain"
+            style={{ width: 48, height: 48 }}
+            aria-hidden
+          />
+
+          <span
+            className={`text-xl sm:text-2xl tracking-wide font-['Playfair_Display'] ${
+              isLanding
+                ? "text-white/95 drop-shadow-md hover:text-white"
+                : scrolled
+                  ? "font-bold text-pink-900 hover:text-pink-600"
+                  : "font-bold bg-gradient-to-r from-pink-700 via-pink-400 to-pink-700 bg-clip-text text-transparent"
+            }`}
+          >
+            Náramky pro radost
+          </span>
+        </div>
+
+        <div className="sm:hidden relative">
+          <button
+            className={`${isLanding ? "text-white" : "text-pink-900"} text-2xl focus:outline-none relative p-1`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+            {mounted && (
+              <span
+                data-cart-badge
+                className={`absolute -top-2 -right-2 text-sm font-bold rounded-full min-w-[24px] h-[24px] flex items-center justify-center shadow-lg ring-2 ${
+                  isLanding ? "bg-pink-900 text-white ring-white/80" : "bg-pink-600 text-white ring-white"
+                }`}
+              >
+                {cartCount}
+              </span>
+            )}
+          </button>
+        </div>
+
+        <ul className="hidden sm:flex items-center gap-6 text-base font-medium">
+          {!isLanding && (
+            <>
+              <li>
+                <span
+                  onClick={handleHomeClick}
+                  className={`cursor-pointer ${navTextClass} transition`}
+                >
+                  Domů
+                </span>
+              </li>
+              <li>
+                <a href="#kategorie" className={`${navTextClass} transition`}>
+                  Kategorie
+                </a>
+              </li>
+              <li>
+                <a href="#galerie" className={`${navTextClass} transition`}>
+                  Galerie
+                </a>
+              </li>
+            </>
+          )}
+          <li>
+            <Link href="/shop" className={`flex items-center gap-1.5 ${navTextClass} transition`}>
+              <ShoppingBag className="w-5 h-5" aria-hidden />
+              E-shop
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/cart"
+              className={`flex items-center gap-1.5 ${navTextClass} transition relative`}
+            >
+              <ShoppingCart className="w-5 h-5" aria-hidden />
+              {mounted && (
+                <span
+                  data-cart-badge
+                  className={`absolute -top-2.5 -right-2.5 text-sm font-bold rounded-full min-w-[24px] h-[24px] flex items-center justify-center shadow-lg ring-2 ${
+                    isLanding ? "bg-pink-900 text-white ring-white/80" : "bg-pink-600 text-white ring-white"
+                  }`}
+                >
+                  {cartCount}
+                </span>
+              )}
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+      {menuOpen && (
+        <div
+          className={`sm:hidden mt-3 rounded-xl shadow-xl px-6 py-4 ${
+            isLanding ? "bg-white/10 backdrop-blur-md text-white" : "bg-white/90 text-pink-900"
+          }`}
+        >
+          {!isLanding && (
+            <>
+              <div onClick={() => setMenuOpen(false)}>
+                <span onClick={handleHomeClick} className="block py-2 hover:text-pink-600 cursor-pointer">
+                  Domů
+                </span>
+              </div>
+              <a
+                href="#kategorie"
+                onClick={() => setMenuOpen(false)}
+                className="block py-2 hover:text-pink-600"
+              >
+                Kategorie
+              </a>
+              <a
+                href="#galerie"
+                onClick={() => setMenuOpen(false)}
+                className="block py-2 hover:text-pink-600"
+              >
+                Galerie
+              </a>
+            </>
+          )}
+          <Link
+            href="/shop"
+            onClick={() => setMenuOpen(false)}
+            className="block py-2 hover:opacity-80"
+          >
+            E-shop
+          </Link>
+          <Link
+            href="/cart"
+            onClick={() => setMenuOpen(false)}
+            className="block py-2 hover:opacity-80"
+          >
+            Košík {cartCount > 0 && `(${cartCount})`}
+          </Link>
+        </div>
+      )}
+    </nav>
+  );
+}

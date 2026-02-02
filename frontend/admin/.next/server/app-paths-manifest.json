@@ -1,1 +1,17 @@
-{}
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js",
+  "/admin/categories/[id]/edit/page": "app/admin/categories/[id]/edit/page.js",
+  "/admin/media/page": "app/admin/media/page.js",
+  "/admin/login/page": "app/admin/login/page.js",
+  "/admin/forgot/page": "app/admin/forgot/page.js",
+  "/admin/categories/new/page": "app/admin/categories/new/page.js",
+  "/admin/categories/page": "app/admin/categories/page.js",
+  "/admin/products/[id]/edit/page": "app/admin/products/[id]/edit/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/admin/payments/page": "app/admin/payments/page.js",
+  "/admin/sold/page": "app/admin/sold/page.js",
+  "/admin/products/page": "app/admin/products/page.js",
+  "/admin/reset/page": "app/admin/reset/page.js",
+  "/admin/products/new/page": "app/admin/products/new/page.js"
+}

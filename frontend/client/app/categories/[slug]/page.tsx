@@ -5,6 +5,8 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { Category } from "../../../lib/types";
 import { fetchCategoryBySlug } from "../../../lib/api";
+import { resolveMediaUrl } from "../../../lib/media";
+import { slugify } from "../../../lib/slugify";
 
 
 function formatPrice(value?: number | null): string {
@@ -96,7 +98,7 @@ export default function CategoryDetailPage() {
             return (
               <Link
                 key={product.id}
-                href={`/products/${product.id}`}
+                href={`/products/${slugify(product.name)}`}
                 className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition hover:border-gray-300"
               >
                 <div className="mb-3 h-40 w-full overflow-hidden rounded bg-gray-100">

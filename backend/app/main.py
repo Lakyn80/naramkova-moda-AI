@@ -13,9 +13,9 @@ from app.modules.categories.router import router as categories_router
 from app.modules.media.router import router as media_router
 from app.modules.orders.router import router as orders_router
 from app.modules.payments.router import router as payments_router
-from app.modules.qr.router import router as qr_router
 from app.modules.email.router import router as email_router
 from app.modules.invoice.router import router as invoice_router
+from app.modules.sold.router import router as sold_router
 from app.modules.ai.vision.router import router as ai_vision_router
 from app.modules.ai.rag.router import router as ai_rag_router
 from app.modules.ai.deepseek.router import router as ai_deepseek_router
@@ -43,8 +43,8 @@ def create_app() -> FastAPI:
     app.include_router(media_router)
     app.include_router(orders_router)
     app.include_router(payments_router)
-    app.include_router(qr_router)
     app.include_router(email_router)
+    app.include_router(sold_router)
 
     # AI modules
     app.include_router(ai_vision_router)

@@ -1,25 +1,80 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
+import { buildApiUrl } from "../../lib/api";
+
+const NAV_LINKS = [
+  { href: "/admin/products", label: "📦 Produkty" },
+  { href: "/admin/categories", label: "📂 Kategorie" },
+  { href: "/admin/sold", label: "📊 Prodané" },
+  { href: "/admin/payments", label: "💳 Platby" },
+  { href: "/admin/media", label: "🖼️ Média" },
+];
 
 export default function AdministraceLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const router = useRouter();
+  const [logoutError, setLogoutError] = useState<string | null>(null);
+  const isAuthRoute =
+    pathname.startsWith("/admin/login") ||
+    pathname.startsWith("/admin/forgot") ||
+    pathname.startsWith("/admin/reset");
+
+  const handleLogout = async () => {
+    setLogoutError(null);
+    try {
+      const res = await fetch(buildApiUrl("/api/auth/logout"), { method: "POST" });
+      if (!res.ok) {
+        throw new Error("Odhlášení se nezdařilo.");
+      }
+      router.push("/admin/login");
+    } catch (err) {
+      setLogoutError(err instanceof Error ? err.message : "Odhlášení se nezdařilo.");
+    }
+  };
+
+  if (isAuthRoute) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-indigo-600 via-blue-600 to-sky-500 text-gray-900">
+        {children}
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900">
-      <header className="border-b border-gray-200 bg-white">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <h1 className="text-lg font-semibold">Administrace</h1>
-          <nav className="flex gap-4 text-sm text-gray-600">
-            <Link href="/admin/products" className="hover:text-gray-900">
-              Produkty
-            </Link>
-            <Link href="/admin/categories" className="hover:text-gray-900">
-              Kategorie
-            </Link>
-            <Link href="/admin/media" className="hover:text-gray-900">
-              Média
-            </Link>
+      <header className="fixed inset-x-0 top-0 z-30 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-white shadow">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-3">
+          <Link href="/admin" className="flex items-center gap-3 text-lg font-semibold">
+            <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10">NM</span>
+            <span>Admin</span>
+          </Link>
+          <nav className="flex flex-wrap items-center gap-4 text-sm text-white/90">
+            {NAV_LINKS.map((link) => (
+              <Link key={link.href} href={link.href} className="hover:text-white">
+                {link.label}
+              </Link>
+            ))}
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="rounded-full border border-white/30 px-3 py-1 text-sm hover:border-white/70 hover:text-white"
+            >
+              🚪 Odhlásit
+            </button>
           </nav>
         </div>
       </header>
-      <main className="mx-auto max-w-6xl px-6 py-8">{children}</main>
+
+      <main className="mx-auto max-w-6xl px-6 pb-8 pt-24">{children}</main>
+
+      {logoutError && (
+        <div className="fixed right-6 top-24 z-40 rounded-lg bg-red-600 px-4 py-3 text-sm text-white shadow-lg">
+          {logoutError}
+        </div>
+      )}
     </div>
   );
 }

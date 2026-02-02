@@ -7,3 +7,5 @@ pillow
 reportlab
 psycopg2-binary
 python-multipart
+openpyxl
+passlib[bcrypt]

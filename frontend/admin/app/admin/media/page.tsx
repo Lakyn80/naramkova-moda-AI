@@ -1,69 +1,111 @@
 "use client";
 
-import { useState } from "react";
-import { deleteMedia } from "../../../lib/api";
+import { useEffect, useState } from "react";
+import { fetchProducts } from "../../../lib/api";
+import { resolveMediaUrl } from "../../../lib/media";
+import type { Product } from "../../../lib/types";
 
 export default function AdminMediaPage() {
-  const [mediaId, setMediaId] = useState<string>("");
-  const [loading, setLoading] = useState(false);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
 
-  async function handleDelete(event: React.FormEvent) {
-    event.preventDefault();
-    setError(null);
-    setSuccess(null);
-
-    const id = Number(mediaId);
-    if (!Number.isInteger(id) || id <= 0) {
-      setError("Zadej platné ID média.");
-      return;
-    }
-
+  useEffect(() => {
+    let active = true;
     setLoading(true);
-    try {
-      await deleteMedia(id);
-      setSuccess(`Médium ${id} bylo odstraněno.`);
-      setMediaId("");
-    } catch (err) {
-      const message = err instanceof Error ? err.message : "Smazání selhalo";
-      setError(message);
-    } finally {
-      setLoading(false);
+    setError(null);
+    fetchProducts()
+      .then((data) => {
+        if (!active) return;
+        setProducts(data || []);
+      })
+      .catch((err: Error) => {
+        if (!active) return;
+        setError(err.message || "Nepodařilo se načíst produkty");
+      })
+      .finally(() => {
+        if (!active) return;
+        setLoading(false);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const allMedia: { productId: number; productName: string; url: string; id?: number }[] = [];
+  products.forEach((p) => {
+    const mainUrl = resolveMediaUrl(p.image_url || p.image);
+    if (mainUrl) {
+      allMedia.push({
+        productId: p.id,
+        productName: p.name || "—",
+        url: mainUrl,
+      });
     }
-  }
+    const mediaItems = p.media_items ?? p.media ?? [];
+    mediaItems.forEach((m: { url?: string; filename?: string; id?: number }) => {
+      const url = resolveMediaUrl(m.url || m.filename);
+      if (url) {
+        allMedia.push({
+          productId: p.id,
+          productName: p.name || "—",
+          url,
+          id: m.id,
+        });
+      }
+    });
+  });
 
   return (
     <div className="space-y-4">
-      <div>
-        <h2 className="text-2xl font-semibold">Média</h2>
-        <p className="text-sm text-gray-500">Ruční smazání média podle ID.</p>
-      </div>
+      <h2 className="text-2xl font-semibold">Média</h2>
+      <p className="text-sm text-gray-600">
+        Přehled obrázků a médií napojených na produkty. Smazání média zatím nelze provést z této
+        stránky.
+      </p>
 
-      <form onSubmit={handleDelete} className="rounded-lg border border-gray-200 bg-white p-6">
-        <div className="grid gap-4 sm:grid-cols-[200px_1fr]">
-          <label className="text-sm font-medium text-gray-700">ID média</label>
-          <input
-            type="number"
-            min={1}
-            value={mediaId}
-            onChange={(event) => setMediaId(event.target.value)}
-            className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
-            placeholder="např. 123"
-          />
+      {loading && (
+        <div className="rounded-md border border-gray-200 bg-white p-6 text-sm text-gray-600">
+          Načítání...
         </div>
-        <div className="mt-4 flex items-center gap-3">
-          <button
-            type="submit"
-            disabled={loading}
-            className="rounded-md bg-gray-900 px-4 py-2 text-sm text-white disabled:opacity-60"
-          >
-            {loading ? "Mažu..." : "Smazat médium"}
-          </button>
-          {success && <span className="text-sm text-emerald-600">{success}</span>}
-          {error && <span className="text-sm text-red-600">{error}</span>}
+      )}
+
+      {error && (
+        <div className="rounded-md border border-red-200 bg-red-50 p-4 text-sm text-red-600">
+          {error}
         </div>
-      </form>
+      )}
+
+      {!loading && !error && (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {allMedia.map((m, i) => (
+            <div
+              key={m.productId + "-" + (m.id ?? i)}
+              className="rounded-lg border border-gray-200 bg-white p-3 shadow-sm"
+            >
+              <div className="mb-2 h-32 overflow-hidden rounded bg-gray-100">
+                <img
+                  src={m.url}
+                  alt={m.productName}
+                  className="h-full w-full object-cover"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src =
+                      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect fill='%23ddd' width='100' height='100'/%3E%3Ctext fill='%23999' x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='12'%3EError%3C/text%3E%3C/svg%3E";
+                  }}
+                />
+              </div>
+              <p className="truncate text-xs font-medium text-gray-700">{m.productName}</p>
+              <p className="truncate text-xs text-gray-500">Produkt #{m.productId}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {!loading && !error && allMedia.length === 0 && (
+        <div className="rounded-lg border border-gray-200 bg-gray-50 p-8 text-center text-gray-500">
+          Žádná média
+        </div>
+      )}
     </div>
   );
 }

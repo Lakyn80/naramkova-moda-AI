@@ -260,3 +260,155 @@ export async function deleteMedia(mediaId: number): Promise<void> {
   }
 }
 
+
+
+export async function loginAdmin(payload: { username: string; password: string }): Promise<void> {
+  const res = await fetch(buildApiUrl("/api/auth/login"), {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    let message = `Přihlášení selhalo (${res.status})`;
+    try {
+      const data = (await res.json()) as { error?: string; message?: string; detail?: string };
+      message = data?.error || data?.message || data?.detail || message;
+    } catch {
+      // ignore
+    }
+    throw new Error(message);
+  }
+}
+
+export async function forgotPassword(payload: { email: string }): Promise<void> {
+  const res = await fetch(buildApiUrl("/api/auth/forgot"), {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    let message = `Odeslání odkazu selhalo (${res.status})`;
+    try {
+      const data = (await res.json()) as { error?: string; message?: string; detail?: string };
+      message = data?.error || data?.message || data?.detail || message;
+    } catch {
+      // ignore
+    }
+    throw new Error(message);
+  }
+}
+
+export async function resetPassword(payload: { token: string; password: string; password2: string }): Promise<void> {
+  const res = await fetch(buildApiUrl("/api/auth/reset"), {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    let message = `Reset hesla selhal (${res.status})`;
+    try {
+      const data = (await res.json()) as { error?: string; message?: string; detail?: string };
+      message = data?.error || data?.message || data?.detail || message;
+    } catch {
+      // ignore
+    }
+    throw new Error(message);
+  }
+}
+
+export async function fetchPayments(params: {
+  vs?: string;
+  status?: string;
+  limit?: number;
+}): Promise<import("./types").PaymentListResponse> {
+  const query = new URLSearchParams();
+  if (params.vs) query.set("vs", params.vs);
+  if (params.status && params.status !== "all") query.set("status", params.status);
+  if (params.limit) query.set("per_page", String(params.limit));
+  const res = await fetch(buildApiUrl(`/api/payments?${query.toString()}`), { cache: "no-store" });
+  if (!res.ok) {
+    throw new Error(`Nepodařilo se načíst platby (${res.status})`);
+  }
+  const data = (await res.json()) as any;
+  const items = data?.items || data?.rows || data?.data || [];
+  return {
+    items,
+    total: data?.total ?? data?.count ?? null,
+    page: data?.page ?? null,
+    per_page: data?.per_page ?? null,
+  };
+}
+
+export async function fetchPaymentsSummary(): Promise<import("./types").PaymentSummary | null> {
+  const res = await fetch(buildApiUrl("/api/payments/summary"), { cache: "no-store" });
+  if (!res.ok) {
+    return null;
+  }
+  const data = (await res.json()) as any;
+  return {
+    count: data?.count ?? null,
+    total_amount: data?.total_amount ?? data?.totalAmount ?? null,
+  };
+}
+
+export async function updatePaymentStatus(paymentId: number, status: string): Promise<void> {
+  const res = await fetch(buildApiUrl("/api/payments/update-status"), {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ payment_id: paymentId, status }),
+  });
+  if (!res.ok) {
+    let message = `Uložení stavu selhalo (${res.status})`;
+    try {
+      const data = (await res.json()) as { error?: string; message?: string; detail?: string };
+      message = data?.error || data?.message || data?.detail || message;
+    } catch {
+      // ignore
+    }
+    throw new Error(message);
+  }
+}
+
+export async function fetchSold(params: Record<string, string>): Promise<import("./types").SoldListResponse> {
+  const query = new URLSearchParams();
+  Object.entries(params).forEach(([key, value]) => {
+    if (value) query.set(key, value);
+  });
+  const res = await fetch(buildApiUrl(`/api/sold?${query.toString()}`), { cache: "no-store" });
+  if (!res.ok) {
+    throw new Error(`Nepodařilo se načíst prodané (${res.status})`);
+  }
+  const data = (await res.json()) as any;
+  const rows = data?.rows || data?.items || data?.data || [];
+  const summary = data?.summary || null;
+  return { rows, summary };
+}
+
+export function buildSoldExportUrl(kind: "xlsx" | "pdf", params: Record<string, string>): string {
+  const query = new URLSearchParams();
+  Object.entries(params).forEach(([key, value]) => {
+    if (value) query.set(key, value);
+  });
+  return buildApiUrl(`/api/sold/export/${kind}?${query.toString()}`);
+}
+
+export function buildInvoicePreviewUrl(soldId: number): string {
+  return buildApiUrl(`/api/sold/${soldId}/invoice-preview`);
+}
+
+export async function sendInvoiceEmail(soldId: number): Promise<void> {
+  const res = await fetch(buildApiUrl(`/api/sold/${soldId}/invoice-send`), { method: "POST" });
+  if (!res.ok) {
+    let message = `Odeslání faktury selhalo (${res.status})`;
+    try {
+      const data = (await res.json()) as { error?: string; message?: string; detail?: string };
+      message = data?.error || data?.message || data?.detail || message;
+    } catch {
+      // ignore
+    }
+    throw new Error(message);
+  }
+}

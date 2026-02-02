@@ -29,12 +29,24 @@ def _to_decimal(val) -> Decimal:
 
 
 def _build_spd_payload(iban: str, amount: Decimal, vs: str | None, msg: str | None) -> str:
-    parts = ["SPD*1.0", f"ACC:{iban}", f"AM:{amount:.2f}", "CC:CZK"]
+    """SPD 1.0 – ČBA formát pro QR platby v CZK (qr-platba.cz)."""
+    iban_clean = iban.replace(" ", "").upper().strip()
+    if not iban_clean or len(iban_clean) < 15:
+        raise ValueError("IBAN musí být platné české číslo účtu (CZ + 22 číslic).")
+    parts = [
+        "SPD*1.0",
+        f"ACC:{iban_clean}",
+        f"AM:{float(amount):.2f}",
+        "CC:CZK",
+    ]
     if vs:
-        parts.append(f"X-VS:{vs}")
+        vs_clean = "".join(c for c in str(vs).strip() if c.isdigit())[:10]
+        if vs_clean:
+            parts.append(f"X-VS:{vs_clean}")
     if msg:
-        safe_msg = "".join(ch for ch in (msg or "") if 32 <= ord(ch) <= 126)
-        parts.append(f"MSG:{safe_msg[:60]}")
+        safe_msg = "".join(ch for ch in (msg or "") if 32 <= ord(ch) <= 126)[:60]
+        if safe_msg:
+            parts.append(f"MSG:{safe_msg}")
     return "*".join(parts)
 
 

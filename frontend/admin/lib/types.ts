@@ -66,3 +66,50 @@ export interface DeepseekResult {
   text?: string;
 }
 
+
+
+export interface PaymentItem {
+  id: number;
+  vs?: string | null;
+  amount?: number | null;
+  status?: string | null;
+  received_at?: string | null;
+}
+
+export interface PaymentListResponse {
+  items: PaymentItem[];
+  total?: number | null;
+  page?: number | null;
+  per_page?: number | null;
+}
+
+export interface PaymentSummary {
+  count?: number | null;
+  total_amount?: number | null;
+}
+
+export interface SoldRow {
+  id?: number | null;
+  order_id?: number | null;
+  product_name?: string | null;
+  quantity?: number | null;
+  total_czk?: number | null;
+  unit_price_czk?: number | null;
+  unit_price?: number | null;
+  price_czk?: number | null;
+  price?: number | null;
+  status?: string | null;
+  customer_email?: string | null;
+  vs?: string | null;
+  sold_at?: string | null;
+}
+
+export interface SoldSummary {
+  count?: number | null;
+  total_amount?: number | null;
+}
+
+export interface SoldListResponse {
+  rows: SoldRow[];
+  summary?: SoldSummary | null;
+}
