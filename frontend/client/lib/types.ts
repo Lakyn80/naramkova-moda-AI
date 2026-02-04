@@ -21,6 +21,9 @@ export interface Product {
   id: number;
   name: string;
   description?: string | null;
+  seo_title?: string | null;
+  seo_description?: string | null;
+  seo_keywords?: string | null;
   price?: number | null;
   price_czk?: number | null;
   stock?: number | null;

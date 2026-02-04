@@ -3,6 +3,7 @@
 import json
 import os
 import uuid
+from pathlib import Path
 from typing import Any, Iterable
 
 from fastapi import UploadFile
@@ -267,6 +268,9 @@ def _product_dict(product: Product) -> dict[str, Any]:
         "id": product.id,
         "name": product.name,
         "description": product.description,
+        "seo_title": product.seo_title,
+        "seo_description": product.seo_description,
+        "seo_keywords": product.seo_keywords,
         "price": float(product.price_czk) if product.price_czk is not None else None,
         "stock": product.stock,
         "category_id": product.category_id,
@@ -298,7 +302,8 @@ def list_products(db: Session) -> list[dict[str, Any]]:
             selectinload(Product.category),
             selectinload(Product.variants).selectinload(ProductVariant.media),
         )
-        .filter(Product.stock > 0)
+        # Zobrazujeme i produkty se stock = 0
+        # (žádný filtr na stock)
         .order_by(Product.id.desc())
         .all()
     )
@@ -334,6 +339,9 @@ def create_product(
 
     name = (data.get("name") or form.get("name") or "").strip()
     description = (data.get("description") or form.get("description") or "").strip()
+    seo_title = (data.get("seo_title") or form.get("seo_title") or "").strip()
+    seo_description = (data.get("seo_description") or form.get("seo_description") or "").strip()
+    seo_keywords = (data.get("seo_keywords") or form.get("seo_keywords") or "").strip()
     price_raw = str(
         data.get("price")
         or data.get("price_czk")
@@ -374,6 +382,9 @@ def create_product(
     product = Product(
         name=name,
         description=(description or None),
+        seo_title=(seo_title or None),
+        seo_description=(seo_description or None),
+        seo_keywords=(seo_keywords or None),
         price_czk=price,
         stock=stock,
         category_id=category_id_int,
@@ -502,6 +513,9 @@ def update_product(
 
     name = (data.get("name") or form.get("name") or "").strip()
     description = (data.get("description") or form.get("description") or "").strip()
+    seo_title = (data.get("seo_title") or form.get("seo_title") or "").strip()
+    seo_description = (data.get("seo_description") or form.get("seo_description") or "").strip()
+    seo_keywords = (data.get("seo_keywords") or form.get("seo_keywords") or "").strip()
     price_raw = str(
         data.get("price")
         or data.get("price_czk")
@@ -538,6 +552,12 @@ def update_product(
             product.name = name
         if description or "description" in data or "description" in form:
             product.description = description or None
+        if "seo_title" in data or "seo_title" in form:
+            product.seo_title = seo_title or None
+        if "seo_description" in data or "seo_description" in form:
+            product.seo_description = seo_description or None
+        if "seo_keywords" in data or "seo_keywords" in form:
+            product.seo_keywords = seo_keywords or None
         if wrist_size_present:
             product.wrist_size = wrist_size_raw or None
         if price_raw:

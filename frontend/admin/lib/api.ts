@@ -1,9 +1,16 @@
-import type { Category, DeepseekResult, Product, VisionResult } from "./types";
+import type { AiDraft, AiTemplateItem, Category, DeepseekResult, Product, VisionResult } from "./types";
 
 const RAW_API_BASE =
   process.env.NEXT_PUBLIC_API_BASE ||
   (process.env.NODE_ENV === "production" ? "/api" : "http://localhost:8080");
 export function resolveApiBase(): string {
+  if (typeof window !== "undefined") {
+    const isLocalAdmin =
+      window.location.hostname === "localhost" && window.location.port === "3012";
+    if (isLocalAdmin && (RAW_API_BASE === "/api" || !RAW_API_BASE)) {
+      return "http://localhost:8088";
+    }
+  }
   if (RAW_API_BASE.includes("backend")) {
     return "/api";
   }
@@ -258,6 +265,68 @@ export async function deleteMedia(mediaId: number): Promise<void> {
     }
     throw new Error(message);
   }
+}
+
+export async function fetchAiProductDraft(productId: number): Promise<AiDraft> {
+  const res = await fetch(buildApiUrl(`/api/ai/products/${productId}/draft`), {
+    method: "POST",
+  });
+  if (!res.ok) {
+    let message = `AI draft selhal (${res.status})`;
+    try {
+      const data = (await res.json()) as { error?: string; message?: string; detail?: string };
+      message = data?.error || data?.message || data?.detail || message;
+    } catch {
+      // ignore
+    }
+    throw new Error(message);
+  }
+  return (await res.json()) as AiDraft;
+}
+
+export async function fetchAiVariantDraft(variantId: number): Promise<AiDraft> {
+  const res = await fetch(buildApiUrl(`/api/ai/variants/${variantId}/draft`), {
+    method: "POST",
+  });
+  if (!res.ok) {
+    let message = `AI draft selhal (${res.status})`;
+    try {
+      const data = (await res.json()) as { error?: string; message?: string; detail?: string };
+      message = data?.error || data?.message || data?.detail || message;
+    } catch {
+      // ignore
+    }
+    throw new Error(message);
+  }
+  return (await res.json()) as AiDraft;
+}
+
+export async function storeAiTemplate(productId: number): Promise<AiTemplateItem> {
+  const res = await fetch(buildApiUrl("/api/ai/templates/store"), {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ product_id: productId }),
+  });
+  if (!res.ok) {
+    let message = `Uložení vzoru selhalo (${res.status})`;
+    try {
+      const data = (await res.json()) as { error?: string; message?: string; detail?: string };
+      message = data?.error || data?.message || data?.detail || message;
+    } catch {
+      // ignore
+    }
+    throw new Error(message);
+  }
+  return (await res.json()) as AiTemplateItem;
+}
+
+export async function fetchAiTemplates(): Promise<AiTemplateItem[]> {
+  const res = await fetch(buildApiUrl("/api/ai/templates/list"), { cache: "no-store" });
+  if (!res.ok) {
+    throw new Error(`Nepodařilo se načíst AI vzory (${res.status})`);
+  }
+  const data = (await res.json()) as { items?: AiTemplateItem[] };
+  return data.items || [];
 }
 
 

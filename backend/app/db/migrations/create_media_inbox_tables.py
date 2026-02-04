@@ -10,10 +10,17 @@ from app.db.session import engine
 
 
 def upgrade() -> None:
+    if engine.dialect.name == "sqlite":
+        inbox_id = "INTEGER PRIMARY KEY AUTOINCREMENT"
+        second_id = "INTEGER PRIMARY KEY AUTOINCREMENT"
+    else:
+        inbox_id = "SERIAL PRIMARY KEY"
+        second_id = "SERIAL PRIMARY KEY"
+
     statements = [
-        """
+        f"""
         CREATE TABLE IF NOT EXISTS media_inbox_items (
-            id SERIAL PRIMARY KEY,
+            id {inbox_id},
             filename TEXT NULL,
             webp_path TEXT NOT NULL,
             draft_title TEXT NULL,
@@ -26,9 +33,9 @@ def upgrade() -> None:
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
         """,
-        """
+        f"""
         CREATE TABLE IF NOT EXISTS media_second_inbox_items (
-            id SERIAL PRIMARY KEY,
+            id {second_id},
             webp_path TEXT NOT NULL,
             status TEXT NOT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

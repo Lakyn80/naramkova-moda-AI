@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { href: "/admin/payments", label: "💳 Platby" },
   { href: "/admin/media", label: "🖼️ Média" },
   { href: "/admin/media-inbox", label: "Media Inbox" },
+  { href: "/admin/ai/templates", label: "AI Vzory" },
 ];
 
 export default function AdministraceLayout({ children }: { children: React.ReactNode }) {

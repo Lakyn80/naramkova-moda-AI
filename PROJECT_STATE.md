@@ -519,3 +519,41 @@ legacy production media fully compatible
 - supported formats: jpg, png, webp
 - legacy images failed because uploads were saved outside /static
 - all uploads now stored under /static/uploads to prevent future 404s
+
+---
+
+## AI Templates (Chroma)
+
+- New endpoints:
+  - POST /api/ai/templates/store
+  - GET  /api/ai/templates/list
+- Uses separate Chroma collection: product_templates
+- Stored metadata: product_id, title, product_type, price_czk, created_at
+- Used for price suggestion during AI drafts
+
+---
+
+## AI Edit Draft (Product/Variant)
+
+- New endpoints:
+  - POST /api/ai/products/{product_id}/draft
+  - POST /api/ai/variants/{variant_id}/draft
+- Draft includes: title, description, product_type, combined_tags,
+  suggested_price_czk / suggested_variant_price_czk, seo_title, seo_description
+
+---
+
+## SEO (Client)
+
+- Product detail metadata via generateMetadata
+- robots.txt and sitemap.xml routes
+- Default metadata template in client layout
+- Product SEO fields added in backend (seo_title, seo_description, seo_keywords)
+
+---
+
+## Google Merchant Center Feed
+
+- GET /api/feeds/gmc.xml
+- Absolute URLs use PUBLIC_BASE_URL / PUBLIC_API_BASE_URL
+- Includes products with price + image, availability from stock

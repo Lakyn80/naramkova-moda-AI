@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from app.core.config import get_settings
@@ -21,6 +22,9 @@ from app.modules.sold.router import router as sold_router
 from app.modules.ai.vision.router import router as ai_vision_router
 from app.modules.ai.rag.router import router as ai_rag_router
 from app.modules.ai.deepseek.router import router as ai_deepseek_router
+from app.modules.ai.drafts.router import router as ai_drafts_router
+from app.modules.ai.templates.router import router as ai_templates_router
+from app.modules.feeds.gmc.router import router as gmc_feed_router
 
 
 def create_app() -> FastAPI:
@@ -33,6 +37,21 @@ def create_app() -> FastAPI:
     )
 
     UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=[
+            "http://localhost:3012",
+            "http://127.0.0.1:3012",
+            "http://localhost:3001",
+            "http://127.0.0.1:3001",
+            "http://localhost:3002",
+            "http://127.0.0.1:3002",
+        ],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
     app.mount("/static", StaticFiles(directory="static"), name="static")
 
@@ -54,6 +73,9 @@ def create_app() -> FastAPI:
     app.include_router(ai_vision_router)
     app.include_router(ai_rag_router)
     app.include_router(ai_deepseek_router)
+    app.include_router(ai_drafts_router)
+    app.include_router(ai_templates_router)
+    app.include_router(gmc_feed_router)
 
     # Invoice API is optional and disabled by default
     if settings.expose_invoice_api:

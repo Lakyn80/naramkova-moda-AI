@@ -38,7 +38,7 @@ services:
     depends_on:
       - backend
     environment:
-      NEXT_PUBLIC_API_BASE: /api
+      NEXT_PUBLIC_API_BASE: http://localhost:8088
       NMM_BACKEND_URL: http://backend:8080
     ports:
       - "3012:3001"

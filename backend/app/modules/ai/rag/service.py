@@ -194,6 +194,24 @@ def generate_drafts_for_session(product_id: Union[int, str]) -> Dict[str, Any]:
     title, description = _get_title_and_description(product_type, combined_tags)
     if title and not _contains_emoji(title):
         title = f"{random_emoji()} {title}"
+    suggested_price = None
+    seo_title = None
+    seo_description = None
+    seo_keywords = None
+    try:
+        from app.modules.ai.templates.service import suggest_price
+
+        suggested_price = suggest_price(product_type=product_type, combined_tags=combined_tags)
+    except Exception:
+        suggested_price = None
+    try:
+        clean_title = re.sub(r"[\U0001F300-\U0001FAFF\U00002600-\U000027BF]", "", title or "").strip()
+        clean_desc = " ".join((description or "").replace("\n", " ").split())
+        seo_title = (clean_title or title or None)
+        seo_description = clean_desc[:155] + ("…" if clean_desc and len(clean_desc) > 155 else "")
+        seo_keywords = ", ".join(combined_tags[:10]) if combined_tags else None
+    except Exception:
+        pass
     return {
         "session_id": str(product_id),
         "product_type": product_type,
@@ -201,6 +219,10 @@ def generate_drafts_for_session(product_id: Union[int, str]) -> Dict[str, Any]:
         "combined_tags": combined_tags,
         "title": title,
         "description": description,
+        "suggested_price_czk": suggested_price,
+        "seo_title": seo_title,
+        "seo_description": seo_description,
+        "seo_keywords": seo_keywords,
     }
 
 def generate_drafts_for_variant(variant_id: Union[int, str]) -> Dict[str, Any]:
@@ -222,6 +244,24 @@ def generate_drafts_for_variant(variant_id: Union[int, str]) -> Dict[str, Any]:
     title, description = _get_title_and_description(product_type, combined_tags)
     if title and not _contains_emoji(title):
         title = f"{random_emoji()} {title}"
+    suggested_price = None
+    seo_title = None
+    seo_description = None
+    seo_keywords = None
+    try:
+        from app.modules.ai.templates.service import suggest_price
+
+        suggested_price = suggest_price(product_type=product_type, combined_tags=combined_tags)
+    except Exception:
+        suggested_price = None
+    try:
+        clean_title = re.sub(r"[\U0001F300-\U0001FAFF\U00002600-\U000027BF]", "", title or "").strip()
+        clean_desc = " ".join((description or "").replace("\n", " ").split())
+        seo_title = (clean_title or title or None)
+        seo_description = clean_desc[:155] + ("…" if clean_desc and len(clean_desc) > 155 else "")
+        seo_keywords = ", ".join(combined_tags[:10]) if combined_tags else None
+    except Exception:
+        pass
     return {
         "session_id": str(variant_id),
         "product_type": product_type,
@@ -229,4 +269,8 @@ def generate_drafts_for_variant(variant_id: Union[int, str]) -> Dict[str, Any]:
         "combined_tags": combined_tags,
         "title": title,
         "description": description,
+        "suggested_variant_price_czk": suggested_price,
+        "seo_title": seo_title,
+        "seo_description": seo_description,
+        "seo_keywords": seo_keywords,
     }

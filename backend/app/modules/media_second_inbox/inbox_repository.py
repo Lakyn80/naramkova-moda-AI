@@ -9,8 +9,13 @@ PENDING = "pending"
 ASSIGNED = "assigned"
 
 
-def add_inbox_item(db: Session, *, webp_path: str) -> MediaSecondInboxItem:
-    item = MediaSecondInboxItem(webp_path=webp_path, status=PENDING)
+def add_inbox_item(
+    db: Session,
+    *,
+    webp_path: str,
+    filename: str | None = None,
+) -> MediaSecondInboxItem:
+    item = MediaSecondInboxItem(webp_path=webp_path, filename=filename, status=PENDING)
     db.add(item)
     db.commit()
     db.refresh(item)

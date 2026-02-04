@@ -27,6 +27,9 @@ export interface Product {
   id: number;
   name: string;
   description?: string | null;
+  seo_title?: string | null;
+  seo_description?: string | null;
+  seo_keywords?: string | null;
   price?: number | null;
   stock?: number | null;
   category_id?: number | null;
@@ -39,6 +42,27 @@ export interface Product {
   categories?: string[];
   category_group?: string | null;
   variants?: ProductVariant[];
+  created_at?: string | null;
+}
+
+export interface AiDraft {
+  title?: string | null;
+  description?: string | null;
+  product_type?: string | null;
+  combined_tags?: string[];
+  suggested_price_czk?: number | null;
+  suggested_variant_price_czk?: number | null;
+  seo_title?: string | null;
+  seo_description?: string | null;
+  seo_keywords?: string | null;
+}
+
+export interface AiTemplateItem {
+  id: string;
+  product_id?: number | null;
+  title?: string | null;
+  product_type?: string | null;
+  price_czk?: number | null;
   created_at?: string | null;
 }
 

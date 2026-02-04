@@ -18,6 +18,9 @@ class Product(Base):
     wrist_size = Column(String(50), nullable=True)
     stock = Column(Integer, nullable=False, default=1)
     category_id = Column(Integer, ForeignKey("category.id"), nullable=True)
+    seo_title = Column(String(180), nullable=True)
+    seo_description = Column(Text, nullable=True)
+    seo_keywords = Column(Text, nullable=True)
 
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

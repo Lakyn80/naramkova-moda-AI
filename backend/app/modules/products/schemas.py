@@ -36,6 +36,9 @@ class ProductOut(BaseModel):
     id: Optional[int] = None
     name: Optional[str] = None
     description: Optional[str] = None
+    seo_title: Optional[str] = None
+    seo_description: Optional[str] = None
+    seo_keywords: Optional[str] = None
     price: Optional[float] = None
     stock: Optional[int] = None
     category_id: Optional[int] = None
@@ -62,6 +65,9 @@ class ProductVariantIn(BaseModel):
 class ProductCreateIn(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
+    seo_title: Optional[str] = None
+    seo_description: Optional[str] = None
+    seo_keywords: Optional[str] = None
     price: Optional[float] = None
     price_czk: Optional[float] = None
     stock: Optional[int] = None
@@ -74,6 +80,9 @@ class ProductCreateIn(BaseModel):
 class ProductUpdateIn(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
+    seo_title: Optional[str] = None
+    seo_description: Optional[str] = None
+    seo_keywords: Optional[str] = None
     price: Optional[float] = None
     price_czk: Optional[float] = None
     stock: Optional[int] = None

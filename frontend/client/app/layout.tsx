@@ -1,12 +1,21 @@
 import "./globals.css";
+import type { Metadata } from "next";
 import { CartProvider } from "../context/CartContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import WhatsAppWidget from "../components/WhatsAppWidget";
 
-export const metadata = {
-  title: "Náramková Moda",
+export const metadata: Metadata = {
+  title: {
+    default: "Náramková Moda",
+    template: "%s | Náramková Moda",
+  },
   description: "Ozdobte se jedinečností - ručně vyráběné náramky",
+  openGraph: {
+    title: "Náramková Moda",
+    description: "Ozdobte se jedinečností - ručně vyráběné náramky",
+    type: "website",
+  },
   icons: {
     icon: [
       { url: "/logo.jpg", sizes: "any", type: "image/jpeg" },
