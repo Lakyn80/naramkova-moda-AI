@@ -5,9 +5,16 @@ services:
       dockerfile: docker/backend.Dockerfile
     env_file:
       - .env.dev
+    environment:
+      RUNNING_IN_DOCKER: "1"
+      GOOGLE_APPLICATION_CREDENTIALS: "/app/gcp-vision-key.json"
+      # Volitelně pro LLM (DeepSeek): DEEPSEEK_API_KEY: "sk-..."
+    # Stejná data lokálně i v Dockeru – vše v adresářích projektu (bind mount)
     volumes:
       - ./data:/app/data
       - ./backend/static/uploads:/app/static/uploads
+      - ./backend/app/modules/ai/rag/chroma_db:/app/app/modules/ai/rag/chroma_db
+      - ./backend/gcp-vision-key.json:/app/gcp-vision-key.json
       - invoices_data:/app/static/invoices
     ports:
       - "8088:8080"

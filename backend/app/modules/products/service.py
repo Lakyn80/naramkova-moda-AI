@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import json
 import os
@@ -26,6 +26,20 @@ def _safe_uuid_name(filename: str | None) -> str:
     return f"{uuid.uuid4().hex}{ext.lower()}"
 
 
+def _normalize_upload_filename(value: str | None) -> str | None:
+    if not value:
+        return None
+    v = str(value).replace("\\", "/").strip()
+    if "/static/uploads/" in v:
+        v = v.split("/static/uploads/")[-1]
+    if "static/uploads/" in v:
+        v = v.split("static/uploads/")[-1]
+    v = v.lstrip("/")
+    while v.startswith("uploads/"):
+        v = v[len("uploads/"):]
+    return v or None
+
+
 def _save_upload_file(upload: UploadFile) -> str:
     _ensure_uploads_dir()
     filename = _safe_uuid_name(upload.filename)
@@ -46,6 +60,35 @@ def _detect_media_type(filename: str | None, mimetype: str | None) -> str:
     if ext in {".mp4", ".mov", ".avi", ".mkv", ".webm", ".m4v"}:
         return "video"
     return "image"
+
+
+def _ensure_product_media_row(
+    db: Session,
+    *,
+    product_id: int,
+    filename: str | None,
+    media_type: str | None,
+) -> None:
+    if not filename:
+        return
+    mt = (media_type or "image").strip() or "image"
+    exists = (
+        db.query(ProductMedia)
+        .filter_by(product_id=product_id, filename=filename)
+        .first()
+    )
+    if not exists:
+        db.add(ProductMedia(product_id=product_id, filename=filename, media_type=mt))
+
+
+def _delete_product_media_row(db: Session, *, product_id: int, filename: str | None) -> None:
+    if not filename:
+        return
+    (
+        db.query(ProductMedia)
+        .filter_by(product_id=product_id, filename=filename)
+        .delete(synchronize_session=False)
+    )
 
 
 def _listify(value: Any) -> list[Any]:
@@ -337,9 +380,11 @@ def create_product(
         wrist_size=wrist_size_raw or None,
     )
 
+    main_image_media_type: str | None = None
     image_file = (files.get("image") or [None])[0]
     if image_file and image_file.filename:
         product.image = _save_upload_file(image_file)
+        main_image_media_type = _detect_media_type(product.image, getattr(image_file, "content_type", None))
 
     variants_payload, explicit_variants = _parse_variants_from_json(data)
     if form:
@@ -354,8 +399,16 @@ def create_product(
         db.add(product)
         db.flush()
 
+        if product.image:
+            _ensure_product_media_row(
+                db,
+                product_id=product.id,
+                filename=product.image,
+                media_type=main_image_media_type or "image",
+            )
+
         for variant in variants_payload:
-            img_name = variant.get("image") or None
+            img_name = _normalize_upload_filename(variant.get("image") or None)
             if variant.get("image_file"):
                 img_name = _save_upload_file(variant["image_file"])
 
@@ -507,15 +560,27 @@ def update_product(
                 raise ValueError("Invalid category_id") from exc
 
         if delete_image_flag and product.image:
-            _remove_files([product.image])
+            old_image = product.image
+            _remove_files([old_image])
+            _delete_product_media_row(db, product_id=product.id, filename=old_image)
             product.image = None
 
         image_file = (files.get("image") or [None])[0]
         if image_file and image_file.filename:
             old_image = product.image
-            product.image = _save_upload_file(image_file)
-            if old_image and old_image != product.image:
+            new_image = _save_upload_file(image_file)
+            product.image = new_image
+
+            _ensure_product_media_row(
+                db,
+                product_id=product.id,
+                filename=new_image,
+                media_type=_detect_media_type(new_image, getattr(image_file, "content_type", None)),
+            )
+
+            if old_image and old_image != new_image:
                 _remove_files([old_image])
+                _delete_product_media_row(db, product_id=product.id, filename=old_image)
 
         if variants_explicit:
             old_variants = list(product.variants or [])
@@ -525,7 +590,9 @@ def update_product(
             new_files: set[str] = set()
 
             for variant in variants_payload:
-                img_name = variant.get("image") or variant.get("existing_image") or None
+                img_name = _normalize_upload_filename(
+                    variant.get("image") or variant.get("existing_image") or None
+                )
                 if variant.get("image_file"):
                     img_name = _save_upload_file(variant["image_file"])
 
@@ -540,7 +607,12 @@ def update_product(
                 if img_name:
                     new_files.add(img_name)
 
-                extra_existing = variant.get("existing_extra") or []
+                extra_existing = [
+                    v for v in (
+                        _normalize_upload_filename(ee) for ee in (variant.get("existing_extra") or [])
+                    )
+                    if v
+                ]
                 extra_saved: list[str] = []
                 for ef in variant.get("extra_files") or []:
                     saved = _save_upload_file(ef)
@@ -623,4 +695,3 @@ def delete_product(db: Session, product_id: int, *, commit: bool = True) -> bool
     except Exception:
         db.rollback()
         raise
-

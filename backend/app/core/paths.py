@@ -1,4 +1,9 @@
 from pathlib import Path
 import os
 
-UPLOAD_DIR = Path(os.environ.get("NMM_UPLOAD_DIR", "/app/static/uploads"))
+BASE_DIR = Path(__file__).resolve().parents[2]  # kořen backend/
+
+if os.getenv("RUNNING_IN_DOCKER"):
+    UPLOAD_DIR = Path("/app/static/uploads")
+else:
+    UPLOAD_DIR = BASE_DIR / "static" / "uploads"

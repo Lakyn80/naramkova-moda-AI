@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+﻿from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
 from app.core.config import get_settings
@@ -11,8 +11,6 @@ from app.modules.users.router import router as users_router
 from app.modules.products.router import router as products_router
 from app.modules.categories.router import router as categories_router
 from app.modules.media.router import router as media_router
-from app.modules.media_inbox.router import router as media_inbox_router
-from app.modules.media_second_inbox.router import router as media_second_inbox_router
 from app.modules.orders.router import router as orders_router
 from app.modules.payments.router import router as payments_router
 from app.modules.email.router import router as email_router
@@ -43,8 +41,6 @@ def create_app() -> FastAPI:
     app.include_router(products_router)
     app.include_router(categories_router)
     app.include_router(media_router)
-    app.include_router(media_inbox_router)
-    app.include_router(media_second_inbox_router)
     app.include_router(orders_router)
     app.include_router(payments_router)
     app.include_router(email_router)

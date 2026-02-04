@@ -1,0 +1,1742 @@
+{
+  "ids": [
+    "template_bracelet_250",
+    "template_bracelet",
+    "template_candle",
+    "template_necklace",
+    "template_earrings",
+    "template_decor",
+    "template_other",
+    "product_324",
+    "product_323",
+    "product_322",
+    "product_320",
+    "product_319",
+    "product_314",
+    "product_313",
+    "product_312",
+    "product_311",
+    "product_310",
+    "product_309",
+    "product_308",
+    "product_307",
+    "product_306",
+    "product_305",
+    "product_304",
+    "product_303",
+    "product_302",
+    "product_301",
+    "product_300",
+    "product_299",
+    "product_298",
+    "product_297",
+    "product_296",
+    "product_295",
+    "product_294",
+    "product_293",
+    "product_292",
+    "product_291",
+    "product_290",
+    "product_289",
+    "product_288",
+    "product_287",
+    "product_286",
+    "product_285",
+    "product_284",
+    "product_283",
+    "product_282",
+    "product_281",
+    "product_280",
+    "product_279",
+    "product_278",
+    "product_277",
+    "product_276",
+    "product_275",
+    "product_274",
+    "product_273",
+    "product_272",
+    "product_270",
+    "product_269",
+    "product_268",
+    "product_267",
+    "product_266",
+    "product_265",
+    "product_264",
+    "product_263",
+    "product_262",
+    "product_261",
+    "product_260",
+    "product_259",
+    "product_258",
+    "product_257",
+    "product_256",
+    "product_255",
+    "product_254",
+    "product_253",
+    "product_251",
+    "product_250",
+    "product_249",
+    "product_248",
+    "product_247",
+    "product_246",
+    "product_245",
+    "product_244",
+    "product_243",
+    "product_242",
+    "product_241",
+    "product_240",
+    "product_239",
+    "product_238",
+    "product_237",
+    "product_235",
+    "product_234",
+    "product_233",
+    "product_232",
+    "product_231",
+    "product_230",
+    "product_229",
+    "product_228",
+    "product_227",
+    "product_226",
+    "product_225",
+    "product_224",
+    "product_223",
+    "product_222",
+    "product_221",
+    "product_220",
+    "product_219",
+    "product_218",
+    "product_217",
+    "product_216",
+    "product_215",
+    "product_214",
+    "product_213",
+    "product_212",
+    "product_211",
+    "product_210",
+    "product_209",
+    "product_208",
+    "product_207",
+    "product_206",
+    "product_205",
+    "product_204",
+    "product_203",
+    "product_202",
+    "product_201",
+    "product_200",
+    "product_199",
+    "product_198",
+    "product_197",
+    "product_196",
+    "product_195",
+    "product_194",
+    "product_193",
+    "product_192",
+    "product_191",
+    "product_190",
+    "product_189",
+    "product_188",
+    "product_187",
+    "product_186",
+    "product_185",
+    "product_184",
+    "product_183",
+    "product_182",
+    "product_181",
+    "product_179",
+    "product_178",
+    "product_177",
+    "product_176",
+    "product_175",
+    "product_174",
+    "product_173",
+    "product_172",
+    "product_171",
+    "product_170",
+    "product_168",
+    "product_167",
+    "product_166",
+    "product_165",
+    "product_164",
+    "product_163",
+    "product_162",
+    "product_161",
+    "product_160",
+    "product_158",
+    "product_157",
+    "product_156",
+    "product_155",
+    "product_154",
+    "product_153",
+    "product_152",
+    "product_151",
+    "product_150",
+    "product_149",
+    "product_148",
+    "product_147",
+    "product_146",
+    "product_145",
+    "product_144",
+    "product_143",
+    "product_142",
+    "product_138",
+    "product_137",
+    "product_136",
+    "product_135",
+    "product_134",
+    "product_133",
+    "product_132",
+    "product_131",
+    "product_130",
+    "product_129",
+    "product_128",
+    "product_127",
+    "product_126",
+    "product_125",
+    "product_124",
+    "product_123",
+    "product_122",
+    "product_121",
+    "product_120",
+    "product_119",
+    "product_117",
+    "product_116",
+    "product_115",
+    "product_114",
+    "product_113",
+    "product_112",
+    "product_111",
+    "product_110",
+    "product_109",
+    "product_108",
+    "product_107",
+    "product_106",
+    "product_105",
+    "product_104",
+    "product_103",
+    "product_102",
+    "product_101",
+    "product_100",
+    "product_99",
+    "product_98",
+    "product_97",
+    "product_96",
+    "product_95",
+    "product_94",
+    "product_93",
+    "product_92",
+    "product_91",
+    "product_90",
+    "product_89",
+    "product_88",
+    "product_87",
+    "product_86",
+    "product_85",
+    "product_84",
+    "product_83",
+    "product_82",
+    "product_81",
+    "product_80",
+    "product_79",
+    "product_78",
+    "product_77",
+    "product_76",
+    "product_75",
+    "product_74",
+    "product_73",
+    "product_72",
+    "product_71",
+    "product_70",
+    "product_69",
+    "product_68",
+    "product_67",
+    "product_66",
+    "product_65",
+    "product_64",
+    "product_63",
+    "product_62",
+    "product_61",
+    "product_60",
+    "product_59",
+    "product_34",
+    "product_33",
+    "product_31",
+    "product_30",
+    "product_29",
+    "product_28",
+    "product_27",
+    "product_26",
+    "product_25",
+    "product_24",
+    "product_23",
+    "product_22",
+    "product_21",
+    "product_20",
+    "product_19",
+    "product_18",
+    "product_17",
+    "product_16",
+    "product_15",
+    "product_14",
+    "product_13",
+    "product_12",
+    "product_11",
+    "product_9",
+    "product_7",
+    "product_6",
+    "product_5",
+    "product_4",
+    "product_3",
+    "product_2",
+    "product_1"
+  ],
+  "embeddings": null,
+  "documents": [
+    "💚 Náramek na nohu Lesní energie – příroda, svěžest a síla 🍀 O: 22 cm\n\nLehký a hravý náramek inspirovaný zelení lesa a energií přírody. Kombinace lávových kamenů, černých a zeleno-žlutých korálků přináší rovnováhu, vitalitu a radost z pohybu.\nIdeální doplněk pro letní dny, bosé procházky v trávě nebo dovolenou u vody – symbol svobody a propojení se zemí.\n\n✨ Popis produktu:\n– ručně vyráběný náramek na nohu\n– materiál: lávové kameny, skleněné korálky, zeleno-žluté minerální korálky\n– barvy: černá, zelená, žlutá\n– pružný provázek, univerzální velikost\n\n💎 Styl: přírodní, letní, energický",
+    "Náramek ♊ Blíženci (22. 5. – 21. 6.)\n\n♊ Blíženci – komunikativní a hraví, plní zvědavosti a nových nápadů.\r\n\r\nO: 17,5 CM",
+    "✨svíčky Náramková móda ✨\n\n✨ Svíčky Náramková móda ✨\r\n\r\nKrásná svíčka v elegantním matně černém obalu s dřevěným víčkem 🕯️\r\nDokonalý doplněk do vašeho domova – ideální i jako dárek 🎁\r\nRůzné barvy ❤️\r\nOdeslání dle skladu.",
+    "Vzor pro necklace – použij strukturu a styl, obsah vždy z Vision.",
+    "Vzor pro earrings – použij strukturu a styl, obsah vždy z Vision.",
+    "Vzor pro decor – použij strukturu a styl, obsah vždy z Vision.",
+    "Přívěsek andílka pro štěstí 🍀\n\nAndílek přívěsek – náhodný výběr barvy.\r\n\r\nRučně vyráběný andílek, který může zdobit vaše klíče, kabelku nebo batoh.\r\nKaždý andílek je originál, tvořený kombinací kovových komponentů a barevných korálků. Skvělý jako malý dárek pro radost, ochranu i štěstí.\r\n\r\nDárkově balené s kartičkou.\r\n\r\n➡️ Andílka zasíláme v náhodném barevném provedení",
+    "Ruleta\n\nRuleta sůl",
+    "„Kočičí něha“ 🐱🌸 - 19 cm\n\ngsdfsd sdfsdf",
+    "\"Pro Tebe\" :-)\n\ncv\\xcv\\cx \\dsf \\d",
+    "„Kočičí něha“ 🐱\n\nfsgdfsg",
+    "Pro sestru\n\nfadsfsd",
+    "„Kočičí něha“ 🐱🌸 - 19 cm\n\nTento náramek působí jako tichý kočičí dotek, jemný, klidný a přitom kouzelně elegantní. Kombinace světle růžových a čirých praskaných korálků vytváří něžnou, romantickou atmosféru, která připomíná růžové světlo probouzejícího se rána.\r\nStříbrný přívěsek kočičky dodává celému náramku hravost, eleganci a malou dávku kočičí osobnosti, která neodolatelně přitahuje pohledy. 🐾✨\r\n\r\n💗 Proč si ho zamiluješ:\r\n• krásná jemná růžovo-čirá kombinace\r\n• praskané korálky dodávají křišťálový třpyt\r\n• roztomilý přívěsek kočky – ideální pro milovníky kočičí duše\r\n• ruční výroba, každý kus je originální a jedinečný",
+    "„Dalmatiní kouzlo“ 🖤🤍🐾 - 17,5 cm\n\nTento náramek působí jako radostná energie hravého dalmatina. Bílé korálky s černými tlapičkami připomínají ikonické skvrny tohoto plemene a vytváří neodolatelně roztomilý vzhled. Čiré praskané korálky dodávají náramku jiskru a lehkost, jako když se slunce odráží od hladké psí srsti.\r\nStříbrný přívěsek roztomilého pejska dodává celému designu hravost, veselost a lásku, která je každému pejskaři tak blízká. 🐶✨\r\n\r\n🐾 Proč si ho zamiluješ:\r\n• originální korálky s tlapičkami – ideální pro psí nadšence\r\n• praskané korálky pro jemný křišťálový efekt\r\n• veselý psí přívěsek dodává šmrnc i osobnost\r\n• ruční výroba – jedinečný kousek, který nikdo jiný nemá",
+    "„Noční strážce“ 🌙🐾 19 cm\n\nTento náramek působí jako tichá noc osvětlená jen měsíčním třpytem. Matné černé korálky dodávají náramku sílu a tajemství, zatímco čiré praskané korálky připomínají drobné krystalky ledu zachycené ve tmě. Společně tvoří elegantní a velmi výraznou kombinaci, která zaujme na první pohled.\r\nStříbrný přívěsek pejska krásně doplňuje celý design – působí jako věrný ochránce, který stojí po tvém boku v každou chvíli. 🐶✨\r\n\r\n🖤 Proč si ho zamiluješ:\r\n• nadčasová kombinace matné černé a křišťálového třpytu\r\n• praskané korálky dodávají efekt světelných jisker\r\n• psí přívěsek jako něžný a osobní detail\r\n• ruční výroba – každý náramek je originální kousek",
+    "„Psí harmonie“ ⚫⚪🐾  17 cm\n\nTento náramek působí jako dokonalá rovnováha světla a tmy. Kombinace bílých a kouřově šedých korálků vytváří jemný, elegantní kontrast, který připomíná klidné šero před svítáním. Černé akcenty dodávají náramku sílu a stabilitu, zatímco celková barevnost zůstává nadčasová a univerzální.\r\nStříbrný přívěsek pejska dodává designu osobitost a špetku hravosti, která dokonale vystihuje radost, kterou nám psi přinášejí. 🐶✨\r\n\r\n🤍 Proč si ho zamiluješ:\r\n• elegantní černobílá kombinace vhodná ke všemu\r\n• jemné kouřové tóny pro moderní vzhled\r\n• psí přívěsek jako symbol věrnosti a radosti\r\n• ruční výroba – originál s duší",
+    "„Růžová radost“ 💖🐾 - 18 cm\n\nTento náramek působí jako hravé růžové světlo, které rozjasní každý den. Jemné růžové korálky dodávají náramku něhu a optimismus, zatímco černé a praskané korálky vytvářejí krásný kontrast a hloubku. Celkově působí jako dokonalé spojení dívčí jemnosti a psí oddanosti.\r\nStříbrný přívěsek pejska dodává celé kombinaci šmrnc a připomíná, že s pejskem je život prostě veselejší. 🐶✨\r\n\r\n💗 Proč si ho zamiluješ:\r\n• sladká růžová v kombinaci s elegantní černou\r\n• praskané korálky dodávají třpyt a originalitu\r\n• přívěsek roztomilého pejska – ideální pro každého milovníka psů\r\n• ruční výroba – každý kus je jedinečný",
+    "„Sluneční tlapka“ ☀️🐾 - 17,5 cm\n\nTento náramek působí jako teplé ranní slunce, které probouzí přírodu a dodává energii na celý den. Žluté praskané korálky připomínají jemné sluneční paprsky, zatímco černé a čiré korálky dodávají náramku eleganci a krásný kontrast.\r\nStříbrný přívěsek ve tvaru kostičky je roztomilým symbolem psí radosti a hravosti, který potěší každého milovníka chlupáčů. 🐶✨\r\n\r\n💛 Proč si ho zamiluješ:\r\n• radostná žlutá doplněná elegantní černou\r\n• praskané korálky s krásným slunečním efektem\r\n• přívěsek kosti – milý detail pro každého pejskaře\r\n• ruční výroba – každý kus má své osobní kouzlo",
+    "„Růžové pouto“ 💗🐾 - 19 cm\n\nTento náramek působí jako jemné objetí, kde se snoubí něha růžových tónů s hloubkou a silou černých korálků. Matné růžové korálky připomínají ranní mlhu nad květinami, zatímco černé a praskané korálky dodávají celému náramku eleganci, stabilitu a kousek tajemství.\r\nStříbrné srdíčko s nápisem I ♥ my dog je krásným symbolem bezpodmínečné lásky k pejskům, kterou nosíš přímo na ruce. 🐶✨\r\n\r\n💞 Proč si ho zamiluješ:\r\n\r\n• něžná růžová v harmonii s elegantní černou\r\n• praskané korálky dodávají zajímavý třpyt\r\n• přívěsek se srdíčkem – ideální pro milovníky psích parťáků\r\n• ruční výroba – originální šperk s osobním kouzlem",
+    "„Křišťálový psík“ ✨🐾 - 16,5 cm\n\nTento náramek působí jako čisté ranní světlo, které se třpytí na kapkách rosy – jemný, elegantní a dokonale harmonický. Průzračné praskané korálky vytváří efekt křišťálového lesku, zatímco béžové přírodní tóny připomínají teplo písku a klidné, zemité energie.\r\nStříbrný přívěsek pejska dodává celému designu hravost i věrnost, jako malý talisman pro všechny milovníky psích parťáků. 🐶✨\r\n\r\n🤍 Proč si ho zamiluješ:\r\n\r\n• křišťálově čistý třpyt díky praskaným korálkům\r\n• univerzální, jemná a elegantní barevnost\r\n• roztomilý přívěsek pejska jako symbol lásky ke čtyřnohým\r\n• ruční výroba – originál s osobním kouzlem",
+    "„Temná elegance“ ❤️‍🔥🐾 - 18 cm\n\nTento náramek působí jako tajemná noc protkaná rubínovými odlesky, které připomínají žhavé jiskry v temnotě. Kombinace hluboké červené, černé a čiré vytváří výrazný, elegantní kontrast, který okouzlí na první pohled.\r\nStříbrný přívěsek buldočka dodává celému designu sílu, odvahu a věrnost, kterou toto plemeno tak krásně symbolizuje. 🐶✨\r\n\r\n🔥 Proč si ho zamiluješ:\r\n• luxusní spojení červených a černých tónů\r\n• praskané korálky s krásným třpytem\r\n• výrazný buldočkový přívěsek pro milovníky tohoto plemene\r\n• ruční výroba – originální šperk s charismatem",
+    "„Mořská tlapka“ 🌊🐾 - 17 cm\n\nTento náramek působí jako osvěžující vánek od moře, kdy se slunce odráží na hladině a vytváří tisíce drobných záblesků. Kombinace modrých praskaných korálků a čirých třpytivých korálků připomíná mořskou pěnu, sluneční odlesky i klidné vlnky u pobřeží.\r\nStříbrný přívěsek pejska dodává náramku hravost a věrnost, jako psí parťák, který tě doprovází na každé letní dobrodružství. 🐶✨\r\n\r\n💙 Proč si ho zamiluješ:\r\n• osvěžující modrá paleta v různých tónech\r\n• praskané korálky vytváří krásný efekt mořských krystalků\r\n• přívěsek pejska pro milovníky čtyřnohých přátel\r\n• ruční výroba – jedinečný kousek pro každodenní radost",
+    "„Měsíční pes“ 🌕🐾 - 18,5 cm\n\nTento náramek působí jako klidný měsíční svit, který dopadá na zasněženou krajinu – čistý, elegantní a tajemně jemný. Bílá kombinace korálků připomíná měsíční světlo, zatímco tmavší kovové a šedé tóny dodávají hloubku a krásný kontrast.\r\nStříbrný přívěsek pejska v pohybu vyzařuje energii, věrnost a radost, kterou v sobě má každý psí parťák. 🐶✨\r\n\r\n🤍 Proč si ho zamiluješ:\r\n• čistě bílá a šedá paleta působí luxusně a univerzálně\r\n• elegantní kontrast lesklých a matných tónů\r\n• přívěsek pro milovníky psů – jemný, ale výrazný detail\r\n• ruční výroba – každý kousek je originál",
+    "„Měsíční pes“ 🌕🐾 - 18,5 cm\n\nTento náramek působí jako klidný měsíční svit, který dopadá na zasněženou krajinu – čistý, elegantní a tajemně jemný. Bílá kombinace korálků připomíná měsíční světlo, zatímco tmavší kovové a šedé tóny dodávají hloubku a krásný kontrast.\r\nStříbrný přívěsek pejska v pohybu vyzařuje energii, věrnost a radost, kterou v sobě má každý psí parťák. 🐶✨\r\n\r\n🤍 Proč si ho zamiluješ:\r\n• čistě bílá a šedá paleta působí luxusně a univerzálně\r\n• elegantní kontrast lesklých a matných tónů\r\n• přívěsek pro milovníky psů – jemný, ale výrazný detail\r\n• ruční výroba – každý kousek je originál",
+    "„Růžová věrnost“ 🌸🐾 - 16,5 cm\n\nTento náramek působí jako něžné jarní ráno, kdy se světlo dotýká růžových kvítků a celý svět se zdá být jemnější a klidnější. Kombinace světle růžových a čirých praskaných korálků vytváří křehkou, romantickou atmosféru plnou čistoty a jemné elegance.\r\nStříbrný přívěsek pejska dodává náramku symbol oddanosti a věrnosti, který ocení každý milovník psů. 🐶✨\r\n\r\n💗 Proč si ho zamiluješ:\r\n• krásná něžná růžová paleta\r\n• praskané korálky vytváří jemný třpyt\r\n• roztomilý psí přívěsek jako výraz lásky ke čtyřnohým přátelům\r\n• ruční výroba – originál s osobním kouzlem",
+    "„Ledová stezka“ ❄️🐾 - 16,5 cm\n\nTento náramek působí jako chladivé ranní ticho v zasněžené krajině, kdy se světlo odráží od ledu a vše působí čistě a klidně. Kombinace ledově modrých, čirých a černých korálků vytváří harmonii, která připomíná zimní vzduch, jiskření sněhu a sílu skrytých hlubin.\r\nPřívěsek pejska v pohybu dodává náramku dynamiku a energii, jako věrný společník běžící zasněženou stopou vedle tebe. 🐶✨\r\n\r\n💙 Proč si ho zamiluješ:\r\n• krásná ledově modrá paleta doplněná čirými a tmavými tóny\r\n• praskané korálky s jemnou texturou\r\n• přívěsek pejska dodává hravost i věrnost\r\n• ruční výroba – každý náramek má svůj originální charakter\r\n\r\nPokud chceš, napiš i obvod a dodám k popisku. Pošli další, pokračujeme! ❄️🐾",
+    "„Stříbrný strážce“ 🖤🐾 - 17 cm\n\nTento náramek působí jako klidná noc pod hvězdami, kdy se světlo měsíce jemně odráží na kovových površích. Kombinace tmavých, šedo-stříbrných a jemně třpytivých korálků vytváří elegantní a tajemnou atmosféru, která dokonale podtrhuje sílu i osobnost.\r\nPřívěsek buldočka působí jako věrný ochránce, připravený stát po tvém boku, ať už se vydáš kamkoliv. 🐶✨\r\n\r\n🖤 Proč si ho zamiluješ:\r\n• elegantní směs šedých a černých tónů\r\n• metalický efekt pro moderní vzhled\r\n• přívěsek buldočka pro milovníky tohoto jedinečného plemene\r\n• ruční výroba – každý kus má svůj příběh",
+    "„Slunečná tlapka“ ☀️🐾 - 19,5 cm\n\nTento náramek působí jako jemné ranní slunce, které se probouzí nad krajinou – hřejivý, pozitivní a plný lehkosti. Žluté praskané korálky připomínají sluneční paprsky, zatímco čiré korálky dodávají třpyt a čistotu jako kapky rosy.\r\nStříbrný přívěsek pejska dotváří symboliku věrnosti a radosti, kterou nám naši čtyřnozí parťáci každý den přináší. 🐶✨\r\n\r\n💛 Proč si ho zamiluješ:\r\n\r\n• příjemná slunečná paleta žlutých a čirých tónů\r\n• praskané korálky s jemnou texturou\r\n• hravý přívěsek pejska pro opravdové milovníky psů\r\n• ruční výroba – originál, který nikdo jiný nemá",
+    "„Ohnivá tlapka“ 🔥🐾 - 20 cm\n\nTento náramek působí jako teplé jiskry ohně v tiché noci – energický, výrazný a plný síly. Spojení červených, černých a čirých praskaných korálků vytváří jedinečnou hru světla, která zaujme na první pohled.\r\nElegantní přívěsek pejska dodává náramku symbol věrnosti, kterou zná každý milovník psů. 🐶✨\r\n\r\n💫 Proč si ho zamiluješ:\r\n• výrazná kombinace červené, černé a čiré\r\n• praskané korálky s krásným třpytem\r\n• roztomilý přívěsek pro milovníky psů\r\n• ruční výroba – každý kus je originál",
+    "🤎🐾 Náramek „Kočičí lesní šepot“ – 17,5 cm 🌿🖤\n\nTento náramek působí jako tichá procházka lesem za soumraku – přírodní, uklidňující a plný jemné elegance.\r\nMatné černé korálky dodávají hloubku a výraznost, zatímco hnědé, šedé a béžové praskané korálky připomínají barvy kamínků, kůry a lesa.\r\nKombinace je dokonale harmonická a krásně zemité tóny se hodí k jakémukoli outfitu.\r\n\r\nOzdobou náramku je detailně zpracovaný kočičí přívěsek, který celému designu dodává hravost a výraznou kočičí osobnost. 🐱✨\r\n\r\n💫 Proč si ho zamiluješ:\r\n• přírodní paleta barev – hnědá, béžová, šedá, černá\r\n• praskané korálky dodávají texturu a originalitu\r\n• černý základ působí elegantně a univerzálně\r\n• ruční výroba – každý náramek je jedinečný\r\n\r\nIdeální pro ty, kdo milují kočky i přírodní a zemité tóny. 🌿🐾🤎",
+    "🌑🐾 Náramek „Kočičí stín“ – 18 cm 🌑🐾\n\nTento náramek je jako jemný kočičí krok ve tmě – tichý, mystický a neuvěřitelně elegantní.\r\nKombinace černých a kouřových cat eye korálků vytváří nádherný lesk a hloubku, která se mění s každým pohybem ruky. Malé stříbrné mezikroužky dodávají náramku luxusní dotek a krásně ho zvýrazňují.\r\n\r\nDominantou je krásný kočičí přívěsek se spirálovým vzorem, který náramku dodává osobnost, tajemství a špetku kočičí magie. 🐱✨\r\n\r\n💫 Proč si ho zamiluješ:\r\n• tmavý, elegantní vzhled pro milovnice černé\r\n• cat eye korálky s krásným měnlivým efektem\r\n• luxusní stříbrné detaily\r\n• ruční výroba – originální kousek, který nikdo jiný nemá\r\n\r\nPerfektní pro ženy, které milují minimalistický, tmavý a tajemně elegantní styl. 🖤🐾✨",
+    "💙🐾 Náramek „Kočičí noční obloha“ – 18 cm 🐾🖤\n\nTento náramek působí jako noční obloha ozdobená hvězdami.\r\nMatné černé korálky dodávají šperku tajemnost, eleganci a nadčasovost, zatímco královsky modré korálky s jemným mramorováním působí jako malé zářivé body světla. Celkový kontrast je velmi výrazný a stylový.\r\n\r\nRoztomilý kočičí přívěsek dodává šperku osobitost a kočičí hravost, která krásně doplňuje tmavší elegantní design. 🐱✨\r\n\r\n💫 Proč si ho zamiluješ:\r\n• výrazná kombinace modré a černé\r\n• modré korálky září a přitahují pozornost\r\n• náramek je elegantní, stylový a univerzální\r\n• ruční práce = originální kousek jen pro tebe\r\n\r\nIdeální pro milovnice koček, které milují výrazné doplňky a noční elegantní styl. 🌙🐾💙",
+    "🌈🐾 Náramek „Kočičí cukrová vata“ – 18 cm 💗💙\n\nTento náramek je jako sladký obláček cukrové vaty – jemný, hravý a plný barevné radosti.\r\nSněhobílé korálky tvoří elegantní a čistý základ, zatímco duhové růžovo-modré korálky vypadají jako malé malované perličky plné fantazie.\r\nCelkový vzhled je zářivý, veselý a dokonale ženský.\r\n\r\nSladkou tečku tvoří roztomilý kočičí přívěsek se srdíčkem, který dodává šperku další dávku něhy a kočičí lásky. 🐱💖\r\n\r\n💫 Co na něm milovat:\r\n• nádherné pastelové barvy s mramorovým efektem\r\n• bílá barva dodává čistotu a jemný kontrast\r\n• kočičí přívěsek jako symbol radosti a něhy\r\n• ruční výroba – každý kousek je originál\r\n\r\nPerfektní pro milovnice koček, které milují barvy, jemnost a hravý styl. 🌈🐾💗",
+    "☀️🐾 Náramek „Kočičí duhová radost“ – 17 cm 🌸🐾\n\nTento náramek je jako malý barevný festival na zápěstí!\r\nZáklad tvoří sněhobílé korálky, které působí čistě a elegantně, zatímco růžové a žluté praskané korálky dodávají šperku radost, energii a hravé duhové tóny.\r\nCelá kombinace působí optimisticky, svěže a krásně jemně.\r\n\r\nRoztomilý kočičí přívěsek dokonale doplňuje celkový vzhled a dodává šperku osobité kouzlo pravé milovnice koček. 🐱✨\r\n\r\n💫 Proč si ho zamiluješ:\r\n• duhové praskané korálky dodávají hravost a živost\r\n• bílá barva vyrovná a zjemní celkový dojem\r\n• přívěsek kočičky jako krásný detail\r\n• ruční výroba – každý kousek je originál\r\n\r\nIdeální pro ty, kdo milují kočky, barvy a radost v každém dni. 🌈🐾💕",
+    "💖🐾 Náramek „Kočičí fuchsiová energie“ – 17,5 cm 🐾🖤\n\nTento náramek je jako výbuch pozitivní energie!\r\nMatné černé korálky dodávají eleganci a tajemnost, zatímco fuchsiově růžové praskané korálky září jako malé drahokamy. Společně vytvářejí velmi výrazný, ženský a moderní kontrast, který na ruce prostě nepřehlédneš.\r\n\r\nHlavním ozdobným prvkem je roztomilý kočičí přívěsek, který náramku dodává špetku hravosti a kočičího kouzla. 🐱✨\r\n\r\n💫 Proč je výjimečný:\r\n• fuchsiové korálky dodají energii a odvahu\r\n• černé korálky zajišťují eleganci a univerzálnost\r\n• náramek krásně vynikne na ruce\r\n• ruční výroba – originál jen pro tebe\r\n\r\nIdeální pro ženy, které milují kočky stejně jako výrazné a energické barvy. 💖🐾✨",
+    "🖤 Náramek „Kočičí mramorová elegance“ – 17 cm 🌿🤍\n\nTento náramek je jako kousek přírody ukrytý v elegantním šperku.\r\nMatné černé korálky působí luxusně a nadčasově, zatímco bílo-mramorové korálky s jemným zeleným žilkováním dodávají šperku přírodní hloubku a originální vzhled. Společně tvoří stylový kontrast, který se hodí ke každému outfitu.\r\n\r\nHlavní ozdobou je stříbrná kočičí tlapička, která dodává náramku hravost a krásně podtrhne jeho kočičí energii. 🐱✨\r\n\r\n💫 Proč si ho zamiluješ:\r\n• elegantní černo-mramorová kombinace\r\n• přírodní efekt mramoru dodává originalitu\r\n• tlapička jako symbol milovnic koček\r\n• ruční výroba – každý kousek je jedinečný\r\n\r\nNáramek, který spojuje eleganci, přírodu i kočičí kouzlo v jednom jediném šperku. 🖤🌿🐾",
+    "💗🐾 Náramek „Kočičí malinová víla“ – 18 cm 🤍🐾\n\nTento náramek je jako sladká malinová magie na tvém zápěstí.\r\nSpojení sněhobílých korálků s intenzivně růžovými a malinově tónovanými korálky vytváří nádherně živý a ženský efekt. Barvy září, působí radostně a dodají ti energii na celý den.\r\n\r\nDominantou náramku je originální spirálový kočičí přívěsek, který dodává šperku osobnost, šarm a jemnou hravost.\r\n\r\n💫 Proč si ho zamiluješ:\r\n• výrazná malinově růžová barva okamžitě upoutá pozornost\r\n• bílá dodává čistotu a elegantní kontrast\r\n• originální kočičí přívěsek jako podpis každé pravé milovnice koček\r\n• ruční výroba – jedinečný kousek, který nebude mít nikdo stejný\r\n\r\nIdeální pro ty, kdo milují kočky, barvy a radost v každém detailu. 💗🐾✨",
+    "🤎🐾 Náramek „Kočičí cappuccino“ – 16 cm 🤍🐾\n\nTento náramek působí jako teplý šálek cappuccina – jemný, uklidňující a krásně přírodní.\r\nSněhobílé korálky přinášejí čistotu a eleganci, zatímco hnědo-béžové praskané korálky dodávají teplý tón a přírodní texturu. Společně tvoří dokonale harmonickou kombinaci, která se hodí ke všemu.\r\n\r\nRoztomilý kočičí přívěsek dodává náramku osobnost a špetku hravosti – přesně, jak to kočky milují. 🐱✨\r\n\r\n💫 Proč si ho oblíbíš:\r\n• krásný přírodní vzhled v teplých odstínech\r\n• bílá barva dodává čistotu a jemnost\r\n• praskané korálky přidávají zajímavou strukturu\r\n• ruční výroba – každý náramek je originál\r\n\r\nIdeální pro milovnice koček, které mají rády přírodní, zemité tóny a elegantní jednoduchost. 🤎🐾✨",
+    "☀️🐾 Náramek „Sluníčková kočička“ – 17 cm 🤍🐾\n\nTento náramek je jako paprsek slunce na zápěstí – hřejivý, veselý a plný pozitivní energie.\r\nSněhobílé korálky dodávají čistotu a jemnost, zatímco žluté praskané korálky krásně září a přinášejí radost i optimistickou energii. Kombinace je lehká, letní a nádherně svěží.\r\n\r\nCelý náramek zdobí roztomilý kočičí přívěsek, který dodává šperku špetku hravosti a kočičí osobnosti. 🐱✨\r\n\r\n💫 Proč si ho zamiluješ:\r\n• žluté praskané korálky působí jako malé kousky sluníčka\r\n• čistá bílá dodává eleganci a jemnost\r\n• roztomilý kočičí přívěsek podtrhne tvůj styl\r\n• ruční výroba – originální kousek, který nikdo jiný nemá\r\n\r\nSkvělý náramek pro milovnice koček, které milují světlo, pozitivitu a jemný styl. ☀️🐾🤍",
+    "🌿🐾 Náramek „Zelená kočičí harmonie“ – 17,5 cm 🤍🐾\n\nTento náramek působí jako klidná procházka přírodou – jemný, čistý a osvěžující.\r\nSněhobílé korálky tvoří elegantní základ, zatímco zelené praskané korálky dodávají náramku přírodní energii, hloubku a krásný kontrast. Celkově působí velmi harmonicky a přirozeně.\r\n\r\nDominantou šperku je spirálový kočičí přívěsek, který přidává kouzlo, originalitu a špetku hravosti – přesně tak, jak to kočky umí. 🐱✨\r\n\r\n💫 Proč si ho oblíbíš:\r\n• zelené praskané korálky vytvářejí přírodní, elegantní efekt\r\n• bílá barva přidává čistotu a jemnost\r\n• krásný přívěsek kočičky podtrhne tvůj styl\r\n• ruční výroba – každý kus je jedinečný\r\n\r\nNáramek, který se hodí k přírodnímu, elegantnímu i každodennímu stylu. 🌿🐾🤍",
+    "🤍🐾 Náramek „Kočičí jemnost“ – 17 cm 🤍🐾\n\nTento náramek je jako dotek jemného světla – čistý, klidný a krásně harmonický.\r\nSněhobílé korálky tvoří základ, který působí něžně a čistě, zatímco šedo-béžové praskané korálky přidávají přírodní strukturu a elegantní detail.\r\nCelá kombinace působí velmi decentně, uklidňujícím dojmem a hodí se ke každému stylu.\r\n\r\nDominantou je roztomilý stříbrný přívěsek kočičky, který dodává náramku tu správnou kočičí duši a osobité kouzlo. 🐱✨\r\n\r\n💫 Proč si ho oblíbíš:\r\n• jemná a nadčasová kombinace bílé a šedé\r\n• praskané korálky dodávají přírodní eleganci\r\n• lehounký, příjemný a stylový doplněk\r\n• ruční výroba – každý kus je originál\r\n\r\nIdeální pro milovnice koček, které preferují čistý, přírodní a elegantní styl. 🤍🐾🌿",
+    "💙🐾 Náramek „Modrá tlapička snů“ – 17,5 cm 🤍🐾\n\nJemný, čistý a dokonale sladěný – tento náramek spojuje sněhobílé korálky s modrými praskanými korálky, které připomínají mořskou hladinu i popraskaný led.\r\nCelá kombinace působí čistě, svěže a velmi něžně, takže se náramek hodí ke každému outfitu.\r\n\r\nHlavní ozdobou je roztomilý ležící kočičí přívěsek, který dodává šperku hravost a typickou kočičí pohodičku. 🐱✨\r\n\r\n💫 Proč si ho zamiluješ:\r\n• čistě bílá + modrá = jemná a osvěžující kombinace\r\n• praskané korálky dodávají originální efekt\r\n• přívěsek kočičky pro všechny milovnice chlupatých mazlíčků\r\n• ruční výroba – stejně jedinečný jako ty\r\n\r\nSkvělý dárek pro milovnici koček nebo krásná radost jen tak pro sebe. 🌊🐾",
+    "💙🐾 Náramek „Kočičí oceán“ – 17 cm 🐾💙\n\nJako lehký mořský vánek na zápěstí – tento náramek spojuje svěžest modré, tajemnost černé a jemný lesk šedo-kouřových korálků.\r\nTyrkysově modré praskané korálky dodávají celému náramku energii, radost a letní nádech, zatímco černé a cat eye korálky přidávají eleganci a hloubku.\r\n\r\nHlavní ozdobou je štíhlá kočička se zvednutým ocáskem, která působí hravě a sebevědomě – přesně jako kočky umí. 🐱✨\r\n\r\n💫 Co si zamiluješ:\r\n• osvěžující kombinace tyrkysové a černé\r\n• praskané modré korálky dodají šperku šmrnc\r\n• krásný kočičí přívěsek zvýrazní tvůj styl\r\n• ruční práce, každý kousek je originál\r\n\r\nIdeální pro milovnice koček, které milují energii, barvy a výraznější šperky. 🌊🐾",
+    "🖤🐾 Náramek „Elegantní kočičí spirála“ – 16,5 cm 🤍🐾\n\nTento náramek je jako malé černobílé kouzlo – jednoduchý, čistý a zároveň neuvěřitelně stylový.\r\nKombinace matně bílých korálků a kouřově šedých–černých cat eye korálků vytváří krásný kontrast, který z náramku dělá nadčasový doplněk pro každou milovnici koček.\r\n\r\nStříbrné ozdobné mezikroužky dodávají šperku jemný luxusní efekt, zatímco hlavní hvězdou je spirálový přívěsek kočičky – elegantní, originální a s osobitým šmrncem.\r\n\r\n💫 Proč si ho zamiluješ:\r\n• nadčasová černo-bílá kombinace\r\n• cat eye korálky dodávají jemný lesk a hloubku\r\n• krásný spirálový přívěsek kočičky jako výraz osobnosti\r\n• ruční práce – každý kus je jedinečný\r\n\r\nPerfektní náramek pro ženy, které milují kočky a zároveň preferují elegantní, čistý styl. ✨🐱",
+    "🌸🐾 Náramek „Růžový snílek“ – 18 cm 🐾🌸\n\nTento náramek je jako jemný růžový sen.\r\nKombinace světle růžových korálků a šedo-bílých praskaných korálků vytváří harmonický, klidný a elegantní vzhled, který působí něžně a romanticky.\r\nKaždý korálek je jemný dotek ženskosti, který se krásně vyjímá na ruce.\r\n\r\nCelý náramek doplňuje kočičí přívěsek s roztomilým výrazem, díky kterému má šperk osobnost a kousek kočičí magie.\r\n\r\n💫 Co ho dělá výjimečným:\r\n• něžná růžová pro milovnice jemného stylu\r\n• praskané korálky dodávají originalitu a jemný efekt kamene\r\n• kočičí přívěsek jako symbol hravosti a laskavosti\r\n• ruční tvorba, kde je každý kus jedinečný\r\n\r\nIdeální pro všechny, které milují kočky, růžovou a elegantní jednoduchost. ✨🎀🐾",
+    "🌸🐾 Náramek „Růžová tlapička“ – 17,5 cm 🐾🌸\n\nTento náramek je jako pohlazení – jemný, něžný a plný roztomilé kočičí energie.\r\nKombinace čistě bílých korálků a růžových praskaných korálků působí sladce, optimisticky a krásně ženským dojmem.\r\n\r\nCelý náramek zdobí stříbrný přívěsek tlapičky, který dodá šperku osobní kočičí podpis – ideální pro každou milovnici koček, která má ráda jemný styl.\r\n\r\n💫 Proč si ho oblíbíš:\r\n• bílá a růžová = dokonale něžná kombinace\r\n• praskané růžové korálky dodávají šperku živost a hravost\r\n• tlapička je roztomilý symbol pravé kočkomilky\r\n• ručně vyráběný originál, který potěší každý den\r\n\r\nSkvělý jako dárek i jako malá radost pro sebe. 💖🐾",
+    "🌌🐾 Náramek „Kočičí galaxie“ – 18 cm 🐾🌌\n\nTento náramek je jako malý vesmír kolem tvého zápěstí.\r\nSpojení mračených fialových, modrých a průsvitných korálků vytváří efekt galaxie, která se nádherně prolíná s čistě bílými a kouřově černými korálky.\r\nCelkový vzhled působí magicky, jemně a zároveň velmi elegantně.\r\n\r\nStříbrný přívěsek sedící kočičky dodává náramku klidnou, tajemnou a kočičí atmosféru – jako by ti připomínal, že kočky jsou malé vesmírné bytosti s vlastním kouzlem. 🐱✨\r\n\r\n💫 Proč si ho zamiluješ:\r\n• galaktické barvy – fialová, modrá a průsvitná – působí opravdu jedinečně\r\n• bílá a černá dodávají šmrnc a eleganci\r\n• krásný kočičí přívěsek pro všechny milovnice koček\r\n• ruční výroba zaručuje originalitu každého kousku\r\n\r\nNáramek, který okouzlí na první pohled a rozzáří každý outfit. ✨💜",
+    "🐾🖤 Náramek „Kočičí elegance“ – 17 cm 🤍🐾\n\nTento náramek je jako černobílá fotografie – nadčasový, stylový a dokonale výrazný.\r\nMatné černé korálky působí elegantně a uklidňujícím dojmem, zatímco bílé korálky s černými tlapičkami dodávají náramku hravost a jasně ukazují, že kočky mají v tvém srdci pevné místo.\r\n\r\nZávěrečný dotek tvoří krásný stříbrný přívěsek kočičky, který celému náramku dodává osobnost a jemný šmrnc.\r\n\r\n💫 Proč je výjimečný:\r\n• černobílá kombinace je vždy elegantní a vkusná\r\n• korálky s tlapičkami jsou roztomilé a originální\r\n• perfektní pro milovnice koček, které mají rády decentní styl\r\n• ručně vyráběný – každý kus má své kouzlo\r\n\r\nIdeální pro každodenní nošení i jako dárek s kočičí duší. ✨🎁🐱",
+    "🐾🌸 Náramek „Růžová kočičí radost“ – 16,5 cm 🌸🐾\n\nTento náramek je jako kočičí mrknutí – jemný, roztomilý a přesto výrazný.\r\nStylová kombinace matně černých a kouřově šedých korálků je oživená zářivě růžovými praskanými korálky, které dodávají náramku energii, hravost a veselou ženskou jiskru.\r\n\r\nJemný kočičí přívěsek pak celý design krásně doplní a dá jasně najevo, že kočky prostě miluješ! 😺💕\r\n\r\n💫 Co na něm milovat:\r\n\r\n• růžové praskané korálky rozzáří každý outfit\r\n• černo-šedá kombinace dodává eleganci a univerzálnost\r\n• přívěsek kočky podtrhne tvůj styl i osobnost\r\n• ruční výroba – každý kousek je originál",
+    "🐾💜 Náramek „Fialová kočičí něha“ 💜🐾- 18 cm\n\nTento náramek je jako stvořený pro všechny, kdo milují kočky a zároveň si potrpí na jemné, ale výrazné barvy.\r\nSpojení sněhobílých korálků s fialovými praskanými akcenty vytváří hravý, zářivý a přitom velmi elegantní kontrast. Celý náramek doplňuje roztomilý kovový přívěsek kočičky, který dodá šperku osobnost i špetku kočičí roztomilosti.\r\n\r\n💫 Proč tě okouzlí?\r\n• čistě bílá barva krásně rozzáří ruku\r\n• fialové praskané korálky přidají energii a originalitu\r\n• kočičí přívěsek je ideální pro každou kočkomilku\r\n• ruční výroba – každý kus je originál\r\n\r\n✨ Krásný dárek nebo jemná radost jen pro tebe.",
+    "🐾 Náramek „Milovník koček“ – 17,5 cm\n\nElegantní náramek, který potěší každého, kdo má slabost pro kočičí tlapky. Kombinace matných a lesklých černo–šedých korálků doplněná o výrazné fialové praskané korálky vytváří harmonický a originální celek.\r\nDominantou náramku je jemný kovový přívěsek kočičky, který dodává šperkům hravost i něhu.\r\n\r\nProč si ho zamiluješ?\r\n• krásná elegantní barva pro každodenní nošení\r\n• přívěsek kočičky jako symbol mazlivé a hravé energie\r\n• ručně vyráběno s láskou, každý kus je originál\r\n• ideální dárek pro každou kočkomilku",
+    "Melodie na zápěstí\n\nHudba je dar – a tenhle náramek ji nosí přímo na zápěstí.\r\n\r\nBílá barva symbolizuje čistotu a klid, kovový houslový klíč zase vášeň pro melodie.\r\n\r\nRučně vyráběný, nastavitelný a připravený dělat radost. 🤍🎶",
+    "🌈 DIY sada – Vyrob si svůj náramek (s abecedou!)\n\n🌈 DIY sada – Vyrob si svůj náramek 🌈\r\n\r\nHledáte malý dárek, který potěší a zároveň zabaví?\r\nTahle kreativní sada je ideální pro všechny malé parádnice, které milují korálky a tvoření.\r\n\r\nV balíčku najdete celou abecedu písmenkových korálků, takže si každé dítě může vyrobit náramek přesně podle sebe – se jménem, přezdívkou nebo vlastním veselým slovem.\r\n\r\n\r\n💗 Co v sadě najdete:\r\n\t•\tcelou abecedu písmenkových korálků\r\n\t•\t2× písmenko A navíc\r\n\t•\t30 barevných korálků\r\n\t•\telastický provázek\r\n\t•\tnávod\r\n\t•\tprůhledný balíček připravený rovnou k darování\r\n\r\n🎁 Pro koho je sada ideální:\r\n\t•\tpro děti na tvoření doma\r\n\t•\tjako dárek do balíčků pro oslavy\r\n\t•\tjako malá odměna nebo překvapení\r\n\t•\tpro všechny kreativity milující holčičky\r\n\r\nJednoduché, zábavné a originální tvoření, které potěší každé dítě.\r\nStačí navléknout, zavázat – a náramek je hotový! 🌸",
+    "💛 Žlutý matný set náhrdelník a náramek – zářivě žlutá\n\nSluníčkově žlutý náhrdelník, který dodá radost a energii. Perfektní do letních dní i k výrazným outfitům.\r\n\r\nObvod náramku: 18 cm",
+    "❤️ Červený matný set náhrdelník a náramek – výrazná červená\n\nElegantní a vášnivý červený set.\r\nMatný povrch dodává luxusní vzhled – ideální doplněk pro výrazné ženy.\r\n\r\nObvod náramku: 18 cm",
+    "💗 Fuchsiový matný set náhrdelník a náramek– výrazná růžová\n\nNáhrdelník a náramek pro ty, kdo milují výrazné barvy. Sytá fuchsiová okamžitě přitáhne pozornost – ideální k jednoduchým outfitům.\r\n\r\nObvod náramku : 18 cm",
+    "💜 Fialový matný set náhrdelník a náramek – jemná fialová\n\nRomantický náhrdelník v pastelové fialové barvě. Jemný, výrazný a krásně ženský doplněk.\r\n\r\nObvod náramku : 18 cm",
+    "💚 Zelený matný set náhrdelník a náramek– jarní zelená\n\nVeselý set v zářivé zelené barvě. Matné korálky působí moderně a originálně – perfektní doplněk pro milovnice přírodních odstínů.\r\n\r\nObvod náramku: 19 cm",
+    "💙 Modrý matný set náhrdelník a náramek – světle modrý\n\nSvěží světle modrá barva, která rozjasní každý den. Lehký, příjemný k nošení, vhodný k letním i sportovním outfitům.\r\nObvod náramku : 18 cm",
+    "🌸 Růžový matný náhrdelník a náramek – sytější růžová ( set )\n\nStylový set v příjemné sytě růžové barvě.\r\nMatné korálky dodávají elegantní vzhled a krásně vyniknou na krku.\r\n\r\nObvod náramku : 18 cm",
+    "💗 Růžový matný náhrdelník a náramek – světle růžový ( set )\n\nJemný světle růžový set z matných korálků – ideální pro milovnice něžných tónů. Skvěle doplní každý outfit a hodí se i jako dárek.\r\n\r\nObvod náramku : 18 cm",
+    "🌊 Náramek Hlubina moře – klid, síla a odvaha 🐚 O: 17 cm\n\nKouzelný náramek v odstínech temně modré a mořsky tyrkysové odráží energii oceánu – hlubokou, tajemnou a očistnou.\r\nSpojuje klid modrých vod s odvahou ponořit se do vlastních myšlenek a najít v nich sílu.\r\nIdeální pro ty, kteří milují moře, svobodu a vnitřní rovnováhu.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z tyrkysových, modrých a čirých korálků\r\n– doplňky: stříbrné mezikroužky\r\n– univerzální velikost (na gumičce)\r\n\r\n💎 Styl: mořský, elegantní, harmonický",
+    "💎 Náramek Ledový třpyt – elegance, energie a proměna ✨ O: 17 cm\n\nTento náramek v kombinaci modrých, šedých a měděných tónů působí jako odraz zimního světla na ledových krystalech.\r\nSymbolizuje sílu proměny, odvahu jít svou cestou a eleganci, která vynikne v každém okamžiku.\r\nIdeální pro ženy, které milují jemný třpyt a chtějí působit sebevědomě a jedinečně.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z modrých, šedých a měděných skleněných korálků\r\n– doplňky: stříbrné mezikroužky\r\n– univerzální velikost (na gumičce)\r\n\r\n💎 Styl: elegantní, chladivý, moderní",
+    "💙 Náramek Modré nebe – klid, lehkost a naděje ☁️ O: 17,5 cm\n\nJemný náramek v odstínech modré připomíná jasné nebe po dešti – symbol čistoty, naděje a klidu.\r\nSpojení světle modrých a průzračných korálků působí harmonicky a přináší pocit lehkosti a svobody.\r\nIdeální pro chvíle, kdy chceš dýchat zhluboka a zůstat v rovnováze.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z modrých a čirých skleněných korálků\r\n– doplňky: stříbrné mezikroužky\r\n– univerzální velikost (na gumičce)\r\n\r\n💎 Styl: jemný, elegantní, uklidňující",
+    "🖤 Náramek Kamenitá síla – ochrana, odvaha a stabilita ⚫️ O: 17 cm\n\nElegantní náramek v tónech černé, šedé a kouřové symbolizuje sílu a rovnováhu.\r\nSpojuje energii ochranných kamenů s klidem přírody – ideální pro ty, kteří chtějí stát pevně nohama na zemi a nenechat se vyvést z rovnováhy.\r\nMinimalistický a přitom výrazný doplněk pro každý den.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z černých, šedých a čirých korálků\r\n– doplňky: zlaté mezikroužky\r\n– univerzální velikost (na gumičce)\r\n\r\n💎 Styl: elegantní, ochranný, přírodní",
+    "💚 Náramek Lesní kouzlo – příroda, klid a harmonie 🍃 O:17,5 cm\n\nTento náramek propojuje zemitou sílu lesa s jemností světla, které proniká mezi stromy.\r\nZeleno-medové a vínové odstíny připomínají barvy mechu, listí a podzimních plodů – symbol rovnováhy, stability a životní energie.\r\nIdeální doplněk pro milovníky přírody a klidu duše.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z korálků v zelených, vínových a zlatavých tónech\r\n– doplňky: zlaté mezikroužky\r\n– univerzální velikost (na gumičce)\r\n\r\n💎 Styl: přírodní, elegantní, harmonický",
+    "🤍 Náramek Ledový klid – rovnováha, čistota a ochrana ❄️ O: 17,5 cm\n\nTento náramek v kombinaci chladivých tónů šedé, bílé a průhledné symbolizuje vnitřní klid a jasnou mysl.\r\nJemné skleněné a kamenné korálky připomínají ledové krystaly, které dodávají sílu, odvahu a ochranu před stresem.\r\nIdeální pro ty, kdo hledají harmonii a chtějí zůstat klidní i uprostřed ruchu dne.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z bílých, šedých a čirých korálků\r\n– doplňky: zlaté mezikroužky\r\n– univerzální velikost (na gumičce)\r\n\r\n💎 Styl: elegantní, přírodní, harmonický",
+    "💙 Náramek Oceánová hloubka – klid, síla a svoboda 🌊 O: 16 cm\n\nTóny temně modré a tyrkysové se v tomto náramku prolínají jako mořské vlny. Symbolizují vnitřní rovnováhu, sílu a svobodu duše.\r\nJe jako dotek oceánu na zápěstí – připomíná klid, ale i sílu, kterou má voda, když plyne svým vlastním směrem.\r\nPerfektní pro milovníky moře, dobrodružství a volnosti.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z korálků v odstínech modré, tyrkysové a čiré\r\n– doplňky: zlaté mezikroužky\r\n– univerzální velikost (na gumičce)\r\n\r\n💎 Styl: mořský, elegantní, harmonický",
+    "💗 Náramek Růžový sen – radost, jemnost a krása 🌸 O: 16 cm\n\nTento okouzlující náramek v odstínech růžové a bílé působí jako něžný dotek snu.\r\nJemné žilkované korálky symbolizují romantiku, laskavost a čistotu – ideální pro ženy, které milují harmonii a ženský půvab.\r\nZlaté detaily dodávají náramku elegantní třpyt a luxusní nádech.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z růžových a bílých korálků s jemným mramorováním\r\n– doplňky: zlaté mezikroužky\r\n– univerzální velikost (na gumičce)\r\n\r\n💎 Styl: romantický, něžný, elegantní",
+    "🧡 Náramek Jantarové teplo – energie, odvaha a radost 🔥\n\nTento náramek září teplými odstíny oranžové, zlaté a broskvové, které připomínají západ slunce a jeho hřejivé paprsky.\r\nSpojuje sílu, odvahu a vnitřní rovnováhu – je ideální pro dny, kdy potřebuješ dodat energii a úsměv.\r\nZářivé korálky s jemným leskem přitahují pozornost a dodávají každému outfitu pozitivní nádech.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z korálků v oranžových, zlatých a béžových tónech\r\n– doplňky: zlaté mezikroužky a třpytivé korálky\r\n– univerzální velikost (na gumičce)\r\n\r\n💎 Styl: teplý, elegantní, energický",
+    "❤️ Náramek Láska a vášeň – síla, odvaha a cit 💋 O: 17,5 cm\n\nTento výrazný náramek spojuje něžnou růžovou s hlubokou vínovou, které dohromady symbolizují lásku, vášeň a ženskou energii.\r\nZlaté detaily dodávají eleganci a připomínají, že pravá láska září i v těch nejtemnějších chvílích.\r\nSkvělý doplněk pro ženy, které chtějí vyjádřit svou sílu, city i sebevědomí.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z růžových, vínových a čirých korálků\r\n– doplňky: zlaté mezikroužky\r\n– univerzální velikost (na gumičce)\r\n\r\n💎 Styl: romantický, elegantní, smyslný",
+    "🌷 Náramek Růžová něha – láska, jemnost a ženskost 💞 O: 16,5 cm\n\nNěžný náramek v odstínech růžové září jako symbol lásky a harmonie. Kombinuje jemné růžové korálky s decentními zlatými detaily, které podtrhují jeho elegantní a romantický charakter.\r\nJe ideální pro ženy, které chtějí vyzařovat klid, něhu a vnitřní sílu – dokonalý doplněk pro každý den i slavnostní chvíle.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z růžových korálků\r\n– doplňky: zlaté mezikroužky\r\n– univerzální velikost (na gumičce)\r\n\r\n💎 Styl: romantický, elegantní, jemný",
+    "ChatGPT řekl:  💛 Náramek Sluneční energie – radost, teplo a optimismus ☀️ O: 17 cm\n\nZářivý náramek v odstínech žluté a zlaté přináší do života světlo, pozitivní náladu a vnitřní sílu.\r\nJe jako paprsek slunce, který zahřeje duši a připomene, že každý den může být nový začátek plný radosti.\r\nIdeální pro ty, kteří milují energii léta a chtějí ji nosit stále s sebou.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z korálků ve žlutých a medových tónech\r\n– doplňky: zlatavé mezikroužky a třpytivé korálky\r\n– univerzální velikost (na gumičce)\r\n\r\n💎 Styl: pozitivní, letní, zářivý",
+    "💙 Náramek Mořské štěstí – klid, odvaha a naděje ⚓️O: 17 cm\n\nTento náramek v odstínech blankytné modři a černé lávy připomíná hloubku moře i sílu vln.\r\nPřívěsek ve tvaru podkovy s kotvou symbolizuje štěstí, pevnou půdu pod nohama a odvahu plout životem vpřed.\r\nIdeální pro ty, kdo milují moře, svobodu a chtějí nosit štěstí stále u sebe.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z modrých a bílých korálků v kombinaci s lávovým kamenem\r\n– přívěsek: podkova s kotvou\r\n– doplňky: stříbrné mezikroužky\r\n– univerzální velikost (na gumičce)\r\n\r\n💎 Styl: mořský, pozitivní, ochranný\r\n\r\nDÁRKOVOU KARTIČKA NA VÝBĚR V SEKCI DÁRKOVÉ KARTIČKY :-)",
+    "💚 Náramek na nohu Lesní energie – příroda, svěžest a síla 🍀 O: 22 cm\n\nLehký a hravý náramek inspirovaný zelení lesa a energií přírody. Kombinace lávových kamenů, černých a zeleno-žlutých korálků přináší rovnováhu, vitalitu a radost z pohybu.\r\nIdeální doplněk pro letní dny, bosé procházky v trávě nebo dovolenou u vody – symbol svobody a propojení se zemí.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na nohu\r\n– materiál: lávové kameny, skleněné korálky, zeleno-žluté minerální korálky\r\n– barvy: černá, zelená, žlutá\r\n– pružný provázek, univerzální velikost\r\n\r\n💎 Styl: přírodní, letní, energický",
+    "💗 Náramek Klíč k srdci – láska, něha a důvěra 🔑 O: 16,5 cm\n\nJemný náramek spojuje energii růženínu – kamene lásky – s kontrastem černé lávy, která dodává sílu a stabilitu.\r\nPřívěsek ve tvaru klíče k srdci symbolizuje otevřenost citům, důvěru a schopnost milovat sebe i ostatní.\r\nIdeální pro ty, kteří chtějí do života přivolat lásku, harmonii a klid duše.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z růženínu a lávových kamenů\r\n– přívěsek: klíč se srdíčkem\r\n– doplňky: stříbrné mezikroužky\r\n– univerzální velikost (na gumičce)\r\n\r\n💎 Styl: romantický, jemný, ochranný",
+    "🖤 Náramek Andělská ochrana – síla, klid a víra 👼 O: 16,5 cm\n\nElegantní náramek v odstínech černé, bílé a šedé symbolizuje rovnováhu mezi světlem a tmou, mezi vnitřní silou a klidem duše.\r\nKovový přívěsek anděla je symbolem ochrany, víry a dobré energie, která nás provází na každém kroku.\r\nTento náramek je ideální pro chvíle, kdy potřebujete posílit víru v sebe i ve svět kolem vás.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z korálků v černé, šedé a bílé barvě\r\n– přívěsek: anděl z kovu\r\n– doplňky: stříbrné mezikroužky\r\n– univerzální velikost (na gumičce)\r\n\r\n💎 Styl: ochranný, elegantní, duchovní",
+    "🐚 Náramek Mořská perla – elegance, klid a hloubka 🌊 O: 17 cm\n\nNáramek inspirovaný krásou oceánu kombinuje tóny mořské modři, šedé a bílé s jemným zlatým leskem.\r\nPřívěsek ve tvaru mušle s perlou symbolizuje čistotu, klid a ženskost – jako poklad ukrytý v hlubinách moře.\r\nIdeální doplněk pro milovnice letní elegance i pro ty, které si chtějí připomenout dovolenou u moře.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z modrých, šedých a zlatavých korálků\r\n– přívěsek: mušle s perlou\r\n– barvy: mořská modř, šedá, zlatá, bílá\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, letní, mořský",
+    "🌊 Náramek Mořská hvězda – klid, síla a svoboda 🐚 O: 17,5 cm\n\nTento náramek v odstínech mořské modři a bílé přináší pocit lehkosti a volnosti jako letní den u moře.\r\nKorálky v barvách vody symbolizují čistotu a harmonii, zatímco zlatý přívěsek mořské hvězdice je symbolem obnovy, odvahy a naděje.\r\nIdeální doplněk pro všechny, kdo milují moře a sní o dálkách.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z modrých, bílých a zlatavých korálků\r\n– přívěsek: mořská hvězda\r\n– barvy: modrá, bílá, zlatá\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: letní, romantický, svěží",
+    "💙 Náramek Kočičí pohoda – klid, intuice a ochrana 🐾 O: 18 cm\n\nElegantní kombinace světle a tmavě modrých tónů vytváří dojem klidu, pohody a vyrovnanosti.\r\nModré korálky podporují intuici, trpělivost a duševní rovnováhu, zatímco přívěsek s kočičkou symbolizuje nezávislost, něhu a ochranu.\r\nIdeální doplněk pro všechny milovníky koček a harmonie.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z korálků v modrých tónech\r\n– barvy: světle modrá, tmavě modrá, stříbrná\r\n– ozdoba: kovová kočička\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, hravý, klidný",
+    "🌿 Náramek Sluneční energie – radost, vitalita a štěstí ☀️ O: 17,5 cm\n\nSpojení žlutých, zelených a zlatavých tónů přináší svěží energii a optimismus.\r\nŽluté korálky symbolizují radost ze života, zelené rovnováhu a růst.\r\nStříbrný přívěsek ve tvaru nožky je jemnou připomínkou lehkosti, svobody a kroku vpřed.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z barevných korálků\r\n– barvy: žlutá, zelená, zlatavá, stříbrná\r\n– ozdoba: kovová nožka\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: veselý, přírodní, pozitivní",
+    "💧 Náramek Nebeský klid – harmonie, čistota a síla 🌿 O: 17,5 cm\n\nKombinace modrého achátu, bílého opalitu a černé lávy vytváří dokonalou rovnováhu mezi klidem a energií.\r\nModrý achát zklidňuje mysl, podporuje komunikaci a vnitřní mír, zatímco lávový kámen dodává sílu a odvahu.\r\nStříbrný list symbolizuje přírodu, obnovu a nový začátek – jemný talisman pro duševní pohodu.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z achátu, opalitu a lávového kamene\r\n– barvy: modrá, bílá, černá, stříbrná\r\n– ozdoba: kovový list\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, přírodní, harmonický",
+    "🍀 Náramek Štěstí v srdci – naděje, rovnováha a ochrana 💚 O: 18,5 cm\n\nZelené a šedé tóny tohoto náramku symbolizují harmonii, obnovu a klid.\r\nZelené korálky přinášejí svěžest a optimismus, zatímco šedé dodávají stabilitu a vyrovnanost.\r\nStříbrný čtyřlístek je talismanem štěstí – připomíná, že pozitivní energie přitahuje dobré věci do života.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z korálků ve svěžích tónech zelené a šedé\r\n– barvy: zelená, šedá, stříbrná\r\n– ozdoba: kovový čtyřlístek\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: přírodní, pozitivní, elegantní",
+    "🦉 Náramek Noční moudrost – intuice, síla a ochrana 💜 O: 18 cm\n\nTemně fialové, šedé a černé tóny vytvářejí elegantní náramek s hlubokým významem.\r\nFialový achát podporuje intuici a vnitřní klid, lávový kámen přináší stabilitu a sílu.\r\nStříbrná sova je symbolem moudrosti, poznání a ochrany – dokonalý doplněk pro ženy, které naslouchají své intuici.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z achátu, lávového kamene a doplňků\r\n– barvy: fialová, černá, šedá, stříbrná\r\n– ozdoba: kovová sova\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, duchovní, ochranný",
+    "🦋 Náramek Motýlí proměna – láska, síla a obnova 💗 O: 17 cm\n\nSpojení růžového křišťálu, fialového achátu a černé lávy představuje dokonalou rovnováhu mezi jemností a odolností.\r\nRůženín otevírá srdce lásce a sebepřijetí, achát dodává odvahu a harmonii, zatímco lávový kámen chrání a uzemňuje.\r\nStříbrný motýl symbolizuje proměnu, svobodu a nový začátek.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z lávového kamene, růženínu a achátu\r\n– barvy: černá, růžová, fialová, stříbrná\r\n– ozdoba: kovový motýl\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: romantický, ochranný, harmonický",
+    "💜 Náramek Srdce odvahy – síla, láska a vnitřní klid 🖤 O: 17,5 cm\n\nSpojení černé lávy a fialového achátu vytváří náramek, který v sobě nese rovnováhu mezi silou a emocemi.\r\nLávový kámen přináší stabilitu, uzemnění a odvahu překonávat překážky.\r\nFialový achát otevírá srdce, podporuje sebevědomí a klidnou mysl.\r\nStříbrné srdce symbolizuje lásku, harmonii a otevřenost vůči životu.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z lávového kamene a achátu\r\n– barvy: černá, fialová, stříbrná\r\n– ozdoba: kovové srdce\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, energický, ochranný",
+    "🐘 Náramek Síla slona – odvaha, klid a ochrana 🌋 O: 18 cm\n\nElegantní kombinace černé lávy a sytě fialových korálků symbolizuje sílu, rovnováhu a odvahu.\r\nLávový kámen pomáhá uzemnit, dodává energii a chrání před negativními vlivy.\r\nFialové korálky podporují duchovní klid a vnitřní moudrost.\r\nStříbrný přívěsek slona je symbolem štěstí, moudrosti a ochrany – ideální talisman pro každý den.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z lávového kamene a fialových korálků\r\n– barvy: černá, fialová, stříbrná\r\n– ozdoba: kovový slon\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, ochranný, přírodní",
+    "🐟 Náramek Zelená perla – štěstí, hojnost a harmonie 🌿 O:  17,5 cm\n\nSpojení tmavě zelených, světle zelených a perleťových korálků vytváří náramek plný přírodní energie.\r\nZelená barva přináší klid, rovnováhu a růst, zatímco perleť symbolizuje čistotu a eleganci.\r\nStříbrná rybka představuje štěstí, hojnost a proud života – náramek, který přináší pozitivní energii každý den.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z perel a zelených korálků\r\n– barvy: zelená, bílá, stříbrná\r\n– ozdoba: kovová rybka\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: přírodní, elegantní, klidný\r\n\r\nNÁUŠNICE NEJSOU SOUČÁSTÍ :-)",
+    "⭐ Náramek Sluneční hvězda – radost, světlo a sebevědomí 🌞 O: 18 cm\n\nZářivá kombinace žlutých a perleťových korálků rozzáří každý den.\r\nŽlutá barva symbolizuje optimismus, štěstí a sílu slunce, zatímco perleť dodává jemnost a eleganci.\r\nStříbrná hvězdička představuje splněná přání a vnitřní záři – náramek, který přináší pozitivní energii a úsměv.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z perel a žlutých korálků\r\n– barvy: žlutá, bílá, stříbrná\r\n– ozdoba: kovová hvězdička\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: veselý, elegantní, letní",
+    "👼 Náramek Andělská ochrana – klid, víra a světlo 💜 O: 17,5 cm\n\nJemné spojení perleťových a fialových korálků vytváří náramek plný míru a duchovní energie.\r\nFialová barva symbolizuje intuici a duchovní sílu, zatímco perleťové tóny přinášejí čistotu a světlo.\r\nStříbrné andělské křídlo je symbolem ochrany, víry a naděje – náramek, který vás bude provázet v každém okamžiku.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z perel a fialových korálků\r\n– barvy: fialová, perleťová, stříbrná\r\n– ozdoba: kovové andělské křídlo\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: duchovní, elegantní, klidný",
+    "🦋 Náramek Motýlí něha – láska, radost a ženskost 💖 O: 19 cm\n\nJemná kombinace růženínu, růžového achátu a třpytivých korálků vytváří náramek plný něhy a optimismu.\r\nRůženín podporuje sebelásku a klid, růžový achát přináší radost a harmonii do srdce.\r\nStříbrní motýlci symbolizují svobodu a krásu proměny – ideální doplněk pro každou ženu, která chce zazářit s elegancí.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z růženínu a růžového achátu\r\n– barvy: světle růžová, tmavě růžová, stříbrná\r\n– ozdoba: kovoví motýlci\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: romantický, jemný, ženský",
+    "🐾 Náramek Láska v srdci – něha, síla a oddanost 💗 O: 18 cm\n\nKombinace černého matného kamene a růženínu vytváří náramek plný kontrastů a emocí.\r\nRůženín je kamenem lásky, soucitu a porozumění, zatímco černé korálky přinášejí sílu, ochranu a stabilitu.\r\nStříbrné srdíčko s tlapkou symbolizuje věrnost, lásku a nezištné přátelství – ideální dárek pro milovníky zvířat.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z růženínu a matných korálků\r\n– barvy: černá, světle růžová, stříbrná\r\n– ozdoba: kovové srdíčko s tlapkou\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: jemný, symbolický, elegantní",
+    "🦋 Náramek Lesní motýl – klid, síla a propojení s přírodou 🌿 O: 17 cm\n\nSpojení zeleného achátu a bílých korálků přináší do života rovnováhu, klid a harmonii.\r\nZelený achát symbolizuje růst, zdraví a stabilitu, bílá barva dodává čistotu a jemnost.\r\nStříbrný přívěsek motýla představuje svobodu a proměnu – krásný doplněk pro ty, kdo milují přírodu a eleganci.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z achátu\r\n– barvy: zelená, bílá, stříbrná\r\n– ozdoba: kovový motýlek se zirkony\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: přírodní, elegantní, harmonický",
+    "🐾 Náramek Tlapka odvahy – síla, věrnost a ochrana 💛O: 16,5 cm\n\nKombinace černého matného kamene a žlutého achátu představuje dokonalou rovnováhu mezi silou a radostí.\r\nČerné korálky dodávají stabilitu a odvahu, žlutý achát přináší pozitivní energii a optimismus.\r\nStříbrná tlapka symbolizuje věrnost, lásku ke zvířatům a čisté srdce – ideální pro každého milovníka čtyřnohých přátel.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z lávového kamene a achátu\r\n– barvy: černá, žlutá, stříbrná\r\n– ozdoba: kovová tlapka\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: výrazný, ochranitelský, pozitivní",
+    "🐬 Náramek Mořský delfín – svoboda, radost a síla vody 🌊 O: 18 cm\n\nSpojení černého matného kamene a modrého achátu přináší pocit klidu, hloubky a vnitřní rovnováhy.\r\nModrý achát symbolizuje harmonii a důvěru, zatímco černé kameny dodávají stabilitu a ochranu.\r\nTřpytivý přívěsek delfína představuje svobodu, radost a spojení s vodním světem – ideální pro milovníky moře a pozitivní energie.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z achátu a matných korálků\r\n– barvy: černá, modrá, stříbrná\r\n– ozdoba: přívěsek delfín\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: mořský, elegantní, harmonický",
+    "🌙 Náramek Měsíční klid – harmonie, víra a ochrana 💫 O: 17 cm\n\nSpojení modrého achátu, bílé lávy a matných korálků vytváří dojem noční oblohy plné klidu a rovnováhy.\r\nModrý achát přináší mír a sebedůvěru, bílá láva podporuje uzemnění a vnitřní sílu.\r\nStříbrný přívěsek s měsícem a hvězdami symbolizuje naději, sny a světlo, které nás vede i v temných chvílích.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z achátu a lávového kamene\r\n– barvy: modrá, bílá, stříbrná\r\n– ozdoba: přívěsek měsíc s hvězdami\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: mystický, elegantní, klidný",
+    "🦋 Náramek Letní vášeň – odvaha, radost a síla 🌺 O: 18 cm\n\nSpojení černé lávy s růžovo-žlutým achátem vytváří náramek plný kontrastů a energie.\r\nČerná láva symbolizuje sílu, stabilitu a ochranu, zatímco zářivé barvy achátu podporují radost, sebevědomí a chuť do života.\r\nKovový motýlek je symbolem svobody a proměny – ideální doplněk pro ty, kteří se nebojí zářit.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z lávového kamene a achátu\r\n– barvy: černá, růžová, žlutá, stříbrná\r\n– ozdoba: kovový motýlek\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: odvážný, energický, letní",
+    "🦋 Náramek Sluneční motýl – energie, proměna a sebevědomí ☀️ O: 18,5 cm\n\nSpojení černé lávy, žlutého achátu a praskaného křišťálu vytváří náramek plný síly a optimismu.\r\nŽlutá barva dodává radost a životní energii, černá láva přináší stabilitu a ochranu, zatímco křišťál rozjasňuje mysl a podporuje pozitivní myšlení.\r\nKovový motýlek symbolizuje proměnu a vnitřní svobodu – ideální doplněk pro ty, kteří chtějí zazářit.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z lávového kamene, achátu a křišťálu\r\n– barvy: černá, žlutá, čirá, stříbrná\r\n– ozdoba: kovový motýlek\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: výrazný, energický, harmonický",
+    "🗝️ Náramek Klíč k srdci – důvěra, klid a nové začátky 💚 O: 17,5 cm\n\nSpojení bílých a zelených korálků působí jemně a harmonicky.\r\nZelená barva symbolizuje růst, uzdravení a rovnováhu, bílá přináší čistotu a nové možnosti.\r\nStříbrný přívěsek klíče představuje otevřené srdce – připomínku, že pravá krása spočívá v upřímnosti a lásce.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný korálkový náramek\r\n– barvy: bílá, zelená, stříbrná\r\n– ozdoba: přívěsek klíč\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: romantický, jemný, harmonický",
+    "🍃 Náramek Zelený motýl – harmonie, obnova a svěžest 🦋 O: 17,5 cm\n\nKombinace bílé a jemně zelené barvy přináší pocit klidu, rovnováhy a spojení s přírodou.\r\nZelená symbolizuje růst, naději a regeneraci, zatímco bílá přidává čistotu a lehkost.\r\nKovový motýlek představuje proměnu a nový začátek – ideální talisman pro každý den.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný korálkový náramek\r\n– barvy: bílá, světle zelená, stříbrná\r\n– ozdoba: kovový motýlek\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: přírodní, jemný, elegantní",
+    "🌞 Náramek Sluneční jiskra – radost, energie a optimismus ✨ O: 17,5 cm\n\nSpojení žlutých, bílých a čirých korálků přináší náramek plný světla a pozitivní energie.\r\nŽlutá barva symbolizuje štěstí a sílu slunce, bílá čistotu a nové začátky, zatímco praskaný křišťál dodává náramku jiskřivý vzhled a harmonii.\r\nIdeální doplněk pro dny, kdy chceš zazářit a šířit dobrou náladu.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný korálkový náramek\r\n– barvy: žlutá, bílá, čirá\r\n– doplňky: stříbrné korálky\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: zářivý, veselý, elegantní",
+    "🌊 Náramek Mořský vánek – čistota, klid a svěžest 💎 O: 17,5 cm\n\nKombinace bílých a průsvitně zelenomodrých korálků působí jako dotek letního moře.\r\nBílá barva symbolizuje čistotu a nové začátky, zatímco modrozelené tóny přinášejí klid, rovnováhu a svěžest.\r\nStříbrné doplňky dodávají náramku jemnou eleganci a nadčasový vzhled.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný korálkový náramek\r\n– barvy: bílá, modrozelená, stříbrná\r\n– doplňky: kovové korálky\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: jemný, letní, elegantní",
+    "🦋 Náramek Nebeská energie – svoboda, radost a klid 🌈 O: 17 cm\n\nKombinace bílých korálků s modro-žlutými tóny vytváří osvěžující a pozitivní energii.\r\nModrá barva symbolizuje klid a rovnováhu, žlutá dodává optimismus a světlo, zatímco bílá přináší čistotu a víru v nové začátky.\r\nKovový motýlek je symbolem svobody a lehkosti – ideální doplněk pro ty, kdo milují život naplno.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný korálkový náramek\r\n– barvy: bílá, modrá, žlutá\r\n– ozdoba: kovový motýlek\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: svěží, hravý, harmonický",
+    "🍁 Náramek Podzimní kouzlo – energie, klid a přírodní síla 🌿 O: 17 cm\n\nSpojení teplých odstínů červené, zelené a bílé přináší harmonii a sílu přírody.\r\nZelené tóny symbolizují růst a rovnováhu, červené dodávají odvahu a životní energii, zatímco bílá barva přináší čistotu a klid.\r\nKovový motýlek jemně podtrhuje jedinečnost a proměnlivou krásu tohoto náramku.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný korálkový náramek\r\n– barvy: červená, zelená, bílá, stříbrná\r\n– ozdoba: kovový motýlek\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: přírodní, elegantní, harmonický",
+    "🖤 Náramek Jemná síla – láska, rovnováha a sebejistota 🌸 O: 17 cm\n\nSpojení růženínu a černých matných korálků vytváří harmonii mezi něhou a odvahou.\r\nRůženín je kamenem lásky, soucitu a vnitřního klidu, zatímco černé korálky dodávají stabilitu a sílu.\r\nKovový motýlek symbolizuje proměnu a nové začátky – jemný detail pro každodenní inspiraci.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z růženínu a černých korálků\r\n– barvy: růžová, černá, stříbrná\r\n– ozdoba: kovový motýlek\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, romantický, vyrovnaný",
+    "🖤 Náramek Noc a led – síla, klid a rovnováha ❄️ O: 17,5 cm\n\nElegantní kontrast černých matných korálků a čirého praskaného křišťálu symbolizuje rovnováhu mezi temnotou a světlem.\r\nKřišťál přináší čistotu, soustředění a energii, zatímco černé korálky dodávají odvahu a vnitřní stabilitu.\r\nKovový motýlek představuje proměnu a nový začátek – jemný detail, který dotváří harmonii celého náramku.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z křišťálu a černých korálků\r\n– barvy: černá, čirá\r\n– ozdoba: kovový motýlek\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, minimalistický, vyrovnaný",
+    "🦋 Náramek Křídla svobody – odvaha, proměna a rovnováha 🌍 O: 18 cm\n\nSpojení šedého achátu, tyrkysově modrých a žlutých tónů přináší harmonii mezi klidem a energií.\r\nŠedá barva symbolizuje vyrovnanost a stabilitu, zatímco modrá s žlutou podporují radost, odvahu a chuť do života.\r\nKovový motýlek je symbolem proměny a svobody – připomíná, že změna může být krásná.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z achátu\r\n– barvy: šedá, modrá, žlutá\r\n– ozdoba: kovový motýlek\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: moderní, energický, vyrovnaný",
+    "💛 Náramek Jarní probuzení – radost, lehkost a nové začátky 🌿 O: 18 cm\n\nJemné odstíny zelené, žluté a krémové barvy přinášejí svěžest a optimismus.\r\nKameny v těchto tónech symbolizují růst, naději a vnitřní klid – připomínají sílu přírody a krásu nových začátků.\r\nLehký, harmonický náramek, který rozzáří každý den a dodá vám pozitivní energii.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný korálkový náramek\r\n– barvy: světle zelená, žlutá, béžová\r\n– doplňky: stříbrné korálky\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: jemný, přírodní, optimistický",
+    "🌸 Náramek Růžová harmonie – ženskost, síla a klid 🖤💗 O: 18,5 cm\n\nSpojení růžového achátu a černé lávy představuje rovnováhu mezi jemností a odolností.\r\nRůžová barva podporuje lásku, něhu a sebevědomí, zatímco lávový kámen uzemňuje a přináší vnitřní sílu a ochranu.\r\nKovové květinové ozdoby dodávají náramku eleganci a symbolizují růst a krásu života.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z lávového kamene a achátu\r\n– barvy: růžová, černá, stříbrné doplňky\r\n– ozdoby: kovové květy\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, energický, harmonický",
+    "🌳 Náramek Strom života – síla, ochrana a rovnováha 🖤🤍 O: 17 cm\n\nElegantní spojení černého, bílého a průzračného kamene představuje rovnováhu mezi světlem a temnotou, silou a klidem.\r\nDominantní kovový přívěsek stromu života symbolizuje moudrost, růst a propojení se zemí – ochránce stability a životní energie.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z kombinovaných korálků\r\n– barvy: černá, bílá, průhledná\r\n– ozdoba: strom života + kovové doplňky\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, duchovní, ochranný",
+    "🦋 Náramek Motýlí něha – jemnost, naděje a nový začátek 💜 O: 17,5 cm\n\nTento něžný náramek v odstínech fialové, bílé a průzračné symbolizuje čistotu duše a lehkost bytí.\r\nKovový motýlek připomíná proměnu, svobodu a radost ze života – ideální pro ty, kdo věří, že i malé věci mohou mít velký význam.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z lesklých a prasklých korálků\r\n– barvy: fialová, bílá, průhledná\r\n– ozdoba: kovový motýlek\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: jemný, romantický, ženský",
+    "❤️ Náramek Sloní štěstí – láska, síla a ochrana 🐘 O: 18 cm\n\nJemný přechod od bílé přes růžovou až po sytě červenou symbolizuje cestu od klidu k vášni.\r\nStříbrný slon pro štěstí chrání svého nositele a přináší pozitivní energii, lásku i odvahu.\r\nIdeální pro ty, kteří chtějí mít na ruce kousek radosti a síly.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z barevných korálků\r\n– barvy: bílá, růžová, červená\r\n– ozdoba: kovový slon (symbol štěstí)\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: romantický, energický, elegantní",
+    "💚 Náramek Lesní harmonie – klid, příroda a rovnováha 🌿\n\nPlynulý přechod od bílé přes jemnou světle zelenou až po tmavě smaragdovou připomíná lesní cesty a přírodní klid.\r\nStříbrný kroužek uprostřed symbolizuje rovnováhu a propojení s přírodou – ideální doplněk pro milovníky přírodních tónů a elegance.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek z korálků v odstínech zelené\r\n– barvy: bílá, světle zelená, tmavě zelená\r\n– ozdoba: stříbrný kroužek\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: přírodní, elegantní, unisex",
+    "💙 Náramek Mořská harmonie – klid, síla a rovnováha 🌊 O: 17,5 cm\n\nPlynulý přechod od bílé přes tyrkysovou až po temně modrou připomíná mořské hlubiny – čistotu, hloubku a vnitřní sílu.\r\nNáramek je doplněn lávovými kameny, které symbolizují stabilitu a energii země. Skvělý doplněk pro každého, kdo miluje vodní barvy a klidný styl.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastickém vlákně\r\n– barvy: bílá, světle modrá, tyrkysová, tmavě modrá, černá\r\n– ozdoba: lávové kameny a stříbrný kroužek\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, přírodní, unisex",
+    "🖤❤️ Náramek Srdce vášně – kontrast síly a lásky 🤍 O: 18 cm\n\nElegantní spojení černé lávy, bílé harmonie a červeného srdce, které září jako symbol lásky, odvahy a životní energie.\r\nKombinace černobílých korálků působí nadčasově, zatímco červený detail dodává náramku špetku vášně a výjimečnosti.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na pružné šňůrce\r\n– barvy: černá, bílá, červená, stříbrná\r\n– ozdoba: kovové srdce s červeným korálkem\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, romantický, výrazný",
+    "🖤 Náramek Černé srdce – elegance, síla a tajemství 🤍 O: 17 cm\n\nDecentní náramek z matných černých korálků doplněný o lesklé lávové kameny a stříbrné srdce s perlou uprostřed. Symbolizuje rovnováhu mezi silou a jemností – ideální pro ty, kteří se nebojí být sami sebou.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: černá, stříbrná, bílá perla\r\n– ozdoba: kovové srdce s perlou\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, minimalistický, unisex",
+    "⭐ Náramek Hvězda něžnosti – čistota, klid a jemná energie 🤍💗 O: 20 cm\n\nMinimalistický náramek v čistě bílé barvě s růžovým prasklým korálkem ve středu hvězdy představuje rovnováhu mezi elegancí a jemností.\r\nHodí se pro každodenní nošení i jako doplněk k romantickému outfitu.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: bílá, růžová, stříbrná\r\n– ozdoba: hvězda s růžovým korálkem\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: čistý, jemný, elegantní",
+    "⭐ Náramek Hvězda elegance – síla jednoduchosti a jemnosti 🖤💗 O: 18,5 cm\n\nKombinace matných černých korálků s jemně růžovými prasklými perlami vytváří nádherný kontrast – decentní, přesto výrazný.\r\nUprostřed září stříbrná hvězda s růžovým detailem, která symbolizuje naději, světlo a ženskou energii.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na pružné gumičce\r\n– barvy: černá, růžová, stříbrná\r\n– ozdobný prvek: kovová hvězda s růžovým korálkem\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, ženský, minimalistický",
+    "🐾 Náramek Tlapka odvahy – pro silné a věrné duše 🤍💚 O: 19 cm\n\nElegantní náramek v kombinaci bílých a smaragdově zelených korálků, doplněný stříbrným přívěskem tlapky.\r\nSpojuje sílu, klid a věrnost – skvělý doplněk pro každého, kdo miluje zvířata a přírodní tóny.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: zelená, bílá, stříbrná\r\n– přívěsek: tlapka\r\n– doplněno ozdobnými kovovými kroužky\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: přírodní, elegantní, zvířecí motiv",
+    "🐾 Náramek Tlapka klidu – symbol harmonie a věrnosti 💙🤍 O: 19,5 cm\n\nNěžná kombinace bílých a modrých korálků doplněná stříbrným přívěskem tlapky působí svěže a klidně.\r\nTento náramek přináší pocit pohody, věrnosti a důvěry – ideální pro všechny, kdo milují zvířata i čistý design.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: modrá, bílá, stříbrná\r\n– přívěsek: tlapka\r\n– doplněno kovovými kroužky s jemným leskem\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, zvířecí motiv, čistý design",
+    "🐾 Náramek Tlapka přírody – harmonie a klid v každém korálku 🤍🌿 O: 19,5 cm\n\nElegantní spojení bílé a temně zelené připomíná klid lesa a sílu přírody.\r\nDoplňuje ho stříbrný přívěsek tlapky, který symbolizuje věrnost, odvahu a lásku ke zvířatům.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: zelená, bílá, stříbrná\r\n– přívěsek: tlapka\r\n– ozdobné kovové kroužky s decentním leskem\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: přírodní, elegantní, zvířecí motiv",
+    "🐾 Náramek Tlapka odvahy – síla, energie a věrnost ❤️🤍 O: 19,5 cm\n\nTento náramek spojuje bílou čistotu s hlubokým vínovým odstínem, který symbolizuje odvahu a sílu srdce.\r\nDoplňuje ho stříbrný přívěsek tlapky, který připomíná, že skuteční přátelé zůstávají navždy – ať už mají dvě nohy nebo čtyři 🐶🐱\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: vínová, bílá, stříbrná\r\n– přívěsek: tlapka\r\n– ozdobné kovové kroužky s jemným leskem\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, zvířecí motiv, symbol síly",
+    "🐾 Náramek Tlapka lásky – jemnost ukrytá v růžové 💗🤍 O: 20 cm\n\nElegantní náramek v něžných odstínech růžové a bílé, ozdobený stříbrným přívěskem tlapky.\r\nSymbolizuje lásku, přátelství a věrnost, a je ideálním dárkem pro každého milovníka zvířat nebo romantických doplňků.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: růžová, bílá, stříbrná\r\n– přívěsek: tlapka\r\n– ozdobné kovové kroužky s jemným třpytem\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: romantický, zvířecí motiv, jemná elegance",
+    "🐾 Náramek Tlapka něhy – pro všechny s laskavým srdcem 🤍🌸 O: 19,5 cm\n\nJemný náramek v něžné kombinaci bílé a světle růžové, doplněný stříbrným přívěskem tlapky.\r\nSymbolizuje lásku, péči a věrnost – ideální dárek pro milovníky zvířat nebo každého, kdo má rád jemný a pozitivní styl.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: růžová, bílá, stříbrná\r\n– přívěsek: tlapka\r\n– doplněno třpytivými kovovými kroužky\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: romantický, zvířecí motiv, něžný design",
+    "💛 Náramek Tlapka radosti – pro milovníky zvířat 🤍🐾 O: 20 cm\n\nVeselý náramek v kombinaci slunečně žluté a bílé, ozdobený stříbrným přívěskem tlapky, který potěší každého, kdo miluje zvířata.\r\nSymbolizuje věrnost, radost a pozitivní energii – ideální dárek pro pejskaře, kočičkáře i všechny s dobrým srdcem.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: žlutá, bílá, stříbrná\r\n– přívěsek: tlapka\r\n– doplněno kovovými kroužky pro jemný lesk\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: veselý, přátelský, zvířecí motiv",
+    "💙 Náramek Anděl klidu – ochrana a harmonie 🤍✨ O: 19 cm\n\nRučně vyráběný náramek v elegantní kombinaci bílé a královsky modré, ozdobený stříbrným přívěskem s andílkem v srdci.\r\nSpojení modré a bílé přináší pocit čistoty, klidu a vyrovnanosti – ideální doplněk pro každodenní nošení i jako milý dárek od srdce.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: modrá, bílá, stříbrná\r\n– přívěsek: srdce s andílkem\r\n– doplněno třpytivými kovovými kroužky\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: jemný, ochranný, harmonický",
+    "❤️ Náramek Anděl lásky – ochránce tvého srdce 🤍✨ O: 20 cm\n\nElegantní ručně vyráběný náramek v kombinaci bílé, černé a vínově červené, doplněný o stříbrný přívěsek s andílkem v srdci.\r\nSymbolizuje lásku, ochranu a klid, ideální pro všechny, kteří věří na sílu dobré energie a krásu jednoduchosti.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: bílá, černá, vínově červená, stříbrná\r\n– přívěsek: srdce s andílkem\r\n– elegantní lesklé korálky\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: romantický, ochranný, elegantní",
+    "⭐ Náramek Hvězda vášně – síla v eleganci 🤍❤️ O: 20 cm\n\nStylový ručně vyráběný náramek v kombinaci bílých a vínově červených korálků, doplněný o stříbrnou hvězdu s tmavě rudým kamenem.\r\nSymbolizuje odvahu, vášeň a čistotu srdce – ideální doplněk pro sebevědomé ženy, které se nebojí zazářit.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: bílá, vínová, stříbrná\r\n– přívěsek: hvězda s červeným kamenem\r\n– univerzální velikost (možnost úpravy)\r\n– vhodný na běžné nošení i jako dárek\r\n\r\n💎 Styl: elegantní, výrazný, smyslný",
+    "⭐ Náramek Růžová hvězda – jemnost v každém detailu 🤍🌸 O: 19,5 cm\n\nNěžný ručně vyráběný náramek z bílých a růžových korálků, doplněný o stříbrnou hvězdu s růžovým kamenem.\r\nSymbolizuje čistotu, lásku a ženskou energii – ideální doplněk pro ty, kdo mají rádi elegantní, ale jemný styl.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: bílá, růžová, stříbrná\r\n– přívěsek: hvězda s růžovým kamenem\r\n– vhodný na běžné nošení i jako dárek\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: romantický, jemný, elegantní",
+    "⭐ Náramek Hvězdný dotek – elegance v jednoduchosti 🖤🌸 O: 19 cm\n\nMinimalistický náramek z matných černých korálků, ozdobený stříbrnou hvězdou s růžovým kamenem uprostřed.\r\nSymbolizuje sílu, naději a ženskou jemnost, zatímco kontrast černé a růžové přináší dokonalou rovnováhu mezi elegancí a něžností.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: černá, růžová, stříbrná\r\n– přívěsek: hvězda s růžovým kamenem\r\n– lehký, pohodlný, vhodný na každodenní nošení\r\n– univerzální velikost (možnost úpravy)",
+    "🌙 Náramek Měsíční kočka – temně modrý sen 🖤💙 O: 19 cm\n\nElegantní ručně vyráběný náramek v kombinaci matných černých a tmavě modrých korálků, doplněný o stříbrný přívěsek kočky na půlměsíci.\r\nSymbolika měsíce a kočky přináší tajemství, intuici a klid, ideální doplněk pro milovníky nočního nebe.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: černá, tmavě modrá, stříbrná\r\n– přívěsek: kočka a měsíc\r\n– doplněno kovovými ozdobami\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, mystický, jemně výrazný",
+    "🌙 Náramek Měsíční kočka – tajemný půvab noci 🖤💙 O: 17,5 cm\n\nElegantní ručně vyráběný náramek v kombinaci matně černých a leskle modrých korálků, doplněný o přívěsek s kočkou a měsícem.\r\nSpojení noční černi a měsíčního lesku symbolizuje mystiku, intuici a ženskou energii.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: černá, modrá, stříbrná\r\n– přívěsek: kočka a měsíc\r\n– doplněno kovovými korálky pro eleganci\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, mystický, výrazný",
+    "☠️ Dětský náramek Lebky – černo-bílý styl ⚫⚪14,5 cm\n\nZábavný a výrazný dětský náramek v kombinaci černých a bílých korálků, doplněný o dvě korálkové lebky.\r\nIdeální pro malé rebely nebo milovníky originálních doplňků – lehký, pružný a pohodlný na nošení.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný dětský náramek na elastické šňůrce\r\n– černé a bílé korálky s motivem lebky\r\n– příjemně lehký, nebarví a neškrábe\r\n– vhodný pro děti od 6 let",
+    "🖤 Náramek Klíč od srdce – černo-bílý 🤍 O: 19 cm\n\nStylový ručně vyráběný náramek v kontrastní kombinaci matně černých a leskle bílých korálků, doplněný o stříbrné ozdobné kroužky a přívěsek klíče se srdíčkem.\r\nSpojení klasické černé a bílé barvy symbolizuje rovnováhu, sílu a harmonii.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: černá, bílá, stříbrná\r\n– přívěsek: klíč se srdcem\r\n– doplněno kovovými ozdobami\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, minimalistický",
+    "🖤 Náramek Klíč od srdce – černo-růžový 💗 O: 18,5 cm\n\nElegantní ručně vyráběný náramek v kombinaci matných černých a jemně růžových korálků, doplněný o třpytivé mezikroužky a přívěsek klíče se srdíčkem.\r\nSpojuje sílu a něhu – ideální pro ženy, které milují kontrasty a symboliku lásky.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: černá, světle růžová, stříbrná\r\n– přívěsek: klíč se srdcem\r\n– ozdobné kroužky s kamínky\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, romantický, dámský",
+    "💖 Náramek Klíč k lásce 🔑 O: 21 cm\n\nRučně vyráběný náramek v elegantní kombinaci sytě růžových a bílých korálků, doplněný o třpytivé mezikroužky a přívěsek klíče se srdíčkem.\r\nSymbolizuje něhu, lásku a důvěru – skvělý doplněk i dárek pro výjimečnou osobu.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: růžová, bílá, stříbrná\r\n– přívěsek: klíč se srdíčkem\r\n– ozdobné kroužky s kamínky\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: romantický, elegantní, dámský",
+    "❤️ Náramek Klíč k srdci 🔑 O: 20 cm\n\nRomantický ručně vyráběný náramek z červených a bílých korálků, doplněný o lesklé kovové mezikroužky s kamínky a přívěsek klíče se srdcem.\r\nElegantní a výrazný doplněk, který symbolizuje lásku, něhu a spojení – ideální jako dárek pro milovanou osobu.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: červená, bílá, stříbrná\r\n– přívěsek: klíč se srdcem\r\n– univerzální velikost (možnost úpravy)\r\n– jemné kovové prvky s kamínky pro elegantní vzhled\r\n\r\n💎 Styl: romantický, elegantní, dámský",
+    "💜 Náramek Fialová harmonie 🖤 O: 17 cm\n\nElegantní ručně vyráběný náramek z fialových, bílých, černých a šedých korálků, doplněný o praskané a lesklé kamínky.\r\nKombinace těchto odstínů působí moderně a vyváženě – ideální doplněk pro ženy, které milují jemnou eleganci s výrazem.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: fialová, bílá, černá, šedá\r\n– kombinace matných, lesklých a praskaných korálků\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, moderní, dámský",
+    "🌷 Náramek Jemná růže 💗 O: 17 cm\n\nRomantický ručně vyráběný náramek z matných světle růžových a třpytivých popraskaných korálků, doplněný o kovové mezikroužky.\r\nJemná kombinace odstínů působí něžně a elegantně – ideální doplněk pro ženy, které mají rády decentní styl s kapkou romantiky.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– kombinace matných a třpytivých korálků v růžových a čirých tónech\r\n– ozdobné kovové detaily\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: romantický, jemný, dámský",
+    "💗 Náramek Růžový třpyt ✨ O: 18 cm\n\nNěžný ručně vyráběný náramek, který kombinuje růžové a průhledné popraskané korálky doplněné o jemné kovové mezikroužky.\r\nJemně se třpytí a působí velmi ženským a romantickým dojmem – ideální doplněk pro každou příležitost.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– korálky v odstínech růžové a čiré barvy\r\n– ozdobné kovové detaily\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: jemný, romantický, dámský",
+    "🌸 Náramek Strom života – růžovo-bílý 🌿 O: 17 cm\n\nJemný a elegantní ručně vyráběný náramek v kombinaci bílých a světle růžových korálků, doplněný o přívěsek stromu života – symbol rovnováhy, síly a nových začátků.\r\nTento náramek působí čistě a něžně, ideální jako dárek pro blízkou osobu nebo pro každodenní nošení.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: bílá, světle růžová\r\n– přívěsek: strom života (stříbrná barva)\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: jemný, symbolický, dámský",
+    "🖤 Náramek Elegance s růžovým dotekem 💗 O: 17 cm\n\nMinimalistický ručně vyráběný náramek z matných černých korálků, doplněný o dva růžové praskané korálky, které dodávají jemný a ženský nádech.\r\nJednoduchý, elegantní a nadčasový doplněk, který se hodí ke každému outfitu.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– matné černé korálky s růžovým akcentem\r\n– univerzální velikost (možnost úpravy)\r\n– lehký, pohodlný a stylový\r\n\r\n💎 Styl: minimalistický, elegantní, unisex",
+    "💜 Náramek Fialový sen 💗 O: 18 cm\n\nOriginální ručně vyráběný náramek v kombinaci fialových, růžových a černých korálků, doplněný o lesklé kovové prvky.\r\nSpojení matných a prasklých korálků vytváří krásný kontrast, který působí elegantně, ale i hravě – ideální doplněk pro sebevědomé ženy.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– kombinace fialových, růžových a černých korálků\r\n– ozdobné kovové mezikroužky\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, výrazný, dámský",
+    "💙 Náramek Modrá elegance 🖤 O: 17,5 cm\n\nStylový ručně vyráběný náramek v kombinaci tmavě modrých, černých a světle modrých korálků, doplněný o dekorativní kovové prvky.\r\nTento náramek působí elegantně, ale zároveň moderně – perfektní doplněk pro každý den i slavnostní příležitosti.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– kombinace matných a lesklých korálků\r\n– barvy: černá, světle modrá, královská modrá, stříbrná\r\n– doplněno kovovými ozdobami pro elegantní vzhled\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: elegantní, moderní",
+    "🌸 Náramek s hvězdicí – růžový sen 🐚 O: 16 cm\n\nJemný ručně vyráběný náramek z růžových a bílých korálků, doplněný o přívěsek mořské hvězdice.\r\nSpojení jemně růžových popraskaných korálků a bílého mramorového vzoru působí romanticky a letně, ideální pro každou milovnici moře a elegance.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– barvy: růžová, bílá, stříbrná\r\n– přívěsek: hvězdice (kov, růžový smalt)\r\n– univerzální velikost (možnost úpravy)\r\n\r\n💎 Styl: romantický, letní, dámský",
+    "💙 Náramek v odstínech moře – modrá harmonie 🌊\n\nElegantní ručně vyráběný náramek v krásných tónech světle modré, tyrkysové a královsky modré, doplněný o zlaté detaily.\r\nTento náramek připomíná klid moře a letní pohodu – ideální pro milovníky jemných, ale výrazných doplňků.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– korálky v modrých odstínech se zlatým akcentem\r\n– univerzální velikost (na přání lze upravit)\r\n– lehký a příjemný na nošení\r\n\r\n💎 Styl: letní, elegantní, unisex",
+    "🍀 Náramek se čtyřlístkem pro štěstí 💚 O: 17,5 cm\n\nJemný ručně vyráběný náramek v odstínech bílomodré, zelené a zlaté, doplněný přívěskem čtyřlístku – symbolem štěstí a pozitivní energie.\r\nKombinace lesklých, popraskaných a perleťových korálků vytváří elegantní a svěží vzhled.\r\n\r\n✨ Popis produktu:\r\n– ručně vyráběný náramek na elastické šňůrce\r\n– zdobený přívěskem čtyřlístku\r\n– barvy: bílá, zelená, tyrkysová, zlatá\r\n– univerzální velikost (na přání lze upravit)\r\n\r\n💎 Styl: jemný, pozitivní, dámský",
+    "💚 Náramek v odstínech šedé a zářivě zelené se zlatými detaily 💛 O: 18,5 cm\n\nRučně vyráběný korálkový náramek, který zaujme kombinací šedých a neonově zelených korálků doplněných o elegantní zlaté mezikroužky.\r\nTento náramek spojuje jemnost s energií – ideální pro ty, kteří mají rádi výrazné, ale vkusné doplňky.\r\n\r\n✨ Popis produktu:\r\n– ručně vyrobený náramek na elastické šňůrce\r\n– korálky v odstínech šedé, bílé a zelené\r\n– doplněno zlatými prvky pro luxusní vzhled\r\n– univerzální velikost (na přání lze upravit)\r\n\r\n💎 Styl: moderní, energický",
+    "💚 Korálkový náramek v odstínech zelené, šedé a černé 🖤 O: 16 cm\n\nModerní ručně vyráběný náramek z lesklých korálků v elegantní kombinaci zelené, šedé a černé barvy, doplněný o jemné kovové mezikroužky.\r\nNáramek se krásně třpytí a hodí se jak k ležérnímu, tak i elegantnímu outfitu.\r\n\r\n✨ Popis produktu:\r\n– ručně vyrobený náramek na elastické šňůrce\r\n– kombinace lesklých a poloprůhledných korálků\r\n– univerzální velikost (na přání lze upravit)\r\n– příjemně lehký a odolný\r\n\r\n💎 Styl: elegantní, moderní",
+    "🖤 Elegantní náramek v odstínech černé a mint 💚 O: 18 cm\n\nStylový ručně vyráběný náramek, který kombinuje matné černé, světle zelené a šedé korálky doplněné o dekorativní kovové mezikroužky.\r\nNáramek působí elegantně, přesto decentně – ideální jako doplněk pro každodenní nošení i slavnostní příležitosti.\r\n\r\n✨ Vlastnosti:\r\n– ručně vyrobený náramek na elastické šňůrce\r\n– univerzální velikost (na přání lze upravit)\r\n– kombinace matných a lesklých korálků pro jedinečný vzhled\r\n\r\n💎 Styl: přírodní elegance, obvod:  18 cm",
+    "🌊 Náramek „Mořská harmonie“ s želvičkou\n\nElegantní náramek v jemných odstínech modré, tyrkysové a bílé, který připomíná klid moře a letní pohodu. Zdobí ho kombinace matných, prasklých a lesklých korálků doplněných o kovové mezidíly a drobný přívěsek želvičky – symbolu štěstí, ochrany a dlouhověkosti.\r\n\r\n💎 Materiál: skleněné a minerální korálky, kovové komponenty\r\n📏 Obvod: 19,5 cm\r\n🐢 Přívěsek: želvička ve stříbrném odstínu",
+    "❤️ Trojice skřítků v červeném – Láska, radost a štěstí ❤️\n\n❤️ Trojice skřítků v červeném – Láska, radost a štěstí ❤️\r\n\r\nVeselá trojice ručně vyráběných skřítků s červenými klobouky, kteří svým úsměvným vzhledem a květinovou výzdobou vnesou do vašeho domova hřejivou atmosféru.\r\nKaždý skřítek má vlastní osobitý výraz a je doplněn o květinové aranžmá z rudých růží a zelených lístků.\r\n\r\n🌹 Ideální jako:\r\n– dekorace na stůl, poličku či do předsíně\r\n– dárek pro zamilované, k výročí nebo Valentýnu\r\n– veselý doplněk, který rozjasní každý interiér\r\n\r\n✨ Každý skřítek je ručně vyráběný originál – tvořený s láskou a pečlivostí.",
+    "🌹 Elegantní skřítek v růžovo-bílé květinové dekoraci 🌹\n\n🌹 Elegantní skřítek v růžovo-bílé květinové dekoraci 🌹\r\n\r\nRučně vyráběný skřítek v sytě vínovém klobouku, usazený v nádherné květinové aranži z růží, drobných bílých kvítků a zelených lístků.\r\nTato dekorace působí romanticky a elegantně — ideální dárek pro každou příležitost.\r\n\r\n💖 Vhodné jako:\r\n– dárek k narozeninám, svátku nebo jen tak pro radost\r\n– ozdoba do obývacího pokoje, předsíně či kanceláře\r\n– stylový doplněk, který rozzáří každý interiér\r\n\r\n✨ Každý kousek je originál – vyráběný s láskou a pečlivostí do posledního detailu.",
+    "🦋 Nalepovací motýlci – bílá\n\nKrásné samolepky motýlů v různých barvách – bílá, žlutá, oranžová, růžová, fialová, modrá a zelená.\r\nHodí se na zdobení balíčků s náramky, krabiček, kartiček i na kreativní tvoření.\r\n✨ Lesklý povrch, samolepicí provedení 📏 Velikost motýlků cca 25–35 mm 💜 \r\nBalení obsahuje 40 ks Každý balíček dodá vašim výrobkům kousek jemnosti a radosti .",
+    "🦋 Nalepovací motýlci – žlutá\n\nKrásné samolepky motýlů v různých barvách – bílá, žlutá, oranžová, růžová, fialová, modrá a zelená. Hodí se na zdobení balíčků s náramky, krabiček, kartiček i na kreativní tvoření. ✨ Lesklý povrch, samolepicí provedení 📏 Velikost motýlků cca 25–35 mm 💜 Balení obsahuje 40 ks Každý balíček dodá vašim výrobkům kousek jemnosti a radosti .",
+    "🦋 Nalepovací motýlci – fialová\n\nKrásné samolepky motýlů v různých barvách – bílá, žlutá, oranžová, růžová, fialová, modrá a zelená. Hodí se na zdobení balíčků s náramky, krabiček, kartiček i na kreativní tvoření. ✨ Lesklý povrch, samolepicí provedení 📏 Velikost motýlků cca 25–35 mm 💜 Balení obsahuje 40 ks Každý balíček dodá vašim výrobkům kousek jemnosti a radosti .",
+    "🦋 Nalepovací motýlci – růžová\n\nKrásné samolepky motýlů v různých barvách – bílá, žlutá, oranžová, růžová, fialová, modrá a zelená. Hodí se na zdobení balíčků s náramky, krabiček, kartiček i na kreativní tvoření. ✨ Lesklý povrch, samolepicí provedení 📏 Velikost motýlků cca 25–35 mm 💜 Balení obsahuje 40 ks Každý balíček dodá vašim výrobkům kousek jemnosti a radosti .",
+    "🦋 Nalepovací motýlci – zelená\n\nKrásné samolepky motýlů v různých barvách – bílá, žlutá, oranžová, růžová, fialová, modrá a zelená.\r\nHodí se na zdobení balíčků s náramky, krabiček, kartiček i na kreativní tvoření.\r\n\r\n✨ Lesklý povrch, samolepicí provedení\r\n📏 Velikost motýlků cca 25–35 mm\r\n💜 Balení obsahuje 40 ks\r\n\r\n\r\nKaždý balíček dodá vašim výrobkům kousek jemnosti a radosti .",
+    "🦋 Nalepovací motýlci – modrá\n\n🦋 Nalepovací motýlci – barevný balíček 40 kusů\r\n\r\nKrásné samolepky motýlů v různých barvách – bílá, žlutá, oranžová, růžová, fialová, modrá a zelená.\r\nHodí se na zdobení balíčků s náramky, krabiček, kartiček i na kreativní tvoření.\r\n\r\n✨ Lesklý povrch, samolepicí provedení\r\n📏 Velikost motýlků cca 25–35 mm\r\n💜 Balení obsahuje 40 ks\r\n\r\n\r\nKaždý balíček dodá vašim výrobkům kousek jemnosti a radosti .",
+    "✨ Kolekce Elegant Line - modrá 2 ✨\n\nJemné bílé náramky doplněné barevnými korálky a stříbrnými detaily 💎 Každý náramek má svůj jedinečný styl – od romantických růžových tónů až po elegantní černé a hluboké modré. Perfektní doplněk pro každý den i jako dárek. Obvod: 17 cm",
+    "✨ Kolekce Elegant Line - červená 3 ✨\n\nJemné bílé náramky doplněné barevnými korálky a stříbrnými detaily 💎 Každý náramek má svůj jedinečný styl – od romantických růžových tónů až po elegantní černé a hluboké modré. Perfektní doplněk pro každý den i jako dárek. Obvod: 17 cm",
+    "✨ Kolekce Elegant Line - fialová  2✨\n\nJemné bílé náramky doplněné barevnými korálky a stříbrnými detaily 💎 Každý náramek má svůj jedinečný styl – od romantických růžových tónů až po elegantní černé a hluboké modré. Perfektní doplněk pro každý den i jako dárek. Obvod: 17 cm",
+    "✨ Kolekce Elegant Line - světle a tmavě červená ✨\n\nJemné bílé náramky doplněné barevnými korálky a stříbrnými detaily 💎 Každý náramek má svůj jedinečný styl – od romantických růžových tónů až po elegantní černé a hluboké modré. Perfektní doplněk pro každý den i jako dárek. Obvod: 17 cm",
+    "✨ Kolekce Elegant Line - růžovo-šedá ✨\n\nJemné bílé náramky doplněné barevnými korálky a stříbrnými detaily 💎 Každý náramek má svůj jedinečný styl – od romantických růžových tónů až po elegantní černé a hluboké modré. Perfektní doplněk pro každý den i jako dárek. Obvod: 17 cm",
+    "✨ Kolekce Elegant Line -  růžová ✨\n\nJemné bílé náramky doplněné barevnými korálky a stříbrnými detaily 💎 Každý náramek má svůj jedinečný styl – od romantických růžových tónů až po elegantní černé a hluboké modré. Perfektní doplněk pro každý den i jako dárek. Obvod: 17 cm",
+    "✨ Kolekce Elegant Line - růžovo-fialová ✨\n\nJemné bílé náramky doplněné barevnými korálky a stříbrnými detaily 💎\r\nKaždý náramek má svůj jedinečný styl – od romantických růžových tónů až po elegantní černé a hluboké modré.\r\nPerfektní doplněk pro každý den i jako dárek.\r\nObvod:  17 cm",
+    "✨ Kolekce Elegant Line - tyrkysová ✨\n\nJemné bílé náramky doplněné barevnými korálky a stříbrnými detaily 💎\r\nKaždý náramek má svůj jedinečný styl – od romantických růžových tónů až po elegantní černé a hluboké modré.\r\nObvod: 17 cm \r\nPerfektní doplněk pro každý den i jako dárek",
+    "✨ Kolekce Elegant Line - černá ✨\n\nJemné bílé náramky doplněné barevnými korálky a stříbrnými detaily 💎\r\nKaždý náramek má svůj jedinečný styl – od romantických růžových tónů až po elegantní černé a hluboké modré.\r\nObvod:  17 cm \r\nPerfektní doplněk pro každý den i jako dárek",
+    "✨ Kolekce Elegant Line - tmavě růžová ✨\n\nJemné bílé náramky doplněné barevnými korálky a stříbrnými detaily 💎\r\nKaždý náramek má svůj jedinečný styl – od romantických růžových tónů až po elegantní černé a hluboké modré.\r\nPerfektní doplněk pro každý den i jako dárek\r\nObvod: 17 cm",
+    "✨ Kolekce Elegant Line - červená ✨\n\nJemné bílé náramky doplněné barevnými korálky a stříbrnými detaily 💎\r\nKaždý náramek má svůj jedinečný styl – od romantických růžových tónů až po elegantní černé a hluboké modré.\r\nPerfektní doplněk pro každý den i jako dárek\r\nObvod:  17 cm",
+    "✨ Kolekce Elegant Line - modrá ✨\n\nJemné bílé náramky doplněné barevnými korálky a stříbrnými detaily 💎\r\nKaždý náramek má svůj jedinečný styl – od romantických růžových tónů až po elegantní černé a hluboké modré.\r\nPerfektní doplněk pro každý den i jako dárek\r\nObvod: 17 cm",
+    "✨ Kolekce Elegant Line - světle růžová ✨\n\nJemné bílé náramky doplněné barevnými korálky a stříbrnými detaily 💎\r\n\r\nKaždý náramek má svůj jedinečný styl – od romantických růžových tónů až po elegantní černé a hluboké modré.\r\nPerfektní doplněk pro každý den i jako dárek.\r\nObvod: 17 cm",
+    "Klíčenka pro štěstí se čtyřlístkem 🍀\n\nKlíčenka pro štěstí se čtyřlístkem 🍀\r\n\r\nOriginální drobnost, která potěší každého – pro radost nebo jako milý dárek.\r\nDárková kartička, kde můžeš přiložit svůj vzkaz :-)",
+    "✨svíčky Náramková móda ✨\n\n✨ Svíčky Náramková móda ✨\r\n\r\nKrásná svíčka v elegantním matně černém obalu s dřevěným víčkem 🕯️\r\nDokonalý doplněk do vašeho domova – ideální i jako dárek 🎁\r\nRůzné barvy ❤️\r\nOdeslání dle skladu.",
+    "❤️ Elegantní set náramek • náhrdelník • náušnice ❤️\n\nRučně vyráběný set v kombinaci černé, bílé a červené – symbol elegance, síly a ženskosti.\r\n\r\nPerfektní doplněk k večernímu outfitu i jako originální dárek pro někoho blízkého 🎁",
+    "🌸 Elegantní růžovo-černý set 🌸\n\nRučně vyráběný set náhrdelníku, náramku a náušnic v krásné kombinaci růžové, bílé a černé.\r\nJemný, romantický a zároveň výrazný doplněk, který podtrhne každý outfit ✨\r\n💫 Obsahuje:\r\n– Náhrdelník s přívěskem 🐱\r\n– Náramek\r\n– Náušnice na háček",
+    "💜 Elegantní fialovo-bílý set 💜\n\nJemný a ženský set ručně vyráběného náhrdelníku, náramku a náušnic v kouzelné kombinaci fialové, bílé a černé.\r\nLesklé korálky s průsvitným efektem dodávají šperkům nádech tajemna a elegance ✨\r\n💫 Obsahuje:\r\n– Náhrdelník s přívěskem srdíčka 💎\r\n– Náramek\r\n– Náušnice na háček",
+    "🤍❤️ Luxusní bílo-červený set ❤️🤍\n\nElegantní ručně vyráběný set náhrdelníku, náramku a náušnic, který zaujme svou čistotou a jemným kontrastem bílé a vínově červené.\r\nLesklý přívěsek s kamínky dodává celému setu šmrnc a nádech luxusu ✨\r\n\r\n💫 Obsahuje:\r\n– Náhrdelník s třpytivým přívěskem 💎\r\n– Náramek\r\n– Náušnice na háček",
+    "Klíčenka pro kočičí mámu 🐾❤️\n\nKlíčenka pro kočičí mámu 🐾❤️\r\nOriginální drobnost, která potěší každého – pro radost nebo jako milý dárek.",
+    "Dárková kartička 💌\n\n💌 Malé psaníčko pro velká slova od srdce.\r\nMalé přírodní papírové psaníčko, do kterého můžete napsat pár milých slov, přání nebo věnování 🌿\r\nKrásně ladí s náramky z Náramkové módy a dodá dárku osobní kouzlo 🎁\r\nJednoduché, elegantní ♥️",
+    "✨ Ručně dělaný přívěsek do auta s textem : ,, Zpomal lásko ´´ 🤍\n\n✨ Ručně dělaný přívěsek do auta ✨\r\n\r\nOriginální dárek pro někoho, koho máte rádi a kdo tráví čas za volantem 🚗💨 Malá připomínka, že na světě není nic důležitějšího než dojet v klidu a bezpečí 🤍",
+    "✨ Ručně dělaný přívěsek do auta s textem „ Vrať se mi zpátky “ ❤️\n\n✨ Ručně dělaný přívěsek do auta ✨ \r\n\r\n Originální dárek pro někoho, koho máte rádi a kdo tráví čas za volantem 🚗💨 Malá připomínka, že na světě není nic důležitějšího než dojet v klidu a bezpečí 🤍",
+    "✨ Ručně dělaný přívěsek do auta ✨ S textem „Spěchej pomalu “ ❤️\n\n✨ Ručně dělaný přívěsek do auta ✨ S textem „ Spěchej pomalu “ ❤️ Originální dárek pro někoho, koho máte rádi a kdo tráví čas za volantem 🚗💨 Malá připomínka, že na světě není nic důležitějšího než dojet v klidu a bezpečí 🤍",
+    "✨ Ručně dělaný přívěsek do auta - dávej pozor ! ✨\n\n✨ Ručně dělaný přívěsek do auta ✨\r\n\r\nS textem „Dávej pozor “ ❤️\r\n\r\nOriginální dárek pro někoho, koho máte rádi a kdo tráví čas za volantem 🚗💨\r\nMalá připomínka, že na světě není nic důležitějšího než dojet v klidu a bezpečí 🤍",
+    "✨ Ručně dělaný přívěsek do auta s textem: ,, Dávej na sebe pozor ´´ ✨\n\n✨ Ručně dělaný přívěsek do auta ✨\r\n\r\nOriginální dárek pro někoho, koho máte rádi a kdo tráví čas za volantem 🚗💨\r\nMalá připomínka, že na světě není nic důležitějšího než dojet v klidu a bezpečí 🤍",
+    "Ručně dělaný přívěsek do auta se vzkazem: ,, Vrať se mi v pořádku ´´🤍\n\nOriginální dárek pro někoho, koho máte rádi a kdo tráví čas za volantem 🚗💨\r\nMalá připomínka, že na světě není nic důležitějšího než dojet v klidu a bezpečí 🤍",
+    "🤍✨ Andělský náramek s křížkem\n\n🤍✨ Andělský náramek s křížkem – něžná ochrana na každý den\r\nNádherný perličkový náramek v bílo-růžové kombinaci s přívěskem andělíčka a křížku.\r\nSymbolizuje lásku, ochranu a světlo.\r\nIdeální jako dárek k narozeninám, k významné životní události nebo jen tak pro radost.",
+    "Klíčenka na mobil - modrá\n\n🔥 Stylové šňůrky na telefon 🔥 Už žádné padání telefonu na zem! Tyhle pevné a barevné šňůrky jsou nejen praktické, ale i stylový doplněk k vašemu outfitu. 💁‍♀️📱 ✨ Součástí je podložka, kterou jednoduše vložíte do krytu – žádné lepení, žádné poškození mobilu. ✅ Pevné provedení ✅ Karabinka pro snadné připnutí ✅ Hodí se ke každému telefonu ✅ Ideální na festivaly, dovolenou, do práce i na běžné nošení",
+    "Klíčenka na mobil - černá\n\n🔥 Stylové šňůrky na telefon 🔥 Už žádné padání telefonu na zem! Tyhle pevné a barevné šňůrky jsou nejen praktické, ale i stylový doplněk k vašemu outfitu. 💁‍♀️📱 ✨ Součástí je podložka, kterou jednoduše vložíte do krytu – žádné lepení, žádné poškození mobilu. ✅ Pevné provedení ✅ Karabinka pro snadné připnutí ✅ Hodí se ke každému telefonu ✅ Ideální na festivaly, dovolenou, do práce i na běžné nošení",
+    "Klíčenka na mobil - tmavě zelená\n\n🔥 Stylové šňůrky na telefon 🔥 Už žádné padání telefonu na zem! Tyhle pevné a barevné šňůrky jsou nejen praktické, ale i stylový doplněk k vašemu outfitu. 💁‍♀️📱 ✨ Součástí je podložka, kterou jednoduše vložíte do krytu – žádné lepení, žádné poškození mobilu. ✅ Pevné provedení ✅ Karabinka pro snadné připnutí ✅ Hodí se ke každému telefonu ✅ Ideální na festivaly, dovolenou, do práce i na běžné nošení",
+    "Klíčenka na mobil - červená\n\n🔥 Stylové šňůrky na telefon 🔥 Už žádné padání telefonu na zem! Tyhle pevné a barevné šňůrky jsou nejen praktické, ale i stylový doplněk k vašemu outfitu. 💁‍♀️📱 ✨ Součástí je podložka, kterou jednoduše vložíte do krytu – žádné lepení, žádné poškození mobilu. ✅ Pevné provedení ✅ Karabinka pro snadné připnutí ✅ Hodí se ke každému telefonu ✅ Ideální na festivaly, dovolenou, do práce i na běžné nošení",
+    "Klíčenka na mobil - tyrkysová\n\n🔥 Stylové šňůrky na telefon 🔥 Už žádné padání telefonu na zem! Tyhle pevné a barevné šňůrky jsou nejen praktické, ale i stylový doplněk k vašemu outfitu. 💁‍♀️📱 ✨ Součástí je podložka, kterou jednoduše vložíte do krytu – žádné lepení, žádné poškození mobilu. ✅ Pevné provedení ✅ Karabinka pro snadné připnutí ✅ Hodí se ke každému telefonu ✅ Ideální na festivaly, dovolenou, do práce i na běžné nošení",
+    "Klíčenka na mobil - oranžová\n\n🔥 Stylové šňůrky na telefon 🔥 Už žádné padání telefonu na zem! Tyhle pevné a barevné šňůrky jsou nejen praktické, ale i stylový doplněk k vašemu outfitu. 💁‍♀️📱 ✨ Součástí je podložka, kterou jednoduše vložíte do krytu – žádné lepení, žádné poškození mobilu. ✅ Pevné provedení ✅ Karabinka pro snadné připnutí ✅ Hodí se ke každému telefonu ✅ Ideální na festivaly, dovolenou, do práce i na běžné nošení",
+    "Klíčenka na mobil - růžová\n\n🔥 Stylové šňůrky na telefon 🔥 Už žádné padání telefonu na zem! Tyhle pevné a barevné šňůrky jsou nejen praktické, ale i stylový doplněk k vašemu outfitu. 💁‍♀️📱 ✨ Součástí je podložka, kterou jednoduše vložíte do krytu – žádné lepení, žádné poškození mobilu. ✅ Pevné provedení ✅ Karabinka pro snadné připnutí ✅ Hodí se ke každému telefonu ✅ Ideální na festivaly, dovolenou, do práce i na běžné nošení.\r\n Cena za 1 ks.",
+    "Klíčenka na mobil - fialová\n\n🔥 Stylové šňůrky na telefon 🔥\r\nUž žádné padání telefonu na zem! Tyhle pevné a barevné šňůrky jsou nejen praktické, ale i stylový doplněk k vašemu outfitu. 💁‍♀️📱\r\n\r\n✨ Součástí je podložka, kterou jednoduše vložíte do krytu – žádné lepení, žádné poškození mobilu.\r\n\r\n✅ Pevné provedení\r\n✅ Karabinka pro snadné připnutí\r\n✅ Hodí se ke každému telefonu\r\n✅ Ideální na festivaly, dovolenou, do práce i na běžné nošení",
+    "Klíčenka na mobil- žlutá\n\n🔥 Stylové šňůrky na telefon 🔥\r\nUž žádné padání telefonu na zem! Tyhle pevné a barevné šňůrky jsou nejen praktické, ale i stylový doplněk k vašemu outfitu. 💁‍♀️📱\r\n\r\n✨ Součástí je podložka, kterou jednoduše vložíte do krytu – žádné lepení, žádné poškození mobilu.\r\n\r\n✅ Pevné provedení\r\n✅ Karabinka pro snadné připnutí\r\n✅ Hodí se ke každému telefonu\r\n✅ Ideální na festivaly, dovolenou, do práce i na běžné nošení",
+    "Klíčenka na mobil světle zelená\n\n🔥Stylové šňůrky na telefon 🔥\r\nUž žádné padání telefonu na zem! Tyhle pevné a barevné šňůrky jsou nejen praktické, ale i stylový doplněk k vašemu outfitu. 💁‍♀️📱\r\n\r\n✨ Součástí je podložka, kterou jednoduše vložíte do krytu – žádné lepení, žádné poškození mobilu.\r\n\r\n✅ Pevné provedení\r\n✅ Karabinka pro snadné připnutí\r\n✅ Hodí se ke každému telefonu\r\n✅ Ideální na festivaly, dovolenou, do práce i na běžné nošení",
+    "Náramek fialový sen 💜🖤\n\nElegantní korálkový náramek v kombinaci fialových, perleťových a opálových korálků doplněný jemným přívěskem. Ideální jako stylový doplněk k jakémukoliv outfitu – rozjasní váš den a dodá šmrnc  :-)\r\n\r\nObvod: 17 cm",
+    "Náramek Slovácko 💙⚽\n\n⚽💙 Náramky Slovácko – modro-bílé srdce 💙⚽\r\n\r\nJsi fanoušek fotbalu a máš Slovácko v srdci? 💙🤍\r\nPořiď si originální korálkový náramek s nápisem SLOVÁCKO v klubových barvách.\r\nPerfektní doplněk na zápasy, do školy, práce i jen tak pro radost.\r\n\r\nObvod: 17,18,19, 20 - \r\nStačí napsat do poznámky velikost.",
+    "Korálkový náramek – růžová romantika 🌸💗\n\nJemný náramek v odstínech růžové, bílé a světle modré s krystalovými detaily. Elegantní doplněk, který zvýrazní ženskost a dodá tvému outfitu něžný šmrnc. Každý kus je ručně vyráběný originál.\r\n\r\n\r\nO: 16 CM",
+    "Korálkový náramek – modrá elegance💙\n\nRučně vyráběný náramek v tónech modré od světle blankytné až po tmavě safírovou. Díky průhledným krystalovým korálkům působí lehce a vzdušně, přitom zůstává elegantní a výrazný. Ideální doplněk pro milovníky klidu, harmonie a stylu.\r\n\r\nO: 17 CM",
+    "Korálkový náramek – růžovo-fialová něžnost 🌸\n\nRučně vyráběný náramek v jemných odstínech růžové, bílé a fialové. Elegantní doplněk, který dodá šmrnc každodennímu outfitu a zároveň působí romanticky a svěže.\r\n\r\nKovové mezi díly náramku dodávají decentní lesk.\r\n\r\nO: 17 CM",
+    "Korálkový náramek – odstíny růžové a červené\n\nRučně vyráběný náramek plný energie a ženské jemnosti. Kombinace červených, růžových a fialových korálků doplněná kovovými mezidíly působí elegantně i výrazně zároveň. Skvělý jako doplněk k běžnému outfitu, ale i jako originální dárek pro radost.\r\nO: 17 CM",
+    "Elegantní korálkový náramek – zeleno-bílá harmonie :-)\n\nOriginální ručně vyráběný náramek z kvalitních korálků v odstínech zelené, bílé a průzračně krystalové. Doplňují jej kovové mezidíly pro ještě výraznější vzhled. Tento náramek skvěle podtrhne tvůj styl a hodí se jak pro každodenní nošení, tak jako doplněk ke speciálním příležitostem.\r\n\r\nO: 17CM",
+    "Partnerské náramky „Navždy spolu“\n\nSet dvou náramků v černobílé kombinaci s přívěskem yin-yang, symbolem rovnováhy a spojení. Skvělý dárek pro zamilované páry i nejlepší přátele. Navlečeno na dvojité elastické šňůrce pro lepší pevnost.\r\n\r\nOBVOD černého náramku: 19 CM\r\nOBVOD bílého náramku:  17 CM",
+    "Černozelený náramek „Síla přírody“\n\nMatné černé, zelené a šedé korálky vyniknou svou kontrastní kombinací. Univerzální náramek vhodný pro ženy i muže. Navlečeno na dvojité elastické šňůrce pro lepší pevnost.\r\nO: 17 CM",
+    "Modrý náramek „Noční obloha“\n\nElegantní kombinace tmavě modrých, světle modrých a praskaných korálků připomíná noční oblohu. Ideální doplněk k elegantnímu i volnočasovému stylu. Navlečeno na dvojité elastické šňůrce pro lepší pevnost.\r\n\r\nO: 16 cm",
+    "Zelenošedý náramek „Jemná harmonie“\n\nNáramek v jemných tónech šedé, zelené a bílé působí klidně a harmonicky. Skvělý doplněk pro milovníky přírodních barev. Navlečeno na dvojité elastické šňůrce pro lepší pevnost.\r\n\r\nO: 17 CM",
+    "Černo růžový náramek „Romantická elegance“\n\nSpojení černých matných a růžových mramorovaných korálků v moderním designu. Výrazný a romantický šperk pro každou příležitost. Navlečeno na dvojité elastické šňůrce pro lepší pevnost.\r\n\r\nO: 17 CM",
+    "Modrý náramek „Mořská energie“\n\nNáramek z modrých a praskaných korálků připomíná barvy oceánu. Dodá svěžest a lehkost každému outfitu.\r\nNavlečeno na dvojité elastické šňůrce pro lepší pevnost.\r\n\r\nO: 16,5 CM",
+    "Klíčenka se jménem Radim :-)\n\nRADIM – šedobílá kombinace, elegantní a decentní, hodí se pro muže i kluky.",
+    "Klíčenka se jménem Mirka :-)\n\nMIRKA – růžovo-fialová klíčenka, veselá a hravá, ideální jako milý dárek pro kamarádku.",
+    "Klíčenka se jménem Rob :-)\n\nROB – šedo-hnědá kombinace, neutrální a elegantní.",
+    "Klíčenka se jménem Pavel :-)\n\nPAVEL – béžovo-hnědá, přírodní a klidná kombinace.",
+    "Klíčenka se jménem Milan :-)\n\nMILAN – hnědo-béžová klíčenka, jednoduchá a decentní.",
+    "Klíčenka se jménem Pepa :-)\n\nPEPA – hnědo-šedá, přírodní a jednoduchá kombinace.",
+    "Klíčenka se jménem Ruda :-)\n\nRUDA – šedá klíčenka, elegantní a neutrální.",
+    "Klíčenka se jménem Tomáš :-)\n\nTOMÁŠ – mátově zelená s béžovou, decentní a univerzální.",
+    "Klíčenka se jménem Vojta :)\n\nVOJTA – zelené tóny, přírodní a svěží vzhled.",
+    "Klíčenka se jménem Marek :-)\n\nMAREK – kombinace tmavě modré a světle modré, velmi mužná.",
+    "Klíčenka se jménem David :-)\n\nDAVID – modro-bílá klíčenka, elegantní a chlapecká.",
+    "Klíčenka se jménem Aleš :-)\n\nALEŠ – zeleno-mátová kombinace, osvěžující a moderní.",
+    "Klíčenka se jménem Ivo :-)\n\nIVO (mátová) – jemně zelená, decentní a elegantní.",
+    "Klíčenka se jménem Jan č. 2 :-)\n\nJAN – modrá, jednoduchá a čistá kombinace, hodící se pro kluky",
+    "Klíčenka se jménem Jan :)\n\nJAN – modrá, jednoduchá a čistá kombinace, hodící se pro kluky",
+    "Klíčenka se jménem Evča :-)\n\nEVČA (fialovo-růžová) – výrazná a hravá, skvělá pro odvážné duše.",
+    "Klíčenka pro mámu :-)\n\nMÁMA – elegantní šedobílá klíčenka, krásný dárek z lásky.",
+    "Náramek se jménem Eva :-)\n\nEVA (růžová) – jemná a romantická, laděná do růžových tónů.",
+    "Klíčenka se jménem Petr :-)\n\nPETR – tmavě modrá s bílými písmeny, elegantní a mužná.",
+    "Klíčenka se jménem Filip :-)\n\nFILIP – černo-zelená klíčenka, výrazná a stylová.",
+    "Klíčenka se jménem Ondra :-)\n\nONDRA – zeleno-šedá kombinace, univerzální a moderní.",
+    "Klíčenka se jménem Jana :-)\n\nJANA – zářivě žlutá, veselý doplněk, který rozzáří každý den.",
+    "Klíčenka se jménem Ivana :-)\n\nIVANA – jemná žlutá s krémovou, působí něžně a vřele.",
+    "Klíčenka se jménem Helena :-)\n\nHELENA – sluníčkově žlutá, optimistická a hravá.",
+    "Klíčenka se jménem Marie :-)\n\nMARIE – červeno-bílá klíčenka, výrazná a veselá, ideální pro energické duše.",
+    "Klíčenka se jménem Jara :-)\n\nJARA – přírodní béžovo-zelená kombinace, jednoduchá a elegantní.",
+    "Klíčenka se jménem Niki :-)\n\nNIKI – tyrkysová s pastelově zelenou, moderní a veselý doplněk, který se hodí ke každému stylu.",
+    "Klíčenka Love :-)\n\nLOVE – výrazně růžová klíčenka se symbolem lásky, krásný dárek pro zamilované",
+    "Klíčenka se jménem Anna- růžová :-)\n\nANNA – žluto-oranžová kombinace, sluníčkový doplněk, který rozzáří každý den.",
+    "Klíčenka se jménem Anna- žlutá :-)\n\nANNA – žluto-oranžová kombinace, sluníčkový doplněk, který rozzáří každý den.",
+    "Klíčenka se jménem Ivča :-)\n\nIVČA – zelená se světlými tóny, veselá a svěží klíčenka, která potěší svou hravostí.",
+    "Klíčenka se jménem Táta č.2 :-)\n\nTÁTA – dvě varianty v modrých tónech, originální drobnost, kterou ocení každý tatínek.",
+    "Klíčenka se jménem Táta :-)\n\nTÁTA – dvě varianty v modrých tónech, originální drobnost, kterou ocení každý tatínek.",
+    "Klíčenka se jménem Tom :-)\n\nTOM – modro-bílá klasika, jednoduchá a elegantní, pro sportovně laděné kluky.",
+    "Klíčenka se jménem Ivoš :-)\n\nIVOŠ – zeleno-mátová kombinace, svěží a hravá, skvělý doplněk pro pány i chlapce.",
+    "Klíčenka se jménem Bára :-)\n\nBÁRA – klíčenka v romantických tónech růžové a bílé, ideální jako jemný dárek pro každou slečnu.",
+    "Náramek s kočičí ozdobou a růžovým korálkem :-)\n\nNáramek s kočičí ozdobou a růžovým korálkem :-) \r\n\r\n\r\nElegantní náramek z matných černých korálků na pružné gumičce. Střed zdobí kovová ozdoba s kočičími oušky a jemným růžovým korálkem, který krásně kontrastuje s černým základem. Ideální doplněk pro všechny milovnice koček a originálních šperků.\r\n\r\nMateriál: matné černé korálky, kovová ozdoba s růžovým korálkem\r\n\r\nVelikost: 17 CM (na gumičce)\r\n\r\nRuční výroba",
+    "Náramek s kočičí ozdobou a černým korálkem :-)\n\nNáramek s kočičí ozdobou a černým korálkem :-) \r\n\r\n\r\nStylový náramek z bílých praskaných korálků s jemným šedým žilkováním na pružné gumičce. Střed zdobí kovová ozdoba s kočičími oušky a kontrastním černým korálkem, který dodává celému šperku elegantní a výrazný vzhled. Krásný doplněk pro ty, kdo hledají originalitu a milují kočky.\r\n\r\nMateriál: bílé praskané korálky se vzorem, kovová ozdoba s černým korálkem\r\n\r\nVelikost: 17 CM (na gumičce)\r\n\r\nRuční výroba",
+    "Náramek s kočičí ozdobou a světle růžovým korálkem :-)\n\nNáramek s kočičí ozdobou a světle růžovým korálkem :-) \r\n\r\n\r\nOriginální náramek z černých korálků s mramorovaným vzorem na pružné gumičce. Dominantou je kovová ozdoba s kočičími oušky a jemným světle růžovým korálkem, který působí něžně a dodává šperku romantický nádech. Skvělý pro milovnice koček i elegantních doplňků.\r\n\r\nMateriál: černé korálky s mramorovým vzorem, kovová ozdoba se světle růžovým korálkem\r\n\r\nVelikost: 17 CM (na gumičce)\r\n\r\nRuční výroba",
+    "Náramek s kočičí ozdobou a růžovým korálkem 2 :-)\n\nNáramek s kočičí ozdobou a růžovým korálkem :-) \r\n\r\n\r\nRomantický náramek z bílých korálků na pružné gumičce, který působí něžně a elegantně. Střed zdobí kovová ozdoba s kočičími oušky a růžovým korálkem s jemným přechodem do světlých tónů. Ideální doplněk pro milovnice koček i jako dárek pro radost.\r\n\r\nMateriál: bílé korálky, kovová ozdoba s růžovým korálkem\r\n\r\nVelikost: 17 CM (na gumičce)",
+    "Náramek s kočičí ozdobou a fialovo-růžovým korálkem :-)\n\nNáramek s kočičí ozdobou a fialovo-růžovým korálkem :-)\r\n\r\nElegantní náramek z bílých korálků na pružné gumičce. Zdobí jej kovová ozdoba s kočičími oušky a výrazným korálkem v odstínech fialové a růžové s jemným přechodem barev. Náramek působí jemně, ale přitom originálně a je skvělým doplňkem pro každodenní nošení i jako dárek.\r\n\r\nMateriál: bílé korálky, kovová ozdoba s barevným korálkem (fialovo-růžový efekt)\r\n\r\nVelikost: 17 CM na gumičce natahovací \r\n\r\nRuční výroba",
+    "Náramek s kočičí ozdobou a žlutým korálkem :-)\n\nNáramek s kočičí ozdobou a žlutým korálkem :-) \r\nUnikátní náramek z matných šedo-černých korálků na pružné gumičce. Dominantou je kovová ozdoba s kočičími oušky a zářivým žlutým korálkem s popraskaným efektem, který působí jako malý sluneční paprsek. Náramek skvěle rozzáří každý outfit a potěší každého milovníka koček.\r\n\r\nMateriál: matné šedo-černé korálky, kovová ozdoba se žlutým korálkem\r\n\r\nVelikost: 18 CM na dvojité gumičce- natahovací\r\n\r\nRuční výroba",
+    "Náramek s kočičí ozdobou a zeleným korálkem :-)\n\nElegantní náramek z bílých korálků na pružné gumičce, který působí jemně a čistě. Střed zdobí kovová ozdoba s kočičími oušky a zeleným korálkem s popraskaným efektem. Krásný kontrast bílého a zeleného dělá z náramku nepřehlédnutelný doplněk.\r\n\r\nMateriál: bílé korálky, kovová ozdoba se zeleným korálkem\r\n\r\nVelikost: 17 CM na dvojité gumičce - natahovací\r\n\r\nRuční výroba",
+    "Náramek s kočičí ozdobou a fialovým korálkem :-)\n\nNáramek s kočičí ozdobou a fialovým korálkem:-) \r\n\r\nStylový náramek z černých lávových korálků na pružné gumičce. Výrazným prvkem je kovová ozdoba s kočičími oušky a fialovým korálkem s jemným popraskaným efektem, který náramku dodává kouzelný vzhled. Skvěle se hodí pro milovníky koček i originálních doplňků.\r\n\r\nMateriál: černé lávové korálky, kovová ozdoba s fialovým korálkem\r\n\r\nVelikost: 17,5 CM (na gumičce) - natahovací\r\n\r\nRuční výroba",
+    "Náramek s kočičí ozdobou a tyrkysovým korálkem :-)\n\nNáramek s kočičí ozdobou a tyrkysovým korálkem :-) \r\n\r\nMinimalistický a přitom originální náramek z matných černých korálků na pružné gumičce. Střed zdobí kovová ozdoba s kočičími oušky a tyrkysovým korálkem, který působí jemně a elegantně. Skvělý doplněk pro všechny, kdo mají rádi jednoduchý, ale nápaditý styl.\r\n\r\nMateriál: matné černé korálky, kovová ozdoba s tyrkysovým korálkem\r\n\r\nVelikost: 17 CM - na dvojité gumičce- natahovací \r\nRuční výroba",
+    "Náramek s kočičí ozdobou a růžovým korálkem :-)\n\nNáramek s kočičí ozdobou a růžovým korálkem :-) \r\nElegantní náramek na gumičce z lesklých černých a šedých korálků s jemným odleskem. Hlavním prvkem je kovová ozdoba s kočičími oušky a výrazným růžovým korálkem, který náramku dodává hravý a originální vzhled. Ideální jako dárek pro milovnice koček i pro ty, kdo rádi nosí jedinečné šperky.\r\n\r\nMateriál: korálky (černé a šedé se vzorem), kovová ozdoba\r\n\r\nVelikost: 17 CM na dvojité gumičce - natahovací\r\nRuční výroba",
+    "Náramek s kočičím okem :-)\n\nNáramek s kočičí ozdobou a neonově zelenými korálky :-)\r\n\r\nOriginální korálkový náramek na gumičce v kombinaci matných černých a zářivě zelených korálků. Dominantou je kovová ozdoba ve tvaru kočičích oušek s výrazným zeleným korálkem uprostřed. Skvělý doplněk pro milovníky koček i všechny, kdo hledají stylový a nevšední šperk.\r\n\r\nMateriál: korálky (černé matné, zelené akrylátové), kovová ozdoba\r\n\r\nVelikost: 19 CM na gumičce dvojité- natahovací\r\nRuční výroba",
+    "👶🍼 Provázek na dudlík nebo kousátko se jménem dítěte :-)\n\n👶🍼 Provázky na dudlíky se jménem..\r\n\r\nOriginální a praktické provázky na dudlíky vyrobené z korálků v různých barvách. Každý kousek je jedinečný – vyrábí se na přání zákazníka podle jména a barevné kombinace.\r\n\r\n👉 Stačí v poznámce k objednávce napsat:\r\n\r\njméno dítěte\r\n\r\nvaši představu o barvách\r\n\r\nMy už se postaráme o zbytek a vyrobíme provázek přesně podle vašeho přání.\r\n\r\n✔️ Ruční výroba s láskou\r\n✔️ Praktický a bezpečný pomocník\r\n✔️ Krásný dárek pro miminko\r\n✔️ Korálky ze silikonu !",
+    "Náramek č.2 ♏ Štír (24. 10. – 22. 11.)\n\n♏ Štír – vášnivý a silný, má hluboké emoce a silnou intuici.\r\n\r\n\r\nO: 17 CM",
+    "Náramek ♏ Štír (24. 10. – 22. 11.)\n\n♏ Štír – vášnivý a silný, má hluboké emoce a silnou intuici.\r\n\r\nO: 17,5 CM",
+    "Náramek ♎ Váhy (23. 9. – 23. 10.)\n\n♎ Váhy – vyrovnané a laskavé, hledají harmonii a krásu v životě.\r\n\r\n\r\nO: 17,5 CM",
+    "Náramek ♓ Ryby (21. 2. – 20. 3.)\n\n♓ Ryby – empatické a snivé, vnášejí do života jemnost a fantazii.",
+    "Náramek č.2 ♐ Střelec (23. 11. – 21. 12.)\n\n♐ Střelec – optimistický a svobodomyslný, miluje cestování a dobrodružství.\r\n\r\nO: 17 CM",
+    "Náramek ♐ Střelec (23. 11. – 21. 12.)\n\n♐ Střelec – optimistický a svobodomyslný, miluje cestování a dobrodružství.\r\n\r\nO: 17,5 CM",
+    "Náramek č.2 ♉ Býk (21. 4. – 21. 5.)\n\n♉ Býk – spolehlivý a trpělivý, miluje pohodlí, krásu a harmonii.\r\n\r\n\r\nO: 18 CM",
+    "Náramek ♉ Býk (21. 4. – 21. 5.)\n\n♉ Býk – spolehlivý a trpělivý, miluje pohodlí, krásu a harmonii.\r\n\r\nO: 17,5 CM",
+    "Náramek č.2 ♈ Beran (21. 3. – 20. 4.)\n\n♈ Beran – odvážný a energický, vždy připravený jít vpřed a bojovat za své sny.\r\n\r\nO: 18 CM",
+    "Náramek ♈ Beran (21. 3. – 20. 4.)\n\n♈ Beran – odvážný a energický, vždy připravený jít vpřed a bojovat za své sny.\r\n\r\nO: 18 CM",
+    "Náramek č. 2♋ Rak (22. 6. – 22. 7.)\n\n♋ Rak – citlivý a laskavý, chrání rodinu a miluje klidné zázemí.\r\n\r\nO: 17 CM",
+    "Náramek ♋ Rak (22. 6. – 22. 7.)\n\n♋ Rak – citlivý a laskavý, chrání rodinu a miluje klidné zázemí.\r\n\r\nO: 17,5 CM",
+    "Náramek č.2  ♌ Lev (23. 7. – 22. 8.)\n\n♌ Lev – sebevědomý a charismatický, září a přináší radost druhým.\r\n\r\nO: 18 CM",
+    "Náramek ♌ Lev (23. 7. – 22. 8.)\n\n♌ Lev – sebevědomý a charismatický, září a přináší radost druhým.\r\n\r\nO: 17,5 CM",
+    "Náramek ♍ Panna (23. 8. – 22. 9.)\n\n♍ Panna – pečlivá a praktická, má smysl pro detail a pořádek.\r\n\r\nO: 17 CM",
+    "Náramek č.2 ♒ Vodnář (21. 1. – 20. 2.)\n\n♒ Vodnář – originální a nezávislý, vždy hledá nové cesty a inspiraci.\r\n\r\nO: 18 cm",
+    "Náramek ♒ Vodnář (21. 1. – 20. 2.)\n\n♒ Vodnář – originální a nezávislý, vždy hledá nové cesty a inspiraci.\r\n\r\nO: 17 CM",
+    "Náramek č.3 ♑ Kozoroh (22. 12. – 20. 1.)\n\n♑ Kozoroh – cílevědomý a pracovitý, postupuje krok za krokem ke svým cílům.\r\n\r\nO: 17 CM",
+    "Náramek č.2 ♑ Kozoroh (22. 12. – 20. 1.)\n\n♑ Kozoroh – cílevědomý a pracovitý, postupuje krok za krokem ke svým cílům.\r\n\r\nO: 17,5 CM",
+    "Náramek ♑ Kozoroh (22. 12. – 20. 1.)\n\n♑ Kozoroh – cílevědomý a pracovitý, postupuje krok za krokem ke svým cílům.\r\n\r\nO: 17,5 CM",
+    "Náramek ♑ Kozoroh (22. 12. – 20. 1.)\n\n♑ Kozoroh – cílevědomý a pracovitý, postupuje krok za krokem ke svým cílům.",
+    "Náramek č.2 ♊ Blíženci (22. 5. – 21. 6.)\n\n♊ Blíženci – komunikativní a hraví, plní zvědavosti a nových nápadů.\r\n\r\nO: 17,5 CM",
+    "Náramek ♊ Blíženci (22. 5. – 21. 6.)\n\n♊ Blíženci – komunikativní a hraví, plní zvědavosti a nových nápadů.\r\n\r\nO: 17,5 CM",
+    "Klíčenka „Veselé Vánoce“\n\nKlíčenka „Veselé Vánoce“\r\n\r\nOriginální klíčenka s přívěskem strom života a andělem.\r\nSoučástí je kartička s vánočním přáním:\r\n„Ať je váš domov plný lásky, klidu a pohody. Drobnosti tvořené srdcem potěší nejvíc.“\r\n\r\n🎁 Ideální jako drobný vánoční dárek pro vaše blízké.\r\n🔑 Stylový doplněk na klíče, kabelku nebo batoh.",
+    "Přívěsek do auta – černo-růžové korálky s andělem\n\nJemná růžová v kontrastu s černými korálky vytváří romantický doplněk s andělem pro ochranu na cestách.",
+    "Přívěsek do auta – černo-červené korálky s andělem\n\nVýrazná kombinace černých a červených korálků s křížky, doplněná ochranným andělem. Dodá vašemu autu energii a sílu.",
+    "Přívěsek do auta – černo-bílé korálky s andělem\n\nStylová černobílá varianta s kontrastními křížky a kovovým andělem. Elegantní ochranný amulet pro každého řidiče.",
+    "Přívěsek do auta – bílo-modré korálky s andělem\n\nSvěží kombinace bílých a tyrkysově modrých korálků s křížky. Kovový anděl dodává šperkům symboliku ochrany a bezpečí na cestách.",
+    "Přívěsek do auta – černo - bílé korálky s andělem\n\nElegantní kombinace bílých a černých korálků s křížky, zakončená ochranným andělem. Jemný a stylový doplněk interiéru vašeho auta.",
+    "Přívěsek do auta modrý\n\nPřívěsek do auta – modré korálky s andělem\r\n\r\n\r\nOriginální ručně vyráběný přívěsek do auta z modrých korálků, doplněný černými křížky a ochranným andělem. Symbolizuje klid, ochranu a bezpečnou cestu. Díky výrazné modré barvě se stane nejen krásným doplňkem interiéru, ale také osobním talismanem.\r\n\r\nRuční výroba :-)",
+    "Přívěsek andílka pro štěstí 🍀\n\nAndílek přívěsek – náhodný výběr barvy.\r\n\r\nRučně vyráběný andílek, který může zdobit vaše klíče, kabelku nebo batoh.\r\nKaždý andílek je originál, tvořený kombinací kovových komponentů a barevných korálků. Skvělý jako malý dárek pro radost, ochranu i štěstí.\r\n\r\nDárkově balené s kartičkou.\r\n\r\n➡️ Andílka zasíláme v náhodném barevném provedení"
+  ],
+  "uris": null,
+  "included": [
+    "documents",
+    "metadatas"
+  ],
+  "data": null,
+  "metadatas": [
+    {
+      "product_type": "bracelet"
+    },
+    {
+      "product_type": "bracelet"
+    },
+    {
+      "product_type": "candle"
+    },
+    {
+      "product_type": "necklace"
+    },
+    {
+      "product_type": "earrings"
+    },
+    {
+      "product_type": "decor"
+    },
+    {
+      "product_type": "other"
+    },
+    {
+      "product_id": 324,
+      "source": "product"
+    },
+    {
+      "product_id": 323,
+      "source": "product"
+    },
+    {
+      "product_id": 322,
+      "source": "product"
+    },
+    {
+      "product_id": 320,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 319
+    },
+    {
+      "product_id": 314,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 313
+    },
+    {
+      "source": "product",
+      "product_id": 312
+    },
+    {
+      "product_id": 311,
+      "source": "product"
+    },
+    {
+      "product_id": 310,
+      "source": "product"
+    },
+    {
+      "product_id": 309,
+      "source": "product"
+    },
+    {
+      "product_id": 308,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 307
+    },
+    {
+      "source": "product",
+      "product_id": 306
+    },
+    {
+      "source": "product",
+      "product_id": 305
+    },
+    {
+      "product_id": 304,
+      "source": "product"
+    },
+    {
+      "product_id": 303,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 302
+    },
+    {
+      "source": "product",
+      "product_id": 301
+    },
+    {
+      "source": "product",
+      "product_id": 300
+    },
+    {
+      "source": "product",
+      "product_id": 299
+    },
+    {
+      "product_id": 298,
+      "source": "product"
+    },
+    {
+      "product_id": 297,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 296
+    },
+    {
+      "source": "product",
+      "product_id": 295
+    },
+    {
+      "source": "product",
+      "product_id": 294
+    },
+    {
+      "product_id": 293,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 292
+    },
+    {
+      "source": "product",
+      "product_id": 291
+    },
+    {
+      "source": "product",
+      "product_id": 290
+    },
+    {
+      "product_id": 289,
+      "source": "product"
+    },
+    {
+      "product_id": 288,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 287
+    },
+    {
+      "product_id": 286,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 285
+    },
+    {
+      "product_id": 284,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 283
+    },
+    {
+      "source": "product",
+      "product_id": 282
+    },
+    {
+      "source": "product",
+      "product_id": 281
+    },
+    {
+      "source": "product",
+      "product_id": 280
+    },
+    {
+      "product_id": 279,
+      "source": "product"
+    },
+    {
+      "product_id": 278,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 277
+    },
+    {
+      "source": "product",
+      "product_id": 276
+    },
+    {
+      "source": "product",
+      "product_id": 275
+    },
+    {
+      "product_id": 274,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 273
+    },
+    {
+      "product_id": 272,
+      "source": "product"
+    },
+    {
+      "product_id": 270,
+      "source": "product"
+    },
+    {
+      "product_id": 269,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 268
+    },
+    {
+      "product_id": 267,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 266
+    },
+    {
+      "source": "product",
+      "product_id": 265
+    },
+    {
+      "source": "product",
+      "product_id": 264
+    },
+    {
+      "product_id": 263,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 262
+    },
+    {
+      "product_id": 261,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 260
+    },
+    {
+      "product_id": 259,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 258
+    },
+    {
+      "source": "product",
+      "product_id": 257
+    },
+    {
+      "source": "product",
+      "product_id": 256
+    },
+    {
+      "product_id": 255,
+      "source": "product"
+    },
+    {
+      "product_id": 254,
+      "source": "product"
+    },
+    {
+      "product_id": 253,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 251
+    },
+    {
+      "product_id": 250,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 249
+    },
+    {
+      "source": "product",
+      "product_id": 248
+    },
+    {
+      "product_id": 247,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 246
+    },
+    {
+      "source": "product",
+      "product_id": 245
+    },
+    {
+      "source": "product",
+      "product_id": 244
+    },
+    {
+      "product_id": 243,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 242
+    },
+    {
+      "source": "product",
+      "product_id": 241
+    },
+    {
+      "source": "product",
+      "product_id": 240
+    },
+    {
+      "product_id": 239,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 238
+    },
+    {
+      "product_id": 237,
+      "source": "product"
+    },
+    {
+      "product_id": 235,
+      "source": "product"
+    },
+    {
+      "product_id": 234,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 233
+    },
+    {
+      "product_id": 232,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 231
+    },
+    {
+      "source": "product",
+      "product_id": 230
+    },
+    {
+      "product_id": 229,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 228
+    },
+    {
+      "product_id": 227,
+      "source": "product"
+    },
+    {
+      "product_id": 226,
+      "source": "product"
+    },
+    {
+      "product_id": 225,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 224
+    },
+    {
+      "product_id": 223,
+      "source": "product"
+    },
+    {
+      "product_id": 222,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 221
+    },
+    {
+      "product_id": 220,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 219
+    },
+    {
+      "product_id": 218,
+      "source": "product"
+    },
+    {
+      "product_id": 217,
+      "source": "product"
+    },
+    {
+      "product_id": 216,
+      "source": "product"
+    },
+    {
+      "product_id": 215,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 214
+    },
+    {
+      "source": "product",
+      "product_id": 213
+    },
+    {
+      "source": "product",
+      "product_id": 212
+    },
+    {
+      "product_id": 211,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 210
+    },
+    {
+      "source": "product",
+      "product_id": 209
+    },
+    {
+      "source": "product",
+      "product_id": 208
+    },
+    {
+      "product_id": 207,
+      "source": "product"
+    },
+    {
+      "product_id": 206,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 205
+    },
+    {
+      "product_id": 204,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 203
+    },
+    {
+      "product_id": 202,
+      "source": "product"
+    },
+    {
+      "product_id": 201,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 200
+    },
+    {
+      "source": "product",
+      "product_id": 199
+    },
+    {
+      "product_id": 198,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 197
+    },
+    {
+      "source": "product",
+      "product_id": 196
+    },
+    {
+      "product_id": 195,
+      "source": "product"
+    },
+    {
+      "product_id": 194,
+      "source": "product"
+    },
+    {
+      "product_id": 193,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 192
+    },
+    {
+      "source": "product",
+      "product_id": 191
+    },
+    {
+      "product_id": 190,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 189
+    },
+    {
+      "product_id": 188,
+      "source": "product"
+    },
+    {
+      "product_id": 187,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 186
+    },
+    {
+      "product_id": 185,
+      "source": "product"
+    },
+    {
+      "product_id": 184,
+      "source": "product"
+    },
+    {
+      "product_id": 183,
+      "source": "product"
+    },
+    {
+      "product_id": 182,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 181
+    },
+    {
+      "source": "product",
+      "product_id": 179
+    },
+    {
+      "product_id": 178,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 177
+    },
+    {
+      "product_id": 176,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 175
+    },
+    {
+      "product_id": 174,
+      "source": "product"
+    },
+    {
+      "product_id": 173,
+      "source": "product"
+    },
+    {
+      "product_id": 172,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 171
+    },
+    {
+      "source": "product",
+      "product_id": 170
+    },
+    {
+      "source": "product",
+      "product_id": 168
+    },
+    {
+      "source": "product",
+      "product_id": 167
+    },
+    {
+      "source": "product",
+      "product_id": 166
+    },
+    {
+      "source": "product",
+      "product_id": 165
+    },
+    {
+      "source": "product",
+      "product_id": 164
+    },
+    {
+      "source": "product",
+      "product_id": 163
+    },
+    {
+      "product_id": 162,
+      "source": "product"
+    },
+    {
+      "product_id": 161,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 160
+    },
+    {
+      "source": "product",
+      "product_id": 158
+    },
+    {
+      "source": "product",
+      "product_id": 157
+    },
+    {
+      "product_id": 156,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 155
+    },
+    {
+      "product_id": 154,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 153
+    },
+    {
+      "product_id": 152,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 151
+    },
+    {
+      "source": "product",
+      "product_id": 150
+    },
+    {
+      "product_id": 149,
+      "source": "product"
+    },
+    {
+      "product_id": 148,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 147
+    },
+    {
+      "product_id": 146,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 145
+    },
+    {
+      "product_id": 144,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 143
+    },
+    {
+      "source": "product",
+      "product_id": 142
+    },
+    {
+      "source": "product",
+      "product_id": 138
+    },
+    {
+      "product_id": 137,
+      "source": "product"
+    },
+    {
+      "product_id": 136,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 135
+    },
+    {
+      "product_id": 134,
+      "source": "product"
+    },
+    {
+      "product_id": 133,
+      "source": "product"
+    },
+    {
+      "product_id": 132,
+      "source": "product"
+    },
+    {
+      "product_id": 131,
+      "source": "product"
+    },
+    {
+      "product_id": 130,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 129
+    },
+    {
+      "product_id": 128,
+      "source": "product"
+    },
+    {
+      "product_id": 127,
+      "source": "product"
+    },
+    {
+      "product_id": 126,
+      "source": "product"
+    },
+    {
+      "product_id": 125,
+      "source": "product"
+    },
+    {
+      "product_id": 124,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 123
+    },
+    {
+      "source": "product",
+      "product_id": 122
+    },
+    {
+      "product_id": 121,
+      "source": "product"
+    },
+    {
+      "product_id": 120,
+      "source": "product"
+    },
+    {
+      "product_id": 119,
+      "source": "product"
+    },
+    {
+      "product_id": 117,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 116
+    },
+    {
+      "source": "product",
+      "product_id": 115
+    },
+    {
+      "product_id": 114,
+      "source": "product"
+    },
+    {
+      "product_id": 113,
+      "source": "product"
+    },
+    {
+      "product_id": 112,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 111
+    },
+    {
+      "source": "product",
+      "product_id": 110
+    },
+    {
+      "source": "product",
+      "product_id": 109
+    },
+    {
+      "source": "product",
+      "product_id": 108
+    },
+    {
+      "source": "product",
+      "product_id": 107
+    },
+    {
+      "source": "product",
+      "product_id": 106
+    },
+    {
+      "source": "product",
+      "product_id": 105
+    },
+    {
+      "source": "product",
+      "product_id": 104
+    },
+    {
+      "product_id": 103,
+      "source": "product"
+    },
+    {
+      "product_id": 102,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 101
+    },
+    {
+      "product_id": 100,
+      "source": "product"
+    },
+    {
+      "product_id": 99,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 98
+    },
+    {
+      "product_id": 97,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 96
+    },
+    {
+      "product_id": 95,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 94
+    },
+    {
+      "source": "product",
+      "product_id": 93
+    },
+    {
+      "product_id": 92,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 91
+    },
+    {
+      "source": "product",
+      "product_id": 90
+    },
+    {
+      "product_id": 89,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 88
+    },
+    {
+      "product_id": 87,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 86
+    },
+    {
+      "product_id": 85,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 84
+    },
+    {
+      "source": "product",
+      "product_id": 83
+    },
+    {
+      "source": "product",
+      "product_id": 82
+    },
+    {
+      "product_id": 81,
+      "source": "product"
+    },
+    {
+      "product_id": 80,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 79
+    },
+    {
+      "product_id": 78,
+      "source": "product"
+    },
+    {
+      "product_id": 77,
+      "source": "product"
+    },
+    {
+      "product_id": 76,
+      "source": "product"
+    },
+    {
+      "product_id": 75,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 74
+    },
+    {
+      "product_id": 73,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 72
+    },
+    {
+      "source": "product",
+      "product_id": 71
+    },
+    {
+      "product_id": 70,
+      "source": "product"
+    },
+    {
+      "product_id": 69,
+      "source": "product"
+    },
+    {
+      "product_id": 68,
+      "source": "product"
+    },
+    {
+      "product_id": 67,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 66
+    },
+    {
+      "product_id": 65,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 64
+    },
+    {
+      "source": "product",
+      "product_id": 63
+    },
+    {
+      "product_id": 62,
+      "source": "product"
+    },
+    {
+      "product_id": 61,
+      "source": "product"
+    },
+    {
+      "product_id": 60,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 59
+    },
+    {
+      "source": "product",
+      "product_id": 34
+    },
+    {
+      "source": "product",
+      "product_id": 33
+    },
+    {
+      "source": "product",
+      "product_id": 31
+    },
+    {
+      "source": "product",
+      "product_id": 30
+    },
+    {
+      "product_id": 29,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 28
+    },
+    {
+      "source": "product",
+      "product_id": 27
+    },
+    {
+      "product_id": 26,
+      "source": "product"
+    },
+    {
+      "product_id": 25,
+      "source": "product"
+    },
+    {
+      "product_id": 24,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 23
+    },
+    {
+      "product_id": 22,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 21
+    },
+    {
+      "source": "product",
+      "product_id": 20
+    },
+    {
+      "product_id": 19,
+      "source": "product"
+    },
+    {
+      "product_id": 18,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 17
+    },
+    {
+      "source": "product",
+      "product_id": 16
+    },
+    {
+      "source": "product",
+      "product_id": 15
+    },
+    {
+      "product_id": 14,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 13
+    },
+    {
+      "source": "product",
+      "product_id": 12
+    },
+    {
+      "product_id": 11,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 9
+    },
+    {
+      "product_id": 7,
+      "source": "product"
+    },
+    {
+      "product_id": 6,
+      "source": "product"
+    },
+    {
+      "source": "product",
+      "product_id": 5
+    },
+    {
+      "source": "product",
+      "product_id": 4
+    },
+    {
+      "product_id": 3,
+      "source": "product"
+    },
+    {
+      "product_id": 2,
+      "source": "product"
+    },
+    {
+      "product_id": 1,
+      "source": "product"
+    }
+  ]
+}

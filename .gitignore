@@ -4,3 +4,7 @@ __pycache__/
 **/__pycache__/
 *.pyc
 .env*
+
+backend/gcp-vision-key.json
+
+backend/gcp-vision-key.json
