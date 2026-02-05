@@ -3,7 +3,14 @@ node_modules/
 __pycache__/
 **/__pycache__/
 *.pyc
-.env*
+
+# Env files (never commit secrets)
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
 
 backend/gcp-vision-key.json
 
