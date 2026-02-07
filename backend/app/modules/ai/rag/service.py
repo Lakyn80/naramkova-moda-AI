@@ -294,16 +294,35 @@ MANDATORY_STRUCTURE_TEMPLATE = """🦋 Zeleno-modří motýli – dekorace
 # Emoji podle motivu – název musí obsahovat emoji vhodné k produktu (měnit podle obrázku)
 EMOJI_BY_MOTIF = [
     ("motýl", "🦋"), ("motýli", "🦋"), ("butterfly", "🦋"),
+    ("květ", "🌸"), ("květy", "🌸"), ("květina", "🌸"), ("květiny", "🌸"),
+    ("flower", "🌸"), ("flowers", "🌸"), ("růže", "🌷"), ("tulipán", "🌷"),
+    ("sedmikráska", "🌼"), ("pampeliška", "🌼"),
+    ("list", "🍃"), ("listy", "🍃"), ("příroda", "🌿"), ("přírodní", "🌿"),
+    ("leaf", "🍃"), ("leaves", "🍃"), ("bylina", "🌿"), ("bylinky", "🌿"),
+    ("srdce", "💖"), ("hearts", "💖"), ("láska", "💖"), ("love", "❤️"),
+    ("kočka", "🐱"), ("kočky", "🐱"), ("cat", "🐱"),
+    ("tlapka", "🐾"), ("paw", "🐾"), ("paws", "🐾"),
+    ("náramek", "💎"), ("šperk", "💎"), ("náhrdelník", "📿"), ("jewelry", "💎"),
     ("svíčka", "🕯️"), ("svíčky", "🕯️"), ("candle", "🕯️"),
-    ("srdce", "💖"), ("hearts", "💖"), ("láska", "💖"),
-    ("tlapka", "🐾"), ("paw", "🐾"), ("kůň", "🐴"), ("horse", "🐴"),
-    ("květ", "🌸"), ("květy", "🌸"), ("flower", "🌸"),
-    ("náramek", "✨"), ("šperk", "💎"), ("náhrdelník", "💎"),
-    ("skřítek", "🧙‍♂️"), ("gnome", "🧙‍♂️"),
-    ("hvězda", "⭐"), ("měsíc", "🌙"), ("slunce", "☀️"),
-    ("list", "🍀"), ("listy", "🌿"), ("přírodní", "🌿"),
+    ("přívěsek", "🔗"), ("pendant", "🔗"), ("charm", "🔗"),
+    ("hvězda", "⭐"), ("hvězdy", "⭐"), ("star", "⭐"), ("stars", "⭐"),
+    ("třpyt", "✨"), ("sparkle", "✨"),
+    ("anděl", "👼"), ("andělé", "👼"), ("angel", "👼"),
+    ("perla", "🤍"), ("perly", "🤍"), ("pearl", "🤍"), ("pearls", "🤍"),
+    ("strom", "🌳"), ("stromy", "🌳"), ("tree", "🌳"), ("dřevo", "🌳"),
+    ("moře", "🌊"), ("oceán", "🌊"), ("sea", "🌊"), ("ocean", "🌊"),
+    ("slunce", "☀️"), ("sun", "☀️"),
+    ("měsíc", "🌙"), ("moon", "🌙"),
+    ("kůň", "🐴"), ("horse", "🐴"), ("hřebec", "🐴"),
+    ("skřítek", "🧙‍♂️"), ("skřítci", "🧙‍♂️"), ("gnome", "🧙‍♂️"),
+    ("lesní skřítek", "🧚"), ("lesní", "🍄"), ("houba", "🍄"), ("mushroom", "🍄"),
+    ("elf", "🧝‍♂️"), ("elfové", "🧝‍♂️"),
+    ("víla", "🧚"), ("víly", "🧚"), ("fairy", "🧚"),
 ]
-EMOJI_DEFAULT_POOL = ["✨", "💎", "🌿", "🦋", "🐾", "🌸", "💖", "🕯️", "⭐", "🤍"]
+EMOJI_DEFAULT_POOL = [
+    "🦋", "🌸", "🍃", "💖", "🐱", "🐾", "💎", "🌙", "⭐", "🌊",
+    "🌿", "🌼", "🕯️", "🔗", "🧙‍♂️", "🧚", "🤍", "☀️", "📿", "✨",
+]
 
 
 def _dedupe(items: List[str]) -> List[str]:
@@ -318,13 +337,14 @@ def _dedupe(items: List[str]) -> List[str]:
 
 
 def _pick_emoji_by_motif(tags: List[str]) -> str:
-    """Vrátí emoji vhodné k motivu (podle tagů); jinak náhodné z poolu."""
+    """Vrátí emoji vhodné k motivu (podle tagů); jinak náhodné z EMOJI_DEFAULT_POOL."""
     tags_low = [str(t).lower().strip() for t in (tags or []) if t]
     for keyword, emoji in EMOJI_BY_MOTIF:
         for tag in tags_low:
             if keyword in tag:
                 return emoji
-    return random_emoji() if EMOJI_POOL else EMOJI_DEFAULT_POOL[0]
+    import random
+    return random.choice(EMOJI_DEFAULT_POOL) if EMOJI_DEFAULT_POOL else "✨"
 
 
 def build_required_structure_from_vision(product_type: str, combined_tags: List[str]) -> tuple[str, str]:
