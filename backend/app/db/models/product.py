@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from sqlalchemy import Column, DateTime, ForeignKey, Integer, Numeric, String, Text
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, Numeric, String, Text
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
@@ -17,6 +17,7 @@ class Product(Base):
     image = Column(String(255), nullable=True)
     wrist_size = Column(String(50), nullable=True)
     stock = Column(Integer, nullable=False, default=1)
+    active = Column(Boolean, nullable=False, default=True)
     category_id = Column(Integer, ForeignKey("category.id"), nullable=True)
     seo_title = Column(String(180), nullable=True)
     seo_description = Column(Text, nullable=True)

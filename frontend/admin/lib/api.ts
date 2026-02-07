@@ -31,7 +31,7 @@ export function buildApiUrl(path: string): string {
 }
 
 export async function fetchProducts(): Promise<Product[]> {
-  const res = await fetch(buildApiUrl("/api/products/"), { cache: "no-store" });
+  const res = await fetch(buildApiUrl("/api/products/?include_inactive=1"), { cache: "no-store" });
   if (!res.ok) {
     throw new Error(`Nepodařilo se načíst produkty (${res.status})`);
   }
@@ -301,6 +301,24 @@ export async function fetchAiVariantDraft(variantId: number): Promise<AiDraft> {
   return (await res.json()) as AiDraft;
 }
 
+export async function fetchAiDraftFromUpload(formData: FormData): Promise<AiDraft> {
+  const res = await fetch(buildApiUrl("/api/ai/drafts/from-upload"), {
+    method: "POST",
+    body: formData,
+  });
+  if (!res.ok) {
+    let message = `AI draft selhal (${res.status})`;
+    try {
+      const data = (await res.json()) as { error?: string; message?: string; detail?: string };
+      message = data?.error || data?.message || data?.detail || message;
+    } catch {
+      // ignore
+    }
+    throw new Error(message);
+  }
+  return (await res.json()) as AiDraft;
+}
+
 export async function storeAiTemplate(productId: number): Promise<AiTemplateItem> {
   const res = await fetch(buildApiUrl("/api/ai/templates/store"), {
     method: "POST",
@@ -427,7 +445,7 @@ export async function updatePaymentStatus(paymentId: number, status: string): Pr
   const res = await fetch(buildApiUrl("/api/payments/update-status"), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ payment_id: paymentId, status }),
+    body: JSON.stringify({ payment_id: paymentId, order_id: paymentId, status }),
   });
   if (!res.ok) {
     let message = `Uložení stavu selhalo (${res.status})`;

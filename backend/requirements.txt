@@ -14,5 +14,4 @@ openai
 google-cloud-vision
 
 chromadb
-
 sentence-transformers

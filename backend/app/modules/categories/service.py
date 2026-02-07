@@ -75,8 +75,10 @@ def get_category_by_slug(db: Session, slug: str, wrist_size: Optional[str]) -> d
             selectinload(Product.category),
             selectinload(Product.variants).selectinload(ProductVariant.media),
         )
-        .filter(Product.category_id == cat.id, Product.stock > 0)
+        .filter(Product.category_id == cat.id)
     )
+    if hasattr(Product, "active"):
+        products_q = products_q.filter(Product.active.is_(True))
 
     if wrist_size:
         products_q = (
@@ -175,4 +177,3 @@ def delete_category(db: Session, category_id: int, *, force: bool) -> tuple[bool
     except Exception:
         db.rollback()
         raise
-

@@ -64,3 +64,19 @@ nav [data-cart-badge] {
   color: white !important;
   background: rgb(131 24 67) !important; /* pink-900 */
 }
+
+/* Product card description clamp */
+.product-desc-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Product card title clamp */
+.product-title-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

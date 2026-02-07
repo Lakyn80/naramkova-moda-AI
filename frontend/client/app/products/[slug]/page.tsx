@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 
 import { slugify } from "../../../lib/slugify";
-import type { Product } from "../../../lib/types";
+import { fetchProductBySlugCached } from "../../../lib/server-products";
 import ProductDetailClient from "./ProductDetailClient";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ||
   process.env.SITE_URL ||
   "http://localhost:3002";
-const BACKEND_URL = process.env.NMM_BACKEND_URL || "http://backend:8080";
+
+export const runtime = "nodejs";
 
 function toAbsoluteUrl(value: string | null | undefined): string | null {
   if (!value) return null;
@@ -18,26 +19,13 @@ function toAbsoluteUrl(value: string | null | undefined): string | null {
   return `${base}/static/uploads/${value}`;
 }
 
-async function fetchProductBySlug(slug: string): Promise<Product | null> {
-  try {
-    const res = await fetch(`${BACKEND_URL}/api/products/`, { cache: "no-store" });
-    if (!res.ok) return null;
-    const items = (await res.json()) as Product[];
-    return (
-      items.find((p) => slugify(p?.name || "") === slug || String(p.id) === slug) || null
-    );
-  } catch {
-    return null;
-  }
-}
-
 export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
   const slug = params.slug;
-  const product = await fetchProductBySlug(slug);
+  const product = await fetchProductBySlugCached(slug);
   if (!product) {
     return {
       title: "Produkt nenalezen",
@@ -50,18 +38,32 @@ export async function generateMetadata({
   const description =
     descSource.length > 160 ? `${descSource.slice(0, 159).trim()}…` : descSource;
   const canonical = `${SITE_URL.replace(/\/$/, "")}/products/${slugify(product.name || slug)}`;
-  const imageUrl = toAbsoluteUrl(product.image_url || product.image);
+  const rawImage = product.image_url || product.image || "/logo.jpg";
+  const imageUrl = toAbsoluteUrl(rawImage);
+  const stock = Number(product.stock ?? 0);
+  const hasImage = Boolean(product.image_url || product.image);
+  const shouldIndex = hasImage && stock > 0;
 
   return {
     title,
     description,
+    robots: shouldIndex
+      ? undefined
+      : {
+          index: false,
+          follow: false,
+          googleBot: {
+            index: false,
+            follow: false,
+          },
+        },
     alternates: { canonical },
     openGraph: {
       title,
       description,
       url: canonical,
       images: imageUrl ? [{ url: imageUrl }] : undefined,
-      type: "product",
+      type: "website",
     },
     twitter: {
       card: "summary_large_image",
@@ -73,5 +75,52 @@ export async function generateMetadata({
 }
 
 export default function ProductDetailPage({ params }: { params: { slug: string } }) {
-  return <ProductDetailClient slug={params.slug} />;
+  const slug = params.slug;
+  return (
+    <>
+      {/* JSON-LD is rendered server-side for SEO */}
+      <ProductJsonLd slug={slug} />
+      <ProductDetailClient slug={slug} />
+    </>
+  );
+}
+
+async function ProductJsonLd({ slug }: { slug: string }) {
+  const product = await fetchProductBySlugCached(slug);
+  if (!product) return null;
+
+  const canonical = `${SITE_URL.replace(/\/$/, "")}/products/${slugify(product.name || slug)}`;
+  const rawImage = product.image_url || product.image || "/logo.jpg";
+  const imageUrl = toAbsoluteUrl(rawImage);
+  const description = (product.seo_description || product.description || "").trim();
+  const price = Number(product.price ?? product.price_czk);
+  const stock = Number(product.stock ?? 0);
+
+  const jsonLd: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.seo_title || product.name || "Produkt",
+    description,
+    image: imageUrl ? [imageUrl] : undefined,
+    sku: String(product.id),
+    url: canonical,
+  };
+
+  if (Number.isFinite(price) && price > 0) {
+    jsonLd.offers = {
+      "@type": "Offer",
+      priceCurrency: "CZK",
+      price: price.toFixed(2),
+      availability: stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+      url: canonical,
+    };
+  }
+
+  return (
+    // eslint-disable-next-line @next/next/no-sync-scripts
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
 }

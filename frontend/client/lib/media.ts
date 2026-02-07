@@ -20,5 +20,11 @@ export function resolveMediaUrl(url: string | null | undefined): string | null {
  * Alias pro absoluteUploadUrl (kompatibilita se starým projektem)
  */
 export function absoluteUploadUrl(url: string | null | undefined): string | null {
-  return resolveMediaUrl(url);
+  const resolved = resolveMediaUrl(url);
+  if (!resolved) return null;
+  if (/\.webp(\?|#|$)/i.test(resolved)) return resolved;
+  if (/\.(png|jpe?g|gif|bmp|tiff|heic|heif)(\?|#|$)/i.test(resolved)) {
+    return null;
+  }
+  return resolved;
 }

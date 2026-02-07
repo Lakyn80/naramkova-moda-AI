@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import type { Category, Product } from "../../../lib/types";
-import { deleteProduct, fetchCategories, fetchProducts } from "../../../lib/api";
+import { deleteProduct, fetchCategories, fetchProducts, updateProduct } from "../../../lib/api";
 import { resolveMediaUrl } from "../../../lib/media";
 const PAGE_SIZE = 20;
 
@@ -38,6 +38,8 @@ function ProductsContent() {
   const [error, setError] = useState<string | null>(null);
   const [deleteError, setDeleteError] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<number | null>(null);
+  const [activeError, setActiveError] = useState<string | null>(null);
+  const [activeUpdatingId, setActiveUpdatingId] = useState<number | null>(null);
 
   const [query, setQuery] = useState(() => searchParams.get("search") || "");
   const [categoryId, setCategoryId] = useState(() => searchParams.get("category") || "");
@@ -157,6 +159,22 @@ function ProductsContent() {
     }
   };
 
+  const handleToggleActive = async (productId: number, nextActive: boolean) => {
+    setActiveError(null);
+    setActiveUpdatingId(productId);
+    try {
+      const formData = new FormData();
+      formData.set("active", nextActive ? "1" : "0");
+      const updated = await updateProduct(productId, formData);
+      setProducts((prev) => prev.map((p) => (p.id === productId ? { ...p, ...updated } : p)));
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Uložení selhalo";
+      setActiveError(message);
+    } finally {
+      setActiveUpdatingId(null);
+    }
+  };
+
   const resetFilters = () => {
     setQuery("");
     setCategoryId("");
@@ -195,6 +213,11 @@ function ProductsContent() {
         {deleteError && (
           <div className="mb-4 rounded-md border border-red-200 bg-red-50 p-4 text-sm text-red-600">
             {deleteError}
+          </div>
+        )}
+        {activeError && (
+          <div className="mb-4 rounded-md border border-red-200 bg-red-50 p-4 text-sm text-red-600">
+            {activeError}
           </div>
         )}
 
@@ -291,6 +314,7 @@ function ProductsContent() {
                   const imageUrl = resolveMediaUrl(product.image_url);
                   const mediaCount = product.media?.length ?? 0;
                   const badge = getStockBadge(product.stock);
+                  const isActive = product.active !== false;
                   return (
                     <tr key={product.id} className="hover:bg-gray-50">
                       <td className="px-4 py-3 font-medium text-gray-600">{product.id}</td>
@@ -328,6 +352,15 @@ function ProductsContent() {
                           >
                             {deletingId === product.id ? "Mažu..." : "Smazat"}
                           </button>
+                          <label className="flex items-center gap-2 text-xs text-gray-700">
+                            <input
+                              type="checkbox"
+                              checked={isActive}
+                              disabled={activeUpdatingId === product.id}
+                              onChange={(e) => handleToggleActive(product.id, e.target.checked)}
+                            />
+                            Aktivní
+                          </label>
                         </div>
                       </td>
                     </tr>

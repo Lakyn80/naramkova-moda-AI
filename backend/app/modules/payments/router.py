@@ -16,6 +16,8 @@ from .schemas import (
     PaymentSummaryResponse,
     SyncCsobMailResponse,
     SyncFromOrdersResponse,
+    UpdatePaymentStatusRequest,
+    UpdatePaymentStatusResponse,
 )
 from .service import (
     get_status_by_vs,
@@ -26,6 +28,7 @@ from .service import (
     payments_summary,
     sync_csob_mail,
     sync_from_orders,
+    update_payment_status,
 )
 
 router = APIRouter(prefix="/api/payments", tags=["payments"])
@@ -90,6 +93,16 @@ async def mark_paid_by_vs_endpoint(
 ) -> MarkPaidResponse:
     """Legacy: POST /api/payments/mark-paid."""
     status_code, data = mark_paid_by_vs(db, (payload or {}).model_dump() if payload else {})
+    return JSONResponse(status_code=status_code, content=data)
+
+
+@router.post("/update-status", response_model=UpdatePaymentStatusResponse)
+async def update_payment_status_endpoint(
+    payload: Optional[UpdatePaymentStatusRequest] = Body(default=None),
+    db: Session = Depends(get_db),
+) -> UpdatePaymentStatusResponse:
+    """Legacy: POST /api/payments/update-status."""
+    status_code, data = update_payment_status(db, (payload or {}).model_dump() if payload else {})
     return JSONResponse(status_code=status_code, content=data)
 
 

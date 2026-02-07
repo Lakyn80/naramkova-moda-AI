@@ -58,6 +58,21 @@ class MarkPaidResponse(BaseModel):
     status: Optional[str] = None
 
 
+class UpdatePaymentStatusRequest(BaseModel):
+    order_id: Optional[int] = None
+    payment_id: Optional[int] = None
+    vs: Optional[str] = None
+    status: Optional[str] = None
+
+
+class UpdatePaymentStatusResponse(BaseModel):
+    ok: bool = True
+    orderId: Optional[int] = None
+    status: Optional[str] = None
+    sold_rows_created: Optional[int] = None
+    emailed: Optional[bool] = None
+
+
 class SyncFromOrdersResponse(BaseModel):
     ok: bool = True
     created: Optional[int] = None

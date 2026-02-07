@@ -8,11 +8,37 @@ import { useCart } from "../../../context/CartContext";
 import { slugify } from "../../../lib/slugify";
 import { emojify } from "../../../lib/emojify";
 import { absoluteUploadUrl } from "../../../lib/media";
+import { formatWristSize, normalizeWristSize } from "../../../lib/wrist-size";
 import type { Product, ProductVariant } from "../../../lib/types";
 
 interface VariantOption extends ProductVariant {
   isBase?: boolean;
 }
+
+const stripPopisPrefix = (value: string) => String(value || "").replace(/^popis:\s*/i, "").trim();
+const EMOJI_SPLIT_RE =
+  /(\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?(?:\u200D\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?)*)/gu;
+
+const splitEmoji = (value: string) => {
+  if (!value) return [];
+  return value.split(EMOJI_SPLIT_RE).filter(Boolean);
+};
+
+const isEmojiPart = (value: string) => {
+  if (!value) return false;
+  const re = /(\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?(?:\u200D\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?)*)/u;
+  return re.test(value);
+};
+
+const renderTitleWithEmoji = (value: string) =>
+  splitEmoji(value).map((part, idx) => {
+    const emoji = isEmojiPart(part);
+    return (
+      <span key={`${part}-${idx}`} className={emoji ? "notranslate text-pink-700" : ""}>
+        {part}
+      </span>
+    );
+  });
 
 export default function ProductDetailClient({ slug }: { slug: string }) {
   const router = useRouter();
@@ -22,6 +48,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const slugParam = slug;
   const variantParam = searchParams.get("variant");
   const wristParam = searchParams.get("wrist") || searchParams.get("wrist_size");
+  const normalizedWristParam = normalizeWristSize(wristParam);
 
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
@@ -146,21 +173,34 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   useEffect(() => {
     if (!variantOptions.length) return;
 
+    const hasSelected =
+      !!selectedVariantId &&
+      variantOptions.some((v) => String(v.id) === String(selectedVariantId));
+    const hasParams = Boolean(variantParam || normalizedWristParam);
+
+    if (!hasParams && hasSelected) {
+      return;
+    }
+
     const next =
-      variantOptions.find((v) => String(v.id) === String(variantParam)) ||
-      variantOptions.find(
-        (v) =>
-          wristParam &&
-          v.wrist_size &&
-          v.wrist_size.toLowerCase() === String(wristParam).toLowerCase()
-      ) ||
+      (variantParam
+        ? variantOptions.find((v) => String(v.id) === String(variantParam))
+        : undefined) ||
+      (normalizedWristParam
+        ? variantOptions.find(
+            (v) => normalizeWristSize(v.wrist_size) === normalizedWristParam
+          )
+        : undefined) ||
+      (hasSelected
+        ? variantOptions.find((v) => String(v.id) === String(selectedVariantId))
+        : undefined) ||
       variantOptions[0];
 
     if (next && String(next.id) !== String(selectedVariantId)) {
       setSelectedVariantId(String(next.id));
       setVariantsOpen(false);
     }
-  }, [variantOptions, variantParam, wristParam, selectedVariantId]);
+  }, [variantOptions, variantParam, normalizedWristParam, selectedVariantId]);
 
   const selectedVariant = useMemo(
     () => variantOptions.find((v) => String(v.id) === String(selectedVariantId)) || null,
@@ -177,10 +217,10 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
     return Number.isFinite(fallback) ? fallback : 0;
   }, [selectedVariant, product]);
 
-  const activeDescription = useMemo(
-    () => (selectedVariant?.description || product?.description || "").trim(),
-    [selectedVariant, product]
-  );
+  const activeDescription = useMemo(() => {
+    const raw = selectedVariant?.description || product?.description || "";
+    return stripPopisPrefix(raw);
+  }, [selectedVariant, product]);
 
   const baseImages = useMemo(() => {
     if (!product) return [];
@@ -191,22 +231,23 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
 
   const displayImages = useMemo(() => {
     if (!product) return [];
-    const variantImages: string[] = [];
 
     if (selectedVariant && !selectedVariant.isBase) {
+      const variantImages: string[] = [];
       const preferred = selectedVariant.image_url || selectedVariant.image;
       if (preferred) variantImages.push(preferred);
 
       if (Array.isArray(selectedVariant.media)) {
         selectedVariant.media.forEach((m) => {
-          const img = typeof m === "string" ? m : m?.image_url || m?.image;
+          const img = typeof m === "string" ? m : m?.image_url;
           if (img) variantImages.push(img);
         });
       }
+
+      return Array.from(new Set(variantImages.filter(Boolean)));
     }
 
-    const unique = Array.from(new Set(variantImages.filter(Boolean)));
-    return unique.length ? unique : baseImages;
+    return baseImages;
   }, [product, selectedVariant, baseImages]);
 
   useEffect(() => {
@@ -291,10 +332,16 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
       ? selectedVariant.stock
       : Number(product.stock);
   const out = activeStock === 0;
+  const displayWristSize = formatWristSize(selectedVariant?.wrist_size || product.wrist_size);
+  const displayName = emojify(product.name);
+  const titleText = `${displayName}${displayWristSize ? ` - ${displayWristSize}` : ""}`;
 
   return (
     <section className="pt-28 pb-12 bg-gradient-to-br from-pink-300 to-pink-200 min-h-screen">
       <div className="container mx-auto max-w-4xl px-4">
+        <nav className="mb-3 text-sm text-pink-900/80">
+          <span className="font-semibold">{displayName}</span>
+        </nav>
         <div className="mb-4">
           <button
             type="button"
@@ -321,12 +368,16 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                 )}
               </div>
 
-              <img
-                src={displayImages[photoIndex] || "/placeholder.png"}
-                alt={product.name}
-                className="w-full h-[260px] sm:h-[300px] md:h-[360px] object-cover rounded-xl shadow-lg cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
-                onClick={() => displayImages.length && setLightboxOpen(true)}
-              />
+              {displayImages[photoIndex] ? (
+                <img
+                  src={displayImages[photoIndex]}
+                  alt={product.name}
+                  className="w-full h-[260px] sm:h-[300px] md:h-[360px] object-cover rounded-xl shadow-lg cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                  onClick={() => displayImages.length && setLightboxOpen(true)}
+                />
+              ) : (
+                <div className="w-full h-[260px] sm:h-[300px] md:h-[360px] rounded-xl bg-white/10" />
+              )}
 
               <div className="flex gap-2 flex-wrap justify-center sm:justify-start">
                 {displayImages.map((img, i) => (
@@ -346,7 +397,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
             {/* Details */}
             <div className="flex flex-col justify-center">
               <h2 className="text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent drop-shadow-lg">
-                {emojify(product.name)}
+                {renderTitleWithEmoji(titleText)}
               </h2>
 
               <p className="text-xl font-semibold text-pink-700 mt-2 drop-shadow-sm">
@@ -377,8 +428,10 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                         <div className="text-sm font-semibold text-gray-900">
                           {selectedVariant?.variant_name || "Varianta"}
                         </div>
-                        {selectedVariant?.wrist_size && (
-                          <div className="text-xs text-gray-600">{selectedVariant.wrist_size}</div>
+                        {formatWristSize(selectedVariant?.wrist_size) && (
+                          <div className="text-xs text-gray-600">
+                            {formatWristSize(selectedVariant?.wrist_size)}
+                          </div>
                         )}
                         {typeof selectedVariant?.stock === "number" && (
                           <div className="text-xs text-emerald-700">
@@ -417,8 +470,10 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                             )}
                             <div className="text-sm font-medium text-gray-900">
                               {v.variant_name || "Varianta"}
-                              {v.wrist_size && (
-                                <span className="text-xs text-gray-600 block">{v.wrist_size}</span>
+                              {formatWristSize(v.wrist_size) && (
+                                <span className="text-xs text-gray-600 block">
+                                  {formatWristSize(v.wrist_size)}
+                                </span>
                               )}
                               {typeof v.stock === "number" && (
                                 <span className="text-[11px] text-emerald-700 block">

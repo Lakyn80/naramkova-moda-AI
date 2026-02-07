@@ -13,6 +13,14 @@ export default function AdminAiTemplatesPage() {
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
 
+  const isTransientFetchError = (err: unknown) => {
+    if (!(err instanceof Error)) return false;
+    const msg = err.message || "";
+    return /failed to fetch|networkerror|load failed/i.test(msg);
+  };
+
+  const sleep = (ms: number) => new Promise((resolve) => window.setTimeout(resolve, ms));
+
   const showNotice = (msg: string) => {
     setNotice(msg);
     window.setTimeout(() => setNotice(null), 2000);
@@ -21,15 +29,42 @@ export default function AdminAiTemplatesPage() {
   const loadData = async () => {
     setLoading(true);
     setError(null);
-    try {
-      const [productsData, templateData] = await Promise.all([
+    const fetchAll = async () => {
+      const [productsRes, templatesRes] = await Promise.allSettled([
         fetchProducts(),
         fetchAiTemplates(),
       ]);
-      setProducts(productsData || []);
-      setTemplates(templateData || []);
+
+      if (productsRes.status === "rejected") {
+        console.warn("AI Templates: fetchProducts failed", productsRes.reason);
+      }
+      if (templatesRes.status === "rejected") {
+        console.warn("AI Templates: fetchAiTemplates failed", templatesRes.reason);
+      }
+
+      if (productsRes.status === "rejected") {
+        throw productsRes.reason;
+      }
+      if (templatesRes.status === "rejected") {
+        throw templatesRes.reason;
+      }
+
+      setProducts(productsRes.value || []);
+      setTemplates(templatesRes.value || []);
+    };
+    try {
+      await fetchAll();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Načtení selhalo");
+      if (isTransientFetchError(err)) {
+        try {
+          await sleep(500);
+          await fetchAll();
+        } catch (retryErr) {
+          setError(retryErr instanceof Error ? retryErr.message : "Načtení selhalo");
+        }
+      } else {
+        setError(err instanceof Error ? err.message : "Načtení selhalo");
+      }
     } finally {
       setLoading(false);
     }

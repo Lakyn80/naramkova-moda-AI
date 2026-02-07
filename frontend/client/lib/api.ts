@@ -40,7 +40,7 @@ export async function fetchCategories(): Promise<Category[]> {
 }
 
 export async function fetchCategoryBySlug(slug: string): Promise<Category> {
-  const res = await fetch(buildApiUrl(`/api/categories//${slug}`), { cache: "no-store" });
+  const res = await fetch(buildApiUrl(`/api/categories/${slug}`), { cache: "no-store" });
   if (!res.ok) {
     throw new Error(`Nepodařilo se načíst kategorii (${res.status})`);
   }

@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { fetchPayments, fetchPaymentsSummary } from "../../../lib/api";
+import { fetchPayments, fetchPaymentsSummary, updatePaymentStatus } from "../../../lib/api";
 
 function formatPrice(value?: number | null): string {
   if (value === null || value === undefined) return "-";
@@ -15,9 +15,17 @@ function PaymentsContent() {
   const [summary, setSummary] = useState<{ count?: number; total_amount?: number } | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [updatingId, setUpdatingId] = useState<number | null>(null);
+  const [updateError, setUpdateError] = useState<string | null>(null);
 
   const statusFilter = searchParams.get("status") || "all";
   const vsFilter = searchParams.get("vs") || "";
+
+  const statusLabels: Record<string, string> = {
+    paid: "Zaplaceno",
+    awaiting_payment: "Čeká na platbu",
+    canceled: "Zrušeno",
+  };
 
   useEffect(() => {
     let active = true;
@@ -53,6 +61,23 @@ function PaymentsContent() {
     window.location.search = p.toString();
   };
 
+  const handleStatusChange = async (orderId: number, nextStatus: string) => {
+    setUpdateError(null);
+    setUpdatingId(orderId);
+    try {
+      await updatePaymentStatus(orderId, nextStatus);
+      setItems((prev) =>
+        prev.map((p: Record<string, unknown>) =>
+          String(p.id) === String(orderId) ? { ...p, status: nextStatus } : p
+        )
+      );
+    } catch (err) {
+      setUpdateError(err instanceof Error ? err.message : "Uložení selhalo");
+    } finally {
+      setUpdatingId(null);
+    }
+  };
+
   return (
     <div className="space-y-4">
       <h2 className="text-2xl font-semibold">Platby</h2>
@@ -74,7 +99,8 @@ function PaymentsContent() {
           >
             <option value="all">Vše</option>
             <option value="paid">Zaplaceno</option>
-            <option value="pending">Čeká</option>
+            <option value="awaiting_payment">Čeká na platbu</option>
+            <option value="canceled">Zrušeno</option>
           </select>
         </div>
       </div>
@@ -90,6 +116,11 @@ function PaymentsContent() {
           {error}
         </div>
       )}
+      {updateError && (
+        <div className="rounded-md border border-red-200 bg-red-50 p-4 text-sm text-red-600">
+          {updateError}
+        </div>
+      )}
 
       {!loading && !error && (
         <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white">
@@ -101,6 +132,7 @@ function PaymentsContent() {
                 <th className="px-4 py-2 text-right font-semibold">Částka</th>
                 <th className="px-4 py-2 text-left font-semibold">Stav</th>
                 <th className="px-4 py-2 text-left font-semibold">Datum</th>
+                <th className="px-4 py-2 text-left font-semibold">Potvrdit</th>
               </tr>
             </thead>
             <tbody>
@@ -111,13 +143,29 @@ function PaymentsContent() {
                   <td className="px-4 py-2 text-right">
                     {formatPrice(p.amount_czk ?? p.amount ?? p.total_amount)}
                   </td>
-                  <td className="px-4 py-2">{String(p.status ?? "-")}</td>
+                  <td className="px-4 py-2">
+                    {statusLabels[String(p.status ?? "")] || String(p.status ?? "-")}
+                  </td>
                   <td className="px-4 py-2 text-xs">
                     {p.received_at
                       ? String(p.received_at).slice(0, 16).replace("T", " ")
                       : p.created_at
                       ? String(p.created_at).slice(0, 16).replace("T", " ")
                       : "-"}
+                  </td>
+                  <td className="px-4 py-2">
+                    {p.id && (
+                      <select
+                        value={String(p.status ?? "awaiting_payment")}
+                        onChange={(e) => handleStatusChange(Number(p.id), e.target.value)}
+                        disabled={updatingId === Number(p.id)}
+                        className="rounded border border-gray-300 px-2 py-1 text-xs"
+                      >
+                        <option value="paid">Zaplaceno</option>
+                        <option value="awaiting_payment">Čeká na platbu</option>
+                        <option value="canceled">Zrušeno</option>
+                      </select>
+                    )}
                   </td>
                 </tr>
               ))}

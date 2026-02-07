@@ -205,12 +205,26 @@ export default function MediaInboxPage() {
         method: "POST",
         body: formData,
       });
+      const data = (await res.json().catch(() => ({}))) as {
+        detail?: string;
+        rag?: { adapted?: number; new_saved?: number; new_failed?: number; total?: number };
+      };
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
         throw new Error(data?.detail || `Upload selhal (${res.status})`);
       }
       await loadAiPending();
-      showNotice("Hotovo");
+      const rag = data?.rag;
+      if (rag && typeof rag === "object" && (rag.total ?? 0) > 0) {
+        const parts: string[] = [];
+        if (rag.adapted) parts.push(`adaptováno: ${rag.adapted}`);
+        if (rag.new_saved) parts.push(`nové: ${rag.new_saved}`);
+        if (rag.new_failed) parts.push(`neuloženo: ${rag.new_failed}`);
+        const msg = `RAG: ${parts.join(", ") || "Hotovo"}`;
+        console.info(msg);
+        showNotice(msg);
+      } else {
+        showNotice("Hotovo");
+      }
     } catch (err) {
       setAiActionError(normalizeError(err, "Upload selhal"));
     } finally {

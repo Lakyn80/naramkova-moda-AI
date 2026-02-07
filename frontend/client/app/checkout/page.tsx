@@ -85,12 +85,14 @@ export default function CheckoutPage() {
     setSubmitting(true);
 
     try {
+      // Integrační scénář: QR payload z /api/payments/qr/payload + POST /api/orders
+      // musí vytvořit objednávku, poslat potvrzení zákazníkovi i adminovi a vyčistit košík.
       const orderData = {
         name: formData.name,
         email: formData.email,
         address: formData.address,
         note: formData.note,
-        vs,
+        vs: vs !== null && vs !== undefined ? String(vs) : "",
         totalCzk: total,
         shippingCzk: shippingMode === "pickup" ? 0 : SHIPPING_FEE_CZK,
         shippingMode,

@@ -32,6 +32,7 @@ export interface Product {
   seo_keywords?: string | null;
   price?: number | null;
   stock?: number | null;
+  active?: boolean | null;
   category_id?: number | null;
   category_name?: string | null;
   category_slug?: string | null;

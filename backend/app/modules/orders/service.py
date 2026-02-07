@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import logging
 import os
 from datetime import datetime
 from decimal import Decimal, InvalidOperation
@@ -10,6 +11,8 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.db.models import Order, OrderItem, Payment, Product, VsRegistry
+from app.modules.email.service import send_email
+from app.modules.payments.service import payment_qr_png
 
 
 def _to_decimal(val: Any, field: str = "") -> Decimal:
@@ -67,6 +70,165 @@ def _build_items_list(items_in: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "price": it.get("price", "0"),
         })
     return items
+
+
+def _send_order_confirmation_email(
+    *,
+    order: Order,
+    items_in: list[dict[str, Any]],
+    shipping_fee: Decimal,
+    total_czk: Decimal,
+) -> None:
+    recipient = (order.customer_email or "").strip()
+    if not recipient:
+        return
+
+    iban = os.getenv("MERCHANT_IBAN", "").replace(" ", "").upper()
+    item_lines = []
+    for it in items_in:
+        name = str(it.get("name") or "").strip()
+        qty = int(it.get("quantity", 1))
+        price = _to_decimal(it.get("price", "0"), "price")
+        line_total = (price * qty).quantize(Decimal("0.01"))
+        item_lines.append(f"- {name} × {qty} = {line_total:.2f} Kč")
+
+    subject = f"Potvrzení objednávky #{order.id}"
+    body_lines = [
+        "Děkujeme za objednávku!",
+        "",
+        f"Objednávka #{order.id}",
+        f"VS: {order.vs}",
+        "",
+        "Položky:",
+        *item_lines,
+        "",
+        f"Doprava: {shipping_fee:.2f} Kč",
+        f"Celkem: {total_czk:.2f} Kč",
+    ]
+
+    if iban:
+        body_lines.extend(
+            [
+                "",
+                "Platební údaje:",
+                f"IBAN: {iban}",
+                "Měna: CZK",
+            ]
+        )
+    else:
+        body_lines.append("")
+        body_lines.append("Platební údaje budou doplněny.")
+
+    attachments = []
+    try:
+        status, data, _headers = payment_qr_png(
+            amount_raw=str(total_czk),
+            vs=str(order.vs),
+            msg=f"Objednávka {order.id}",
+        )
+        if status == 200 and isinstance(data, (bytes, bytearray)):
+            attachments.append(
+                {
+                    "filename": "qr-platba.png",
+                    "content": bytes(data),
+                    "mimetype": "image/png",
+                }
+            )
+            body_lines.append("")
+            body_lines.append("QR kód pro platbu je v příloze.")
+    except Exception:
+        logger.warning("Failed to generate QR code for order %s", order.id)
+
+    send_email(
+        subject=subject,
+        recipients=[recipient],
+        body="\n".join(body_lines),
+        attachments=attachments or None,
+    )
+
+
+def _send_order_admin_email(
+    *,
+    order: Order,
+    items_in: list[dict[str, Any]],
+    shipping_fee: Decimal,
+    total_czk: Decimal,
+) -> None:
+    admin_email = os.getenv("ORDER_NOTIFY_EMAIL")
+    if not admin_email:
+        return
+
+    item_lines = []
+    for it in items_in:
+        name = str(it.get("name") or "").strip()
+        qty = int(it.get("quantity", 1))
+        price = _to_decimal(it.get("price", "0"), "price")
+        line_total = (price * qty).quantize(Decimal("0.01"))
+        item_lines.append(f"- {name} × {qty} = {line_total:.2f} Kč")
+
+    subject = f"Nová objednávka #{order.id}"
+    body_lines = [
+        f"Objednávka #{order.id}",
+        f"VS: {order.vs}",
+        f"Zákazník: {order.customer_name} <{order.customer_email}>",
+        f"Adresa: {order.customer_address}",
+        f"Poznámka: {order.note or '-'}",
+        "",
+        "Položky:",
+        *item_lines,
+        "",
+        f"Doprava: {shipping_fee:.2f} Kč",
+        f"Celkem: {total_czk:.2f} Kč",
+    ]
+
+    send_email(
+        subject=subject,
+        recipients=[admin_email],
+        body="\n".join(body_lines),
+    )
+
+
+def _order_dict(order: Order) -> dict[str, Any]:
+    items = []
+    for it in order.items or []:
+        price_val = float(it.price) if it.price is not None else None
+        items.append(
+            {
+                "id": it.id,
+                "name": it.product_name,
+                "quantity": it.quantity,
+                "price": price_val,
+                "subtotal": (price_val * it.quantity) if price_val is not None else None,
+            }
+        )
+
+    return {
+        "id": order.id,
+        "vs": order.vs,
+        "name": order.customer_name,
+        "email": order.customer_email,
+        "address": order.customer_address,
+        "note": order.note,
+        "totalCzk": (float(order.total_czk) if order.total_czk is not None else None),
+        "status": order.status,
+        "created_at": (order.created_at.isoformat() if order.created_at else None),
+        "items": items,
+    }
+
+
+def get_order_by_id(db: Session, order_id: int) -> tuple[int, dict[str, Any]]:
+    order = db.get(Order, order_id)
+    if not order:
+        return 404, {"ok": False, "error": "Objednávka s tímto ID neexistuje."}
+    return 200, {"ok": True, "order": _order_dict(order)}
+
+
+def get_order_by_vs(db: Session, vs: str) -> tuple[int, dict[str, Any]]:
+    vs_clean = str(vs).strip()
+    order = db.query(Order).filter_by(vs=vs_clean).first()
+    if not order:
+        return 404, {"ok": False, "error": "Objednávka s tímto VS neexistuje."}
+    return 200, {"ok": True, "order": _order_dict(order)}
 
 
 def create_order(db: Session, payload: dict[str, Any]) -> tuple[int, dict[str, Any]]:
@@ -158,6 +320,25 @@ def create_order(db: Session, payload: dict[str, Any]) -> tuple[int, dict[str, A
             ))
 
         db.commit()
+
+        try:
+            _send_order_confirmation_email(
+                order=order,
+                items_in=items_in,
+                shipping_fee=shipping_fee,
+                total_czk=total_czk,
+            )
+        except Exception:
+            logger.warning("Order confirmation email failed for order %s", order.id)
+        try:
+            _send_order_admin_email(
+                order=order,
+                items_in=items_in,
+                shipping_fee=shipping_fee,
+                total_czk=total_czk,
+            )
+        except Exception:
+            logger.warning("Order admin email failed for order %s", order.id)
 
         return 201, {
             "ok": True,
@@ -274,6 +455,25 @@ def create_order_client(db: Session, payload: dict[str, Any]) -> tuple[int, dict
 
         db.commit()
 
+        try:
+            _send_order_confirmation_email(
+                order=order,
+                items_in=items_in,
+                shipping_fee=shipping_fee,
+                total_czk=total_czk,
+            )
+        except Exception:
+            logger.warning("Order confirmation email failed for order %s", order.id)
+        try:
+            _send_order_admin_email(
+                order=order,
+                items_in=items_in,
+                shipping_fee=shipping_fee,
+                total_czk=total_czk,
+            )
+        except Exception:
+            logger.warning("Order admin email failed for order %s", order.id)
+
         return 201, {
             "ok": True,
             "orderId": order.id,
@@ -285,3 +485,4 @@ def create_order_client(db: Session, payload: dict[str, Any]) -> tuple[int, dict
     except Exception as e:
         db.rollback()
         return 500, {"ok": False, "error": str(e)}
+logger = logging.getLogger(__name__)

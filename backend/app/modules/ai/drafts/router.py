@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import os
+import tempfile
 from pathlib import Path
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
 from sqlalchemy.orm import Session
 
 import app.core.paths as core_paths
@@ -13,6 +15,14 @@ from .schemas import DraftResponse
 from .service import build_draft_from_image
 
 router = APIRouter(prefix="/api/ai", tags=["ai-drafts"])
+
+
+def _save_upload_to_temp(upload: UploadFile) -> str:
+    suffix = os.path.splitext(upload.filename or "")[1]
+    with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
+        for chunk in iter(lambda: upload.file.read(1024 * 1024), b""):
+            tmp.write(chunk)
+        return tmp.name
 
 
 def _resolve_image_path(value: str | None) -> Path | None:
@@ -57,3 +67,20 @@ def draft_variant(variant_id: int, db: Session = Depends(get_db)) -> DraftRespon
     suggested = draft.pop("suggested_price_czk", None)
     draft["suggested_variant_price_czk"] = suggested
     return DraftResponse(**draft)
+
+
+@router.post("/drafts/from-upload", response_model=DraftResponse)
+async def draft_from_upload(image: UploadFile = File(...)) -> DraftResponse:
+    if not image or not image.filename:
+        raise HTTPException(status_code=400, detail="Missing image")
+    temp_path = _save_upload_to_temp(image)
+    try:
+        draft = build_draft_from_image(temp_path)
+        return DraftResponse(**draft)
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+    finally:
+        try:
+            os.remove(temp_path)
+        except Exception:
+            pass

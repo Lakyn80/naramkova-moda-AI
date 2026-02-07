@@ -80,7 +80,7 @@ export default function AdminMediaPage() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {allMedia.map((m, i) => (
             <div
-              key={m.productId + "-" + (m.id ?? i)}
+              key={`${m.productId}-${m.id ?? "main"}-${i}`}
               className="rounded-lg border border-gray-200 bg-white p-3 shadow-sm"
             >
               <div className="mb-2 h-32 overflow-hidden rounded bg-gray-100">

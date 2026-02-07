@@ -27,6 +27,7 @@ export interface Product {
   price?: number | null;
   price_czk?: number | null;
   stock?: number | null;
+  active?: boolean | null;
   wrist_size?: number | string | null;
   category_id?: number | null;
   category_name?: string | null;

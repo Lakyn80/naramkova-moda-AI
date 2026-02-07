@@ -11,6 +11,7 @@ from sqlalchemy import text
 from sqlalchemy.orm import Session
 
 from app.db.models import Order, OrderItem, Payment
+from app.modules.orders.order_paid_hook import on_order_marked_paid
 from .csob_mail_sync import fetch_csob_incoming, fetch_from_imap
 from .telegram import send_telegram_message
 
@@ -56,6 +57,17 @@ def _safe_int(value, default):
         return v if v >= 0 else default
     except Exception:
         return default
+
+
+def _normalize_order_status(value: str | None) -> str | None:
+    raw = (value or "").strip().lower()
+    if raw in ("paid", "zaplaceno", "zaplacení", "zaplaceny", "zaplacena"):
+        return "paid"
+    if raw in ("awaiting_payment", "pending", "cekam", "cekani", "cekam_na_platbu", "cekání", "čeká", "čeká na platbu"):
+        return "awaiting_payment"
+    if raw in ("canceled", "cancelled", "zruseno", "zrušeno", "storno", "cancel"):
+        return "canceled"
+    return None
 
 
 def _detect_order_item_schema(db: Session) -> dict[str, Any]:
@@ -359,6 +371,64 @@ def mark_paid_by_vs(db: Session, payload: dict[str, Any]) -> tuple[int, dict[str
             "paymentId": pay.id,
             "orderId": (order.id if order else None),
             "status": "received",
+        }
+
+    except Exception as e:
+        db.rollback()
+        return 500, {"ok": False, "error": str(e)}
+
+
+def update_payment_status(db: Session, payload: dict[str, Any]) -> tuple[int, dict[str, Any]]:
+    try:
+        order_id = payload.get("order_id") or payload.get("payment_id") or payload.get("id")
+        vs = (payload.get("vs") or "").strip()
+        status_raw = payload.get("status")
+        status_norm = _normalize_order_status(status_raw)
+
+        if not status_norm:
+            return 400, {"ok": False, "error": "Neplatný status."}
+
+        order = None
+        if order_id is not None:
+            try:
+                order = db.get(Order, int(order_id))
+            except Exception:
+                order = None
+
+        if not order and vs:
+            order = db.query(Order).filter_by(vs=vs).first()
+
+        if not order:
+            return 404, {"ok": False, "error": "Objednávka nenalezena."}
+
+        order.status = status_norm
+
+        pay = None
+        if getattr(order, "vs", None):
+            pay = db.query(Payment).filter_by(vs=str(order.vs)).order_by(Payment.id.desc()).first()
+
+        if pay:
+            if status_norm == "paid":
+                pay.status = "received"
+                if getattr(pay, "received_at", None) is None:
+                    pay.received_at = datetime.utcnow()
+            elif status_norm == "awaiting_payment":
+                pay.status = "pending"
+            elif status_norm == "canceled":
+                pay.status = "canceled"
+
+        db.commit()
+
+        hook_result = None
+        if status_norm == "paid":
+            hook_result = on_order_marked_paid(db, order.id)
+
+        return 200, {
+            "ok": True,
+            "orderId": order.id,
+            "status": status_norm,
+            "sold_rows_created": (hook_result or {}).get("sold_rows_created"),
+            "emailed": (hook_result or {}).get("emailed"),
         }
 
     except Exception as e:

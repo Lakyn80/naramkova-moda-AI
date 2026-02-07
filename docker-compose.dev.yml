@@ -3,6 +3,9 @@ services:
     build:
       context: .
       dockerfile: docker/backend.Dockerfile
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
     env_file:
       - .env.dev
     environment:
@@ -25,9 +28,11 @@ services:
       dockerfile: ../../docker/frontend.client.Dockerfile
     depends_on:
       - backend
+      - redis
     environment:
       NEXT_PUBLIC_API_BASE: /api
       NMM_BACKEND_URL: http://backend:8080
+      REDIS_URL: redis://redis:6379
     ports:
       - "3002:3002"
 
@@ -42,6 +47,11 @@ services:
       NMM_BACKEND_URL: http://backend:8080
     ports:
       - "3012:3001"
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
 
 volumes:
   invoices_data:

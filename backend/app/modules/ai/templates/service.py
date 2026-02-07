@@ -98,3 +98,23 @@ def suggest_price(
         return float(price) if price is not None else None
     except (TypeError, ValueError):
         return None
+
+
+def load_ai_template_from_db(
+    *,
+    product_type: str,
+    combined_tags: list[str],
+) -> Optional[str]:
+    """
+    Vrátí text existující AI Template (Systém B) jako stylový vzor.
+    Pokud nic nenajde, vrací None.
+    """
+    query_text = f"{product_type}\n{', '.join(combined_tags or [])}".strip()
+    result = search_templates(query_text, product_type=product_type, n_results=1)
+    if not result:
+        return None
+    docs = result.get("documents") or []
+    if not docs or not docs[0] or not docs[0][0]:
+        return None
+    doc = docs[0][0]
+    return doc.strip() if isinstance(doc, str) and doc.strip() else None

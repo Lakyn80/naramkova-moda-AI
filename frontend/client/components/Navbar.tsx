@@ -36,8 +36,8 @@ export default function Navbar() {
   const navTextClass = isLanding
     ? "text-white/95 drop-shadow-md hover:text-white"
     : scrolled
-      ? "text-pink-900 hover:text-pink-600"
-      : "text-pink-900 hover:text-pink-600";
+      ? "text-pink-950 font-semibold drop-shadow-sm hover:text-pink-700"
+      : "text-pink-950 font-semibold drop-shadow-sm hover:text-pink-700";
 
   const navBgClass = isLanding
     ? "bg-white/5 backdrop-blur-md"
@@ -98,7 +98,7 @@ export default function Navbar() {
               <line x1="3" y1="12" x2="21" y2="12" />
               <line x1="3" y1="18" x2="21" y2="18" />
             </svg>
-            {mounted && (
+            {mounted && cartCount > 0 && (
               <span
                 data-cart-badge
                 className={`absolute -top-2 -right-2 text-sm font-bold rounded-full min-w-[24px] h-[24px] flex items-center justify-center shadow-lg ring-2 ${
@@ -122,16 +122,6 @@ export default function Navbar() {
                   Domů
                 </span>
               </li>
-              <li>
-                <a href="#kategorie" className={`${navTextClass} transition`}>
-                  Kategorie
-                </a>
-              </li>
-              <li>
-                <a href="#galerie" className={`${navTextClass} transition`}>
-                  Galerie
-                </a>
-              </li>
             </>
           )}
           <li>
@@ -146,7 +136,7 @@ export default function Navbar() {
               className={`flex items-center gap-1.5 ${navTextClass} transition relative`}
             >
               <ShoppingCart className="w-5 h-5" aria-hidden />
-              {mounted && (
+              {mounted && cartCount > 0 && (
                 <span
                   data-cart-badge
                   className={`absolute -top-2.5 -right-2.5 text-sm font-bold rounded-full min-w-[24px] h-[24px] flex items-center justify-center shadow-lg ring-2 ${
@@ -174,20 +164,6 @@ export default function Navbar() {
                   Domů
                 </span>
               </div>
-              <a
-                href="#kategorie"
-                onClick={() => setMenuOpen(false)}
-                className="block py-2 hover:text-pink-600"
-              >
-                Kategorie
-              </a>
-              <a
-                href="#galerie"
-                onClick={() => setMenuOpen(false)}
-                className="block py-2 hover:text-pink-600"
-              >
-                Galerie
-              </a>
             </>
           )}
           <Link

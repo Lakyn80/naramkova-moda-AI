@@ -160,6 +160,9 @@ async def upload_media_inbox(
     db: Session = Depends(get_db),
 ) -> dict[str, Any]:
     imported = 0
+    rag_adapted = 0
+    rag_new_saved = 0
+    rag_new_failed = 0
 
     for upload in files:
         if not upload or not upload.filename:
@@ -170,13 +173,29 @@ async def upload_media_inbox(
         except ValueError as exc:
             raise HTTPException(status_code=400, detail=f"{upload.filename}: {exc}") from exc
         draft = generate_draft_for_inbox_image(webp_abs_path)
+        rag_status = (draft.get("rag_status") or "").strip().lower()
+        if rag_status == "adapted":
+            rag_adapted += 1
+        elif rag_status == "new_saved":
+            rag_new_saved += 1
+        elif rag_status == "new_failed":
+            rag_new_failed += 1
         webp_rel = _relative_upload_path(webp_abs_path)
 
         add_inbox_item(db, filename=upload.filename or "", webp_path=webp_rel, draft=draft)
         imported += 1
 
     pending_count = len(get_pending_items(db))
-    return {"imported": imported, "pending_items": pending_count}
+    return {
+        "imported": imported,
+        "pending_items": pending_count,
+        "rag": {
+            "adapted": rag_adapted,
+            "new_saved": rag_new_saved,
+            "new_failed": rag_new_failed,
+            "total": rag_adapted + rag_new_saved + rag_new_failed,
+        },
+    }
 
 
 @router.get("/pending")

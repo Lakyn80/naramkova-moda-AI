@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from sqlalchemy.orm import Session
 
 from app.db.session import get_db
@@ -13,9 +13,12 @@ router = APIRouter(prefix="/api/products", tags=["products"])
 
 
 @router.get("", response_model=list[ProductOut])
-async def list_products_endpoint(db: Session = Depends(get_db)) -> list[ProductOut]:
-    """Legacy: GET /api/products/ (returns only products with stock > 0)."""
-    return list_products(db)
+async def list_products_endpoint(
+    include_inactive: bool = Query(default=False),
+    db: Session = Depends(get_db),
+) -> list[ProductOut]:
+    """Legacy: GET /api/products/."""
+    return list_products(db, include_inactive=include_inactive)
 
 
 @router.get("/{product_id}", response_model=ProductOut)

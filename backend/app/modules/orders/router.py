@@ -8,7 +8,12 @@ from sqlalchemy.orm import Session
 
 from app.db.session import get_db
 from .schemas import OrderClientCreateResponse, OrderCreateIn, OrderCreateResponse, OrderGetResponse
-from .service import create_order, create_order_client
+from .service import (
+    create_order,
+    create_order_client,
+    get_order_by_id as get_order_by_id_service,
+    get_order_by_vs as get_order_by_vs_service,
+)
 
 router = APIRouter(prefix="/api/orders", tags=["orders"])
 
@@ -24,17 +29,17 @@ async def create_order_endpoint(
 
 
 @router.get("/{order_id}", response_model=OrderGetResponse)
-async def get_order(order_id: int) -> OrderGetResponse:
+async def get_order(order_id: int, db: Session = Depends(get_db)) -> OrderGetResponse:
     """Legacy: GET /api/orders/<int:order_id>."""
-    _ = order_id
-    return JSONResponse(status_code=501, content={"detail": "Not implemented"})
+    status_code, data = get_order_by_id_service(db=db, order_id=order_id)
+    return JSONResponse(status_code=status_code, content=data)
 
 
 @router.get("/by-vs/{vs}", response_model=OrderGetResponse)
-async def get_order_by_vs(vs: str) -> OrderGetResponse:
+async def get_order_by_vs(vs: str, db: Session = Depends(get_db)) -> OrderGetResponse:
     """Legacy: GET /api/orders/by-vs/<vs>."""
-    _ = vs
-    return JSONResponse(status_code=501, content={"detail": "Not implemented"})
+    status_code, data = get_order_by_vs_service(db=db, vs=vs)
+    return JSONResponse(status_code=status_code, content=data)
 
 
 @router.post("/client", response_model=OrderClientCreateResponse, status_code=201)

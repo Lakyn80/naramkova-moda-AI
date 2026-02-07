@@ -5,11 +5,10 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { Category, ProductVariant } from "../../../../lib/types";
 import {
-  analyzeImage,
   createProduct,
+  fetchAiDraftFromUpload,
   fetchCategories,
   generateDescription,
-  ingestRag,
   searchRag,
 } from "../../../../lib/api";
 
@@ -287,46 +286,16 @@ export default function AdminProductNewPage() {
     setAiLoading(true);
 
     try {
-      const visionForm = new FormData();
-      visionForm.append("image", form.image);
-      const visionResult = await analyzeImage(visionForm);
-      const context = buildContext(visionResult as Record<string, unknown>);
-      const generated = await generateDescription(context);
-
-      const description =
-        generated.long_description ||
-        generated.description ||
-        generated.text ||
-        generated.short_description ||
-        "";
+      const formData = new FormData();
+      formData.append("image", form.image);
+      const draft = await fetchAiDraftFromUpload(formData);
+      const description = draft.description || "";
 
       if (!description) {
         throw new Error("AI nevygenerovala popis.");
       }
 
       setForm((prev) => ({ ...prev, description }));
-
-      const labels = (visionResult.labels as string[]) || [];
-      const objects = (visionResult.objects as string[]) || [];
-      const colors =
-        (visionResult.dominant_colors as string[]) ||
-        (visionResult.dominantColors as string[]) ||
-        (visionResult.colors as string[]) ||
-        [];
-      const categoryName =
-        categories.find((cat) => String(cat.id) === String(form.category_id))?.name || "";
-
-      void ingestRag({
-        category: categoryName,
-        attributes: {
-          labels,
-          colors,
-          objects,
-        },
-        description,
-      }).catch((err) => {
-        console.error("RAG ingest failed:", err);
-      });
     } catch (err) {
       const message = err instanceof Error ? err.message : "AI generování selhalo.";
       setAiError(message);
@@ -345,85 +314,22 @@ export default function AdminProductNewPage() {
     setAiFullLoading(true);
 
     try {
-      const visionForm = new FormData();
-      visionForm.append("image", form.image);
-      const visionResult = await analyzeImage(visionForm);
+      const formData = new FormData();
+      formData.append("image", form.image);
+      const draft = await fetchAiDraftFromUpload(formData);
 
-      const labels = (visionResult.labels as string[]) || [];
-      const objects = (visionResult.objects as string[]) || [];
-      const colors =
-        (visionResult.dominant_colors as string[]) ||
-        (visionResult.dominantColors as string[]) ||
-        (visionResult.colors as string[]) ||
-        [];
+      const nextName = draft.title || form.name || "";
+      const nextDescription = draft.description || form.description || "";
 
-      const categoryGuess = guessCategory(labels);
-
-      let ragExamples: unknown = null;
-      try {
-        ragExamples = await searchRag({
-          category: categoryGuess,
-          attributes: { labels, colors, objects },
-        });
-      } catch (err) {
-        console.error("RAG search failed:", err);
+      if (!nextName && !nextDescription) {
+        throw new Error("AI nevrátila text.");
       }
-
-      const visionText = buildContext({
-        labels,
-        colors,
-        dominant_colors: colors,
-        objects,
-      });
-
-      const prompt = buildAiPrompt({
-        visionText,
-        productName: form.name || undefined,
-        ragExamples,
-      });
-
-      const generated = await generateDescription(prompt);
-      const raw =
-        generated.text ||
-        generated.description ||
-        generated.long_description ||
-        generated.short_description ||
-        "";
-
-      const parsed = extractJson(raw);
-      if (!parsed) {
-        throw new Error("AI nevrátila platný JSON.");
-      }
-
-      const nextName = (parsed.name as string) || form.name || "";
-      const nextDescription = (parsed.description as string) || form.description || "";
-      const nextPrice = parsed.price_czk !== undefined ? String(parsed.price_czk) : form.price_czk;
-      const nextStock = parsed.stock !== undefined ? String(parsed.stock) : form.stock;
-      const categorySlug = (parsed.category_slug as string) || "";
-      const categoryId =
-        categories.find((cat) => String(cat.slug) === String(categorySlug))?.id ||
-        categories.find((cat) => String(cat.name) === String(categoryGuess))?.id ||
-        "";
 
       setForm((prev) => ({
         ...prev,
-        name: nextName,
-        description: nextDescription,
-        price_czk: nextPrice,
-        stock: nextStock,
-        category_id: categoryId ? String(categoryId) : prev.category_id,
+        name: nextName || prev.name,
+        description: nextDescription || prev.description,
       }));
-
-      const categoryName =
-        categories.find((cat) => String(cat.id) === String(categoryId))?.name || categoryGuess || "";
-
-      void ingestRag({
-        category: categoryName,
-        attributes: { labels, colors, objects },
-        description: nextDescription,
-      }).catch((err) => {
-        console.error("RAG ingest failed:", err);
-      });
     } catch (err) {
       const message = err instanceof Error ? err.message : "AI generování selhalo.";
       setAiError(message);

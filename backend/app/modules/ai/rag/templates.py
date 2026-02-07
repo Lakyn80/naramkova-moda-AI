@@ -3,11 +3,14 @@
 # Použijí se pouze pokud nejsou žádné šablony v DB / Chroma.
 
 bracelet_template = {
-    "title_template": "Jemný náramek {hlavni_atribut}",
+    "title_template": "Náramek – {hlavni_atribut} ✨",
     "description_template": (
-        "Ručně vyrobený náramek v jemném designu. "
-        "Dominují mu tóny {barva} a detail {motiv}. "
-        "Vhodný jako osobní dárek nebo elegantní doplněk pro každý den."
+        "✨ Popis produktu:\n"
+        "- Viditelné prvky: {motiv}\n"
+        "- Barevné tóny: {barva}\n"
+        "- Materiál / detail: {klíčový_detail}\n"
+        "\n"
+        "💎 Styl: {barva}, {hlavni_atribut}, {motiv}"
     ),
     "product_type": "bracelet",
     "style": "romantic",
@@ -15,11 +18,14 @@ bracelet_template = {
 }
 
 candle_template = {
-    "title_template": "Svíčka {atmosfera}",
+    "title_template": "Svíčka – {atmosfera} 🕯️",
     "description_template": (
-        "Dekorativní svíčka s příjemným vzhledem. "
-        "Barevné ladění: {barva}. "
-        "Skvěle doplní interiér nebo poslouží jako milý dárek."
+        "✨ Popis produktu:\n"
+        "- Viditelné prvky: {motiv}\n"
+        "- Barevné tóny: {barva}\n"
+        "- Materiál / detail: {klíčový_detail}\n"
+        "\n"
+        "💎 Styl: {barva}, {atmosfera}, {motiv}"
     ),
     "product_type": "candle",
     "style": "minimalist",
@@ -27,10 +33,14 @@ candle_template = {
 }
 
 generic_template = {
-    "title_template": "Designový produkt {hlavni_atribut}",
+    "title_template": "Dekorace – {hlavni_atribut} ✨",
     "description_template": (
-        "Stylový produkt s výraznými prvky {klíčový_detail}. "
-        "Vhodný pro osobní použití i jako dárek."
+        "✨ Popis produktu:\n"
+        "- Viditelné prvky: {motiv}\n"
+        "- Barevné tóny: {barva}\n"
+        "- Materiál / detail: {klíčový_detail}\n"
+        "\n"
+        "💎 Styl: {barva}, {hlavni_atribut}, {motiv}"
     ),
     "product_type": "other",
     "style": "neutral",

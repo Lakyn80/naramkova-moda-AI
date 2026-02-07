@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-import uuid
+import re
+import unicodedata
 from pathlib import Path
 
 from PIL import Image, ImageOps, UnidentifiedImageError
@@ -17,6 +18,54 @@ from app.core.paths import UPLOAD_DIR
 
 INBOX_WEBP_DIR = UPLOAD_DIR / "inbox_webp"
 DEFAULT_QUALITY = 72
+COUNTER_FILENAME = ".counter"
+
+
+def _normalize_base_name(value: str) -> str:
+    raw = (value or "").strip().lower()
+    if not raw:
+        return "naramkovamoda"
+    try:
+        normalized = unicodedata.normalize("NFKD", raw)
+        normalized = "".join(ch for ch in normalized if not unicodedata.combining(ch))
+    except Exception:
+        normalized = raw
+    normalized = normalized.encode("ascii", "ignore").decode("ascii")
+    normalized = re.sub(r"[^a-z0-9]+", "-", normalized).strip("-")
+    return normalized or "naramkovamoda"
+
+
+def _read_counter(target_dir: Path) -> int:
+    try:
+        raw = (target_dir / COUNTER_FILENAME).read_text(encoding="utf-8").strip()
+        return int(raw)
+    except Exception:
+        return 0
+
+
+def _scan_max_index(target_dir: Path) -> int:
+    max_val = 0
+    try:
+        for item in target_dir.glob("*.webp"):
+            match = re.search(r"_(\d+)\.webp$", item.name.lower())
+            if match:
+                max_val = max(max_val, int(match.group(1)))
+    except Exception:
+        pass
+    return max_val
+
+
+def _next_index(target_dir: Path) -> int:
+    current = _read_counter(target_dir)
+    existing = _scan_max_index(target_dir)
+    return max(current, existing) + 1
+
+
+def _write_counter(target_dir: Path, value: int) -> None:
+    try:
+        (target_dir / COUNTER_FILENAME).write_text(str(value), encoding="utf-8")
+    except Exception:
+        pass
 
 
 def _choose_save_kwargs(src: Path, img: Image.Image, quality: int) -> dict:
@@ -67,8 +116,14 @@ def convert_to_webp(input_path: str, *, quality: int = DEFAULT_QUALITY, max_widt
     """
     src = Path(input_path)
     INBOX_WEBP_DIR.mkdir(parents=True, exist_ok=True)
-    out_name = f"{uuid.uuid4().hex}.webp"
+    base_name = "nm"
+    next_index = _next_index(INBOX_WEBP_DIR)
+    out_name = f"{base_name}_{next_index}.webp"
     out_path = INBOX_WEBP_DIR / out_name
+    while out_path.exists():
+        next_index += 1
+        out_name = f"{base_name}_{next_index}.webp"
+        out_path = INBOX_WEBP_DIR / out_name
 
     try:
         with Image.open(src) as img:
@@ -96,4 +151,5 @@ def convert_to_webp(input_path: str, *, quality: int = DEFAULT_QUALITY, max_widt
     except Exception:
         pass
 
+    _write_counter(INBOX_WEBP_DIR, next_index)
     return str(out_path)

@@ -41,6 +41,7 @@ class ProductOut(BaseModel):
     seo_keywords: Optional[str] = None
     price: Optional[float] = None
     stock: Optional[int] = None
+    active: Optional[bool] = None
     category_id: Optional[int] = None
     category_name: Optional[str] = None
     category_slug: Optional[str] = None
@@ -71,6 +72,7 @@ class ProductCreateIn(BaseModel):
     price: Optional[float] = None
     price_czk: Optional[float] = None
     stock: Optional[int] = None
+    active: Optional[bool] = None
     category_id: Optional[int] = None
     wrist_size: Union[str, int, float, None] = None
     wrist_sizes: Optional[str] = None
@@ -86,6 +88,7 @@ class ProductUpdateIn(BaseModel):
     price: Optional[float] = None
     price_czk: Optional[float] = None
     stock: Optional[int] = None
+    active: Optional[bool] = None
     category_id: Optional[int] = None
     wrist_size: Union[str, int, float, None] = None
     wrist_sizes: Optional[str] = None

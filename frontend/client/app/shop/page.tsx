@@ -8,6 +8,8 @@ import { useCart } from "../../context/CartContext";
 import { slugify } from "../../lib/slugify";
 import { emojify } from "../../lib/emojify";
 import { absoluteUploadUrl } from "../../lib/media";
+import { formatWristSize, normalizeWristSize, wristSizeToNumber } from "../../lib/wrist-size";
+import { useScrollResetOnChange } from "../../lib/useScrollReset";
 import type { Category, Product } from "../../lib/types";
 
 const COLS = 3;
@@ -46,6 +48,39 @@ interface MappedProduct extends Product {
   category_key: string;
 }
 
+function compareWristSizes(a: string, b: string): number {
+  const numA = wristSizeToNumber(a);
+  const numB = wristSizeToNumber(b);
+  if (numA !== null && numB !== null && numA !== numB) {
+    return numA - numB;
+  }
+  if (numA !== null && numB === null) return -1;
+  if (numA === null && numB !== null) return 1;
+  return a.localeCompare(b);
+}
+
+function getPrimaryWristSize(product: Product): string {
+  const direct = normalizeWristSize(product.wrist_size);
+  if (direct) return direct;
+  const fromVariants = (product.variants || [])
+    .map((v) => normalizeWristSize(v.wrist_size))
+    .filter(Boolean);
+  if (!fromVariants.length) return "";
+  return fromVariants.sort(compareWristSizes)[0] || "";
+}
+
+function buildDescriptionPreview(description?: string | null): string {
+  const raw = String(description || "").replace(/\s+/g, " ").trim();
+  if (!raw) return "";
+  const cleaned = raw.replace(/^popis:\s*/i, "").trim();
+  if (!cleaned) return "";
+  const words = cleaned.split(" ").filter(Boolean);
+  const limit = 55;
+  const preview = words.slice(0, limit).join(" ");
+  const needsEllipsis = words.length > limit;
+  return `${preview}${needsEllipsis ? "..." : "..."}`;
+}
+
 function ShopPageContent() {
   const { addToCart } = useCart();
   const router = useRouter();
@@ -59,6 +94,8 @@ function ShopPageContent() {
   const [wristFilter, setWristFilter] = useState("");
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
+
+  useScrollResetOnChange(searchParams.toString());
 
   // Load categories
   useEffect(() => {
@@ -115,7 +152,7 @@ function ShopPageContent() {
     }
     setSearchTerm(searchParams.get("q") || "");
     setSortBy(searchParams.get("sort") || "");
-    setWristFilter(searchParams.get("wrist") || "");
+    setWristFilter(normalizeWristSize(searchParams.get("wrist") || ""));
     const pageParam = parseInt(searchParams.get("page") || "1", 10);
     setPage(Number.isFinite(pageParam) && pageParam > 0 ? pageParam : 1);
   }, [searchParams]);
@@ -131,7 +168,7 @@ function ShopPageContent() {
       const cats = opts.categories ?? selectedCategories;
       const qVal = opts.searchTerm ?? searchTerm;
       const sortVal = opts.sortBy ?? sortBy;
-      const wristVal = opts.wristFilter ?? wristFilter;
+      const wristVal = normalizeWristSize(opts.wristFilter ?? wristFilter);
       const pageVal = opts.page ?? page;
 
       const params = new URLSearchParams();
@@ -169,15 +206,19 @@ function ShopPageContent() {
   const allWristSizes = useMemo(() => {
     const sizes: string[] = [];
     products.forEach((p) => {
+      const direct = normalizeWristSize(p.wrist_size);
+      if (direct) sizes.push(direct);
       (p.variants || []).forEach((v) => {
-        if (v.wrist_size) sizes.push(v.wrist_size);
+        const val = normalizeWristSize(v.wrist_size);
+        if (val) sizes.push(val);
       });
     });
-    return Array.from(new Set(sizes.filter(Boolean))).sort();
+    return Array.from(new Set(sizes.filter(Boolean))).sort(compareWristSizes);
   }, [products]);
 
   // Filter products
   const filteredProducts = useMemo(() => {
+    const normalizedWristFilter = normalizeWristSize(wristFilter);
     return products.filter((p) => {
       const catKey = p.category_key || "";
       const catSlug = catKey.split("-")[0] || "";
@@ -188,10 +229,11 @@ function ShopPageContent() {
         selectedCategories.some((sel) => catKey.includes(sel) || catSlug === sel);
       const matchesText = (p.name || "").toLowerCase().includes(searchTerm.toLowerCase());
       const matchesWrist =
-        !wristFilter ||
+        !normalizedWristFilter ||
+        normalizeWristSize(p.wrist_size) === normalizedWristFilter ||
         (Array.isArray(p.variants) &&
           p.variants.some(
-            (v) => (v.wrist_size || "").toLowerCase() === wristFilter.toLowerCase()
+            (v) => normalizeWristSize(v.wrist_size) === normalizedWristFilter
           ));
       return matchesCat && matchesText && matchesWrist;
     });
@@ -308,7 +350,7 @@ function ShopPageContent() {
                     <option value="">Všechny obvody</option>
                     {allWristSizes.map((w) => (
                       <option key={w} value={w}>
-                        {w}
+                        {formatWristSize(w)}
                       </option>
                     ))}
                   </select>
@@ -345,27 +387,33 @@ function ShopPageContent() {
                       : product.stock! <= 5
                       ? "bg-gradient-to-r from-amber-400 to-amber-600 text-black animate-pulse"
                       : "bg-gradient-to-r from-emerald-400 to-green-600 text-white";
+                    const primaryWristSize = getPrimaryWristSize(product);
+                    const title = primaryWristSize
+                      ? `${emojify(product.name)} - ${formatWristSize(primaryWristSize)}`
+                      : emojify(product.name);
+                    const descriptionPreview = buildDescriptionPreview(product.description);
 
                     return (
                       <div
                         key={product.id}
                         className="bg-white/10 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden flex flex-col"
                       >
-                        <img
-                          src={product.image || "/placeholder.png"}
-                          alt={product.name}
-                          className="w-full h-48 object-cover"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).src = "/placeholder.png";
-                          }}
-                        />
+                        {product.image ? (
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-full h-48 object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-48 bg-white/5" />
+                        )}
                         <div className="p-4 flex flex-col flex-grow">
                           <div className="flex items-start justify-between gap-2">
                             <Link
                               href={`/products/${slugify(product.name)}`}
-                              className="text-lg font-semibold mb-2 hover:underline text-white"
+                              className="text-lg font-semibold mb-2 hover:underline text-white block flex-1 product-title-clamp leading-7 min-h-[3.5rem] max-h-[3.5rem]"
                             >
-                              {emojify(product.name)}
+                              {title}
                             </Link>
                             <span
                               className={`text-[11px] px-2.5 py-1 rounded-full whitespace-nowrap ${badgeClass}`}
@@ -377,26 +425,31 @@ function ShopPageContent() {
                           <p className="text-pink-200 mb-4">
                             {(Number(product.price) || 0).toFixed(2)} Kč
                           </p>
-                          <button
-                            onClick={() =>
-                              inStock &&
-                              addToCart({
-                                id: product.id,
-                                name: product.name,
-                                price: Number(product.price) || 0,
-                                image: product.image,
-                                stock: product.stock ?? undefined,
-                              })
-                            }
-                            disabled={!inStock}
-                            className={`mt-auto text-white py-2 rounded-lg transition ${
-                              inStock
-                                ? "bg-pink-600 hover:bg-pink-700"
-                                : "bg-gray-300 cursor-not-allowed"
-                            }`}
-                          >
-                            {inStock ? "Přidat do košíku" : "Vyprodáno"}
-                          </button>
+                          <div className="mt-auto">
+                            <p className="text-[13px] leading-5 text-pink-100/90 mb-3 product-desc-clamp h-[2.5rem]">
+                              {descriptionPreview}
+                            </p>
+                            <button
+                              onClick={() =>
+                                inStock &&
+                                addToCart({
+                                  id: product.id,
+                                  name: product.name,
+                                  price: Number(product.price) || 0,
+                                  image: product.image,
+                                  stock: product.stock ?? undefined,
+                                })
+                              }
+                              disabled={!inStock}
+                              className={`w-full text-center text-white py-2 rounded-lg transition ${
+                                inStock
+                                  ? "bg-pink-600 hover:bg-pink-700"
+                                  : "bg-gray-300 cursor-not-allowed"
+                              }`}
+                            >
+                              {inStock ? "Přidat do košíku" : "Vyprodáno"}
+                            </button>
+                          </div>
                         </div>
                       </div>
                     );

@@ -6,6 +6,7 @@ import uuid
 from pathlib import Path
 from typing import Any, Iterable
 
+from PIL import Image, ImageOps, UnidentifiedImageError
 from fastapi import UploadFile
 from sqlalchemy.orm import Session, selectinload
 
@@ -39,6 +40,70 @@ def _normalize_upload_filename(value: str | None) -> str | None:
     while v.startswith("uploads/"):
         v = v[len("uploads/"):]
     return v or None
+
+
+def _ensure_webp_filename(filename: str | None) -> str | None:
+    if not filename:
+        return None
+    lower = filename.lower()
+    if lower.endswith(".webp"):
+        return filename
+    base, ext = os.path.splitext(filename)
+    if not base:
+        return None
+    src_path = UPLOAD_DIR / filename
+    webp_name = f"{base}.webp"
+    webp_path = UPLOAD_DIR / webp_name
+    if webp_path.exists():
+        return webp_name
+    if not src_path.exists():
+        return None
+
+    try:
+        webp_path.parent.mkdir(parents=True, exist_ok=True)
+        with Image.open(src_path) as img:
+            img = ImageOps.exif_transpose(img)
+
+            if img.mode in ("I;16", "I", "F"):
+                img = img.convert("RGB")
+            elif img.mode in ("P", "LA"):
+                img = img.convert("RGBA")
+            elif img.mode == "CMYK":
+                img = img.convert("RGB")
+
+            save_kwargs: dict[str, Any] = {
+                "format": "WEBP",
+                "method": 6,
+                "optimize": True,
+            }
+            icc = img.info.get("icc_profile")
+            if icc:
+                save_kwargs["icc_profile"] = icc
+            try:
+                exif = img.getexif()
+                if exif:
+                    save_kwargs["exif"] = exif.tobytes()
+            except Exception:
+                pass
+
+            ext = ext.lower()
+            if ext in (".jpg", ".jpeg", ".heic", ".heif"):
+                save_kwargs["lossless"] = False
+                save_kwargs["quality"] = 72
+            elif ext == ".png":
+                if img.mode in ("RGBA", "LA"):
+                    save_kwargs["lossless"] = True
+                else:
+                    save_kwargs["lossless"] = True
+                    save_kwargs["quality"] = 90
+            else:
+                save_kwargs["lossless"] = False
+                save_kwargs["quality"] = 72
+
+            img.save(webp_path, **save_kwargs)
+        return webp_name
+    except (UnidentifiedImageError, OSError, ValueError):
+        return None
 
 
 def _save_upload_file(upload: UploadFile) -> str:
@@ -112,6 +177,19 @@ def _to_price(val):
         return float(val)
     except (TypeError, ValueError):
         return None
+
+
+def _to_bool(val, default=None):
+    if val is None:
+        return default
+    if isinstance(val, bool):
+        return val
+    s = str(val).strip().lower()
+    if s in ("1", "true", "t", "yes", "y", "on"):
+        return True
+    if s in ("0", "false", "f", "no", "n", "off"):
+        return False
+    return default
 
 
 def _parse_variants_from_form(
@@ -239,14 +317,16 @@ def _dedupe_variants(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 def _variant_media_dict(media: ProductVariantMedia) -> dict[str, Any]:
+    webp_name = _ensure_webp_filename(media.filename)
     return {
         "id": media.id,
         "image": media.filename,
-        "image_url": f"/static/uploads/{media.filename}" if media.filename else None,
+        "image_url": f"/static/uploads/{webp_name}" if webp_name else None,
     }
 
 
 def _variant_dict(variant: ProductVariant) -> dict[str, Any]:
+    webp_image = _ensure_webp_filename(variant.image)
     return {
         "id": variant.id,
         "variant_name": variant.variant_name,
@@ -255,7 +335,7 @@ def _variant_dict(variant: ProductVariant) -> dict[str, Any]:
         "price_czk": float(variant.price_czk) if variant.price_czk is not None else None,
         "stock": variant.stock,
         "image": variant.image,
-        "image_url": f"/static/uploads/{variant.image}" if variant.image else None,
+        "image_url": f"/static/uploads/{webp_image}" if webp_image else None,
         "media": [_variant_media_dict(m) for m in (variant.media or [])],
     }
 
@@ -263,6 +343,7 @@ def _variant_dict(variant: ProductVariant) -> dict[str, Any]:
 def _product_dict(product: Product) -> dict[str, Any]:
     category_name = product.category.name if product.category else None
     category_group = product.category.group if product.category else None
+    webp_image = _ensure_webp_filename(product.image)
 
     return {
         "id": product.id,
@@ -273,20 +354,27 @@ def _product_dict(product: Product) -> dict[str, Any]:
         "seo_keywords": product.seo_keywords,
         "price": float(product.price_czk) if product.price_czk is not None else None,
         "stock": product.stock,
+        "active": bool(getattr(product, "active", True)),
         "category_id": product.category_id,
         "category_name": category_name,
         "category_slug": getattr(product.category, "slug", None),
         "wrist_size": product.wrist_size,
-        "image_url": f"/static/uploads/{product.image}" if product.image else None,
-        "media": [f"/static/uploads/{m.filename}" for m in (product.media or [])],
+        "image_url": f"/static/uploads/{webp_image}" if webp_image else None,
+        "media": [
+            f"/static/uploads/{webp_name}"
+            for m in (product.media or [])
+            for webp_name in (_ensure_webp_filename(m.filename),)
+            if webp_name
+        ],
         "media_items": [
             {
                 "id": m.id,
                 "filename": m.filename,
                 "media_type": m.media_type,
-                "url": f"/static/uploads/{m.filename}" if m.filename else None,
+                "url": f"/static/uploads/{webp_name}" if webp_name else None,
             }
             for m in (product.media or [])
+            for webp_name in (_ensure_webp_filename(m.filename),)
         ],
         "categories": ([category_name] if category_name else []),
         "category_group": category_group,
@@ -294,19 +382,19 @@ def _product_dict(product: Product) -> dict[str, Any]:
     }
 
 
-def list_products(db: Session) -> list[dict[str, Any]]:
-    items = (
+def list_products(db: Session, *, include_inactive: bool = False) -> list[dict[str, Any]]:
+    q = (
         db.query(Product)
         .options(
             selectinload(Product.media),
             selectinload(Product.category),
             selectinload(Product.variants).selectinload(ProductVariant.media),
         )
-        # Zobrazujeme i produkty se stock = 0
-        # (žádný filtr na stock)
-        .order_by(Product.id.desc())
-        .all()
     )
+    if not include_inactive and hasattr(Product, "active"):
+        q = q.filter(Product.active.is_(True))
+
+    items = q.order_by(Product.id.desc()).all()
     return [_product_dict(p) for p in items]
 
 
@@ -350,6 +438,7 @@ def create_product(
         or ""
     ).strip()
     stock_raw = str(data.get("stock") or form.get("stock") or "").strip()
+    active_raw = data.get("active") if "active" in data else form.get("active")
     category_id = data.get("category_id") or form.get("category_id")
     wrist_size_raw = (
         data.get("wrist_size")
@@ -387,6 +476,7 @@ def create_product(
         seo_keywords=(seo_keywords or None),
         price_czk=price,
         stock=stock,
+        active=_to_bool(active_raw, default=True),
         category_id=category_id_int,
         wrist_size=wrist_size_raw or None,
     )
@@ -524,6 +614,7 @@ def update_product(
         or ""
     ).strip()
     stock_raw = str(data.get("stock") or form.get("stock") or "").strip()
+    active_raw = data.get("active") if "active" in data else form.get("active")
     category_id = data.get("category_id") or form.get("category_id")
     wrist_size_raw = (
         data.get("wrist_size")
@@ -573,6 +664,10 @@ def update_product(
                 product.stock = stock
             except ValueError as exc:
                 raise ValueError("Invalid stock") from exc
+        if "active" in data or "active" in form:
+            active_val = _to_bool(active_raw, default=None)
+            if active_val is not None:
+                product.active = active_val
         if category_id:
             try:
                 product.category_id = int(category_id)
